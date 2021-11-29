@@ -1,0 +1,102 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{abntex2cite}{manual}{}
+      \name{author}{2}{}{%
+        {{hash=30b1dc3a917993ffe042355d751922d8}{%
+           family={abnTeX2},
+           familyi={a\bibinitperiod}}}%
+        {{hash=3ebd20695bd75494918b0830766ddb8a}{%
+           family={Araujo},
+           familyi={A\bibinitperiod},
+           given={Lauro\bibnamedelima C{é}sar},
+           giveni={L\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Equipe abnTeX2}%
+      }
+      \strng{namehash}{8319912dbd1b251627c1c0fd6b6e665a}
+      \strng{fullhash}{8319912dbd1b251627c1c0fd6b6e665a}
+      \strng{bibnamehash}{8319912dbd1b251627c1c0fd6b6e665a}
+      \strng{authorbibnamehash}{8319912dbd1b251627c1c0fd6b6e665a}
+      \strng{authornamehash}{8319912dbd1b251627c1c0fd6b6e665a}
+      \strng{authorfullhash}{8319912dbd1b251627c1c0fd6b6e665a}
+      \field{sortinit}{a}
+      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{annotation}{Este documento {é} derivado do \cite{abnt-bibtex-doc}}
+      \field{title}{O BBB abntex2cite: Estilos bibliogr{á}ficos compat{í}veis com a ABNT NBR 6023}
+      \field{year}{2013}
+      \verb{urlraw}
+      \verb http://abntex2.googlecode.com/
+      \endverb
+      \verb{url}
+      \verb http://abntex2.googlecode.com/
+      \endverb
+    \endentry
+    \entry{Khaleel2018}{article}{}
+      \name{author}{2}{}{%
+        {{hash=51cbb0cd86fe034db30ffa5ddaf58039}{%
+           family={Khaleel},
+           familyi={K\bibinitperiod},
+           given={Ali},
+           giveni={A\bibinitperiod}}}%
+        {{hash=352653f488cf51fcebc71d9ca2e2ea34}{%
+           family={Al-Raweshidy},
+           familyi={A\bibinithyphendelim R\bibinitperiod},
+           given={Hamed},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Institute of Electrical}%
+        {Electronics Engineers ({IEEE})}%
+      }
+      \strng{namehash}{d9746f4216e592d396cb220b87594e31}
+      \strng{fullhash}{d9746f4216e592d396cb220b87594e31}
+      \strng{bibnamehash}{d9746f4216e592d396cb220b87594e31}
+      \strng{authorbibnamehash}{d9746f4216e592d396cb220b87594e31}
+      \strng{authornamehash}{d9746f4216e592d396cb220b87594e31}
+      \strng{authorfullhash}{d9746f4216e592d396cb220b87594e31}
+      \field{sortinit}{K}
+      \field{sortinithash}{d3edc18d54b9438a72c24c925bfb38f4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{{IEEE} Access}
+      \field{title}{Optimization of Computing and Networking Resources of a Hadoop Cluster Based on Software Defined Network}
+      \field{volume}{6}
+      \field{year}{2018}
+      \field{pages}{61351\bibrangedash 61365}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1109/access.2018.2876385
+      \endverb
+      \keyw{consulta}
+    \endentry
+  \enddatalist
+  \missing{0230}
+\endrefsection
+\endinput
+

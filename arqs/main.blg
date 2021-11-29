@@ -1,0 +1,19 @@
+[0] Config.pm:304> INFO - This is Biber 2.14 (beta)
+[0] Config.pm:307> INFO - Logfile is 'main.blg'
+[115] biber:322> INFO - === Mon Nov 29, 2021, 17:46:00
+[135] Biber.pm:415> INFO - Reading 'main.bcf'
+[226] Biber.pm:943> INFO - Found 3 citekeys in bib section 0
+[247] Biber.pm:4256> INFO - Processing section 0
+[247] Utils.pm:75> INFO - Globbing data source 'referencias.bib'
+[247] Utils.pm:91> INFO - Globbed data source 'referencias.bib' to referencias.bib
+[261] Biber.pm:4455> INFO - Looking for bibtex format file 'referencias.bib' for section 0
+[268] bibtex.pm:1653> INFO - LaTeX decoding ...
+[410] bibtex.pm:1471> INFO - Found BibTeX data source 'referencias.bib'
+[454] Utils.pm:293> WARN - I didn't find a database entry for '0230' (section 0)
+[470] UCollate.pm:68> INFO - Overriding locale 'pt-BR' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[470] UCollate.pm:68> INFO - Overriding locale 'pt-BR' defaults 'variable = shifted' with 'variable = non-ignorable'
+[471] Biber.pm:4084> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'pt-BR'
+[472] Biber.pm:4090> INFO - No sort tailoring available for locale 'pt-BR'
+[484] bbl.pm:652> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[486] bbl.pm:755> INFO - Output to main.bbl
+[487] Biber.pm:128> INFO - WARNINGS: 1
