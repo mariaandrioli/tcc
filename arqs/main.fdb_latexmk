@@ -1,19 +1,19 @@
 # Fdb version 3
-["biber main"] 1638218759 "main.bcf" "main.bbl" "main" 1638218776
-  "main.bcf" 1638218775 106809 7d53fb57b8a1ac55d09939815fc420ac "pdflatex"
+["biber main"] 1638218759 "main.bcf" "main.bbl" "main" 1638224410
+  "main.bcf" 1638224410 106809 7d53fb57b8a1ac55d09939815fc420ac "pdflatex"
   "referencias.bib" 1638218758 39607 34ecb5d55973c7470ac3fc833a89ae48 ""
   (generated)
-  "main.blg"
   "main.bbl"
-["makeindex main.idx"] 1638214912 "main.idx" "main.ind" "main" 1638218776
-  "main.idx" 1638218773 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.blg"
+["makeindex main.idx"] 1638214912 "main.idx" "main.ind" "main" 1638224410
+  "main.idx" 1638224407 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "main.ilg"
   "main.ind"
-["pdflatex"] 1638218771 "/home/maria/Documents/Trabalhos/tcc/arqs/main.tex" "/home/maria/Documents/Trabalhos/tcc/arqs/main.pdf" "main" 1638218776
+["pdflatex"] 1638224405 "/home/maria/Documents/Trabalhos/tcc/arqs/main.tex" "/home/maria/Documents/Trabalhos/tcc/arqs/main.pdf" "main" 1638224410
   "/etc/texmf/web2c/texmf.cnf" 1638199826 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/maria/Documents/Trabalhos/tcc/arqs/main.aux" 1638218775 10938 15bbc3183615f3602005b987873d3650 ""
-  "/home/maria/Documents/Trabalhos/tcc/arqs/main.tex" 1638218681 9166 df0bbecda12d80be01cf4cfe60563d7b ""
+  "/home/maria/Documents/Trabalhos/tcc/arqs/main.aux" 1638224410 11624 bf28466dc6b4d9efc8f9f02741f97a19 ""
+  "/home/maria/Documents/Trabalhos/tcc/arqs/main.tex" 1638224384 9185 ac23bf9c1535d4e2236006e8b9286246 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr10.tfm" 1136768653 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
@@ -339,19 +339,20 @@
   "cap01.tex" 1638218581 10196 dcef70d0bbf0166a97f3de36c28d29a3 ""
   "fig/capaufpr.png" 1632519558 416850 dd4c115180ae77e74f4305aa5dc3df71 ""
   "fig/tipog.png" 1632519558 509433 fca3a8aebd7deddbf52dd7b7084b40c9 ""
-  "main.aux" 1638218775 10938 15bbc3183615f3602005b987873d3650 "pdflatex"
+  "introducao.tex" 1638224382 80 084d5d5909547ce498365695473cf7a3 ""
+  "main.aux" 1638224410 11624 bf28466dc6b4d9efc8f9f02741f97a19 "pdflatex"
   "main.bbl" 1638218760 3615 70304078ea4fae6a5621fba0f65d5aa1 "biber main"
   "main.ind" 1638214912 0 d41d8cd98f00b204e9800998ecf8427e "makeindex main.idx"
-  "main.run.xml" 1638218775 2578 7c66683dfff7d4f7a07e7a8d407d1935 "pdflatex"
-  "main.tex" 1638218681 9166 df0bbecda12d80be01cf4cfe60563d7b ""
-  "main.toc" 1638218775 2647 ab74d4b997940886ec271b66ceaffc20 "pdflatex"
+  "main.run.xml" 1638224410 2578 7c66683dfff7d4f7a07e7a8d407d1935 "pdflatex"
+  "main.tex" 1638224384 9185 ac23bf9c1535d4e2236006e8b9286246 ""
+  "main.toc" 1638224410 2844 d1157e88bbd1600db0d15b755d25d38c "pdflatex"
   (generated)
-  "main.idx"
-  "main.aux"
   "main.log"
-  "main.bcf"
-  "main.toc"
+  "main.run.xml"
   "main.pdf"
+  "main.toc"
+  "main.bcf"
+  "main.aux"
   "/home/maria/Documents/Trabalhos/tcc/arqs/main.pdf"
   "/home/maria/Documents/Trabalhos/tcc/arqs/main.log"
-  "main.run.xml"
+  "main.idx"
