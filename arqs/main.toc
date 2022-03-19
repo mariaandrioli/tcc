@@ -12,15 +12,31 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {1.1}CONTEXTO}{8}{section.1.1}%
 \defcounter {refsection}{0}\relax 
-\addvspace {-12\p@ }
+\addvspace {-3\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\chapternumberline {2}\bfseries \MakeTextUppercase {REFERENCIAL TEÓRICO}}{9}{chapter.2}%
+\contentsline {section}{\numberline {1.2}OBJETIVO}{9}{section.1.2}%
 \defcounter {refsection}{0}\relax 
 \addvspace {-3\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.1}MAPREDUCE}{9}{section.2.1}%
+\contentsline {section}{\numberline {1.3}ESTRUTURA DO TRABALHO}{9}{section.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1.1}Modelo de programação}{9}{subsection.2.1.1}%
+\addvspace {-12\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\chapternumberline {2}\bfseries \MakeTextUppercase {REFERENCIAL TEÓRICO}}{10}{chapter.2}%
+\defcounter {refsection}{0}\relax 
+\addvspace {-3\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}MAPREDUCE}{10}{section.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.1}Modelo de programação}{10}{subsection.2.1.1}%
+\defcounter {refsection}{0}\relax 
+\addvspace {-3\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}HADOOP}{11}{section.2.2}%
+\defcounter {refsection}{0}\relax 
+\addvspace {-3\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.3}HADOOP MAPREDUCE}{11}{section.2.3}%
 \defcounter {refsection}{0}\relax 
 \vspace {\cftbeforepartskip }
 \defcounter {refsection}{0}\relax 
@@ -28,6 +44,6 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {-12\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {}{REFER\^ENCIAS}}{11}{chapter*.10}%
+\contentsline {chapter}{\numberline {}{REFER\^ENCIAS}}{12}{chapter*.10}%
 \defcounter {refsection}{0}\relax 
 \vspace {-12pt}

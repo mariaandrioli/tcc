@@ -1,6 +1,6 @@
 \chapter{REFERENCIAL TEÓRICO} \label{cha:refteorico}
 
-Esse capítulo tem como objetivo apresentar detalhadamente os conceitos técnicos que serão utilizados ao longo do trabalho. A Seção 2.1 apresenta o MapReduce, o modelo de manipulação de dados feito pelo Google e a Seção 2.2 trata do Hadoop, o \textit{framework} desenvolvido pela Apache.
+Esse capítulo tem como objetivo apresentar detalhadamente os conceitos técnicos que serão utilizados ao longo do trabalho. A Seção 2.1 apresenta o \textit{MapReduce}, o modelo de manipulação de dados feito pelo Google e a Seção 2.2 trata do \textit{Hadoop}, o \textit{framework} desenvolvido pela Apache. A seção 2.3 introduz o \textit{Hadoop MapReduce}.
 
 \section{MAPREDUCE} \label{sec:mapreduce}
 
@@ -35,3 +35,7 @@ reduce(String chave, Iterador valores):
 \end{lstlisting}
 
 A função \textit{Map} gera um objeto intermediário de cada palavra associada a uma lista do seu número de occorrências no texto e a função \textit{Reduce} soma os valores até ter o total de ocorrências por palavra. Além disso, o usuário cria um configuração de \textit{MapReduce} com os parâmetros de entrada e saída e eventuais parâmetros de \textit{tuning}.
+
+\section{HADOOP} \label{sec:hadoop}
+
+\section{HADOOP MAPREDUCE} \label{sec:hadoopmapreduce}
