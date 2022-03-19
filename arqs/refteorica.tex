@@ -1,0 +1,37 @@
+\chapter{REFERENCIAL TEÓRICO} \label{cha:refteorico}
+
+Esse capítulo tem como objetivo apresentar detalhadamente os conceitos técnicos que serão utilizados ao longo do trabalho. A Seção 2.1 apresenta o MapReduce, o modelo de manipulação de dados feito pelo Google e a Seção 2.2 trata do Hadoop, o \textit{framework} desenvolvido pela Apache.
+
+\section{MAPREDUCE} \label{sec:mapreduce}
+
+MapReduce é um modelo de programação associado a uma implementação que tem como objetivo processar, manipular e gerar grandes \textit{datasets} de modo eficiente, escalável e com aplicações no mundo real. As computações acontecem de acordo com funções de mapeamento e redução e o sistema do MapReduce paraleliza essa computações entre grandes \textit{clusters}, lidando com possíveis falhas, escalonamentos e uso eficiente de rede e discos \cite{MapReduce08}.
+
+As operações de mapeamento e redução são baseadas em conceitos presentes em linguagens funcionais e fazem com que seja possível fazer diversas reutilizações, assim lidando com tolerância de falhas \cite{MapReduce08}. 
+
+\subsection{Modelo de programação}\label{ssec:mapreducemodelo}
+
+A computação recebe um conjunto de pares (VALOR, CHAVE) e produz um conjunto de pares de (VALOR, CHAVE). O usuário cria as funções \textit{Map} e \textit{Reduce} de acordo com seu caso de uso. \textit{Map} recebe um único par (VALOR, CHAVE) e produz um conjunto intermediário de pares. Em seguida, a biblioteca \textit{MapReduce} agrupa os valores com a mesma chave e esses valores servirão de entrada para a função \textit{Reduce}. A função \textit{Reduce} então junta os valores com a mesma chave de modo a criar um conjunto menor, sendo possível dessa forma lidar com listas muito grandes para a memória disponível \cite{MapReduce04}.
+
+Como exemplo, considere o problem de contar quantas vezes determinada palavra aparece em um documento. Nesse problema, as funções \textit{Map} e \textit{Reduce} seriam similares aos seguintes pseudocódigos \cite{MapReduce08}:
+\newpage
+\begin{lstlisting}[title={Código 1: Exemplo de função Map em pseudocódigo adaptado de \cite{MapReduce08}}]
+map(String chave, String valor):
+// chave: nome do documento
+// valor: conteudo do documento
+
+  para cada palavra W em valor:
+    criaIntermediario(W, '1');
+\end{lstlisting}
+
+\begin{lstlisting}[title={Código 2: Exemplo de função Reduce em pseudocódigo adaptado de \cite{MapReduce08}}]
+reduce(String chave, Iterador valores):
+// chave: uma palavra
+// valores: lista de contagens
+
+  int resultado = 0;
+  para cada V em valores:
+    resultado = resultado + converteEmInt(V);
+  cria(resultado);
+\end{lstlisting}
+
+A função \textit{Map} gera um objeto intermediário de cada palavra associada a uma lista do seu número de occorrências no texto e a função \textit{Reduce} soma os valores até ter o total de ocorrências por palavra. Além disso, o usuário cria um configuração de \textit{MapReduce} com os parâmetros de entrada e saída e eventuais parâmetros de \textit{tuning}.

@@ -1,3 +1,15 @@
-\chapter{INTRODUÇÃO} \label{cha:introd}
+\chapter{INTRODUÇÃO} \label{cha:introducao}
 
-O crescimento da quantidade de dados 
+\section{CONTEXTO} \label{sec:contexto}
+
+O uso, armazenamento e controle de dados é um tema muito discutido na área de computação desde seus primórdios até os dias de hoje. Por causa disso, muitos métodos e algoritmos e termos surgiram ao longo do tempo com o objetivo de gerenciar de forma eficiente esses dados. O surgimento dessas novas ferramentas computacionais e métodos de armazenamento foi importantíssimo para a evolução da área. 
+
+Atualmente, os métodos mais comuns são os bancos de dados relacionais e \textit{datas warehouses} usando computação em nuvem \cite{PastAndFutureTrendsData19}. Além disso, pesquisas nos campos de mineração de dados e aprendizagem de máquina cresceram bastante recentemente de modo a prover técnicas que permitissem analisar dados complexos e variados entre si \cite{ProgrammingBigData22}. Um grande desafio é o fato de algoritmos sequenciais não serem otimizados o suficiente para lidar com dados em grande quantidade. Por causa disso, computadores de alta performance, com múltiplos \textit{cores}, sistemas na nuvem e algoritmos paralelos e distribuídos são usados para lidar com esses empecilhos de \textit{Big Data} \cite{ProgrammingBigData22}.
+
+\textit{Big Data} refere-se a grandes conglomerados de dados complexos sobre os quais não é possível aplicar ferramentas tradicionais de processamento, armazenamento ou análise \cite{OptmizationSoftwareHadoop18}. Estima-se que em 2025. os dados atuais criados, capturados ou replicados atinjam 175 Zettabytes, ou seja 175,000,000,000 Gigabytes \cite{DigitalizationWorld18}.
+
+A fim de lidar com essa enorme quantidade de dados, foi desenvolvido pelo Google o MapReduce, que é um modelo e implementação feito para processar e gerar grandes conglomerados de dados. Esse modelo é inspirado nos conceitos de mapear e reduzir, ou seja, aplicar uma operação que conecta cada item da base de dados a um determinado par de chaves e valores e então aplicar uma operação de reduzir, que junta os valores que compartilham chaves \cite{MapReduce04}. Com essas operações é possível paralelizar dados em grandes quantidades e utilizar mecanismos de reutilização para facilitar a busca e manipulação destes.
+
+Um dos \textit{frameworks} mais populares que utiliza o MapReduce é o Hadoop, desenvolvido pela Apache que é capaz de armazenar e processar de giga a petabytes de dados eficientemente. Essa ferramenta é capaz de fazer isso optando por usar múltiplos computadores (\textit{clusters}) em paralelo \cite{HadoopBook15}.
+
+[FALAR AQUI SOBRE O OBJETIVO DESTE TRABALHO, A MOTIVAÇÃO, METODOLOGIA(?) E COMO ELE ESTÁ ESTRUTURADO]

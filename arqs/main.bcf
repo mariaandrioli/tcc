@@ -2263,12 +2263,21 @@
     <bcf:datasource type="file" datatype="bibtex">referencias.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">0230</bcf:citekey>
-    <bcf:citekey order="3">abntex2cite</bcf:citekey>
-    <bcf:citekey order="4">abntex2cite</bcf:citekey>
-    <bcf:citekey order="5">Khaleel2018</bcf:citekey>
-    <bcf:citekey order="6">Khaleel2018</bcf:citekey>
-    <bcf:citekey order="7">abntex2cite</bcf:citekey>
+    <bcf:citekey order="1">PastAndFutureTrendsData19</bcf:citekey>
+    <bcf:citekey order="2">ProgrammingBigData22</bcf:citekey>
+    <bcf:citekey order="3">ProgrammingBigData22</bcf:citekey>
+    <bcf:citekey order="4">OptmizationSoftwareHadoop18</bcf:citekey>
+    <bcf:citekey order="5">DigitalizationWorld18</bcf:citekey>
+    <bcf:citekey order="6">MapReduce04</bcf:citekey>
+    <bcf:citekey order="7">HadoopBook15</bcf:citekey>
+    <bcf:citekey order="8">MapReduce08</bcf:citekey>
+    <bcf:citekey order="9">MapReduce08</bcf:citekey>
+    <bcf:citekey order="10">MapReduce04</bcf:citekey>
+    <bcf:citekey order="11">MapReduce08</bcf:citekey>
+    <bcf:citekey order="12">MapReduce08</bcf:citekey>
+    <bcf:citekey order="13">MapReduce08</bcf:citekey>
+    <bcf:citekey order="14">MapReduce08</bcf:citekey>
+    <bcf:citekey order="15">MapReduce08</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

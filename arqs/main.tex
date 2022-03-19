@@ -76,6 +76,28 @@
 % ----------------------------------------------------------
 
 \makeindex
+
+\lstset{frame=tb,
+  language=C,
+  aboveskip=25pt,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3,
+  framesep=5pt,
+  xleftmargin=20pt,
+  xrightmargin=20pt,
+  captionpos=b
+}
+
 % ----------------------------------------------------------
 % Início do documento
 % ----------------------------------------------------------
@@ -109,7 +131,8 @@
 % Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
 % ----------------------------------------------------------
 \input{introducao}
-\input{cap01}
+\input{refteorica}
+% \input{cap01}
 
 % PARTE DA PREPARAÇÃO DA PESQUISA
 % ----------------------------------------------------------
@@ -155,10 +178,8 @@
 
 \begingroup
 
-\printbibliography[heading=bay,notkeyword= {consulta}, notkeyword={npub-informal}]
+\printbibliography[heading=bay, notkeyword= {consulta}, notkeyword={npub-informal}]
   
-\printbibliography [keyword= {consulta}, title = FONTES DE CONSULTA]
-
 \endgroup
 
 % ----------------------------------------------------------

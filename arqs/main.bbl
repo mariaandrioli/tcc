@@ -19,43 +19,129 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
-    \entry{abntex2cite}{manual}{}
-      \name{author}{2}{}{%
-        {{hash=30b1dc3a917993ffe042355d751922d8}{%
-           family={abnTeX2},
-           familyi={a\bibinitperiod}}}%
-        {{hash=3ebd20695bd75494918b0830766ddb8a}{%
-           family={Araujo},
-           familyi={A\bibinitperiod},
-           given={Lauro\bibnamedelima C{é}sar},
-           giveni={L\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+    \entry{ProgrammingBigData22}{article}{}
+      \name{author}{6}{}{%
+        {{hash=fb5728a09b2461b70d887aa44626b238}{%
+           family={Belcastro},
+           familyi={B\bibinitperiod},
+           given={Loris},
+           giveni={L\bibinitperiod}}}%
+        {{hash=9e376eede1ca71f43b7db9c926241198}{%
+           family={Cantini},
+           familyi={C\bibinitperiod},
+           given={Riccardo},
+           giveni={R\bibinitperiod}}}%
+        {{hash=1a055736a28147c7692d211ddb2a3f44}{%
+           family={Marozzo},
+           familyi={M\bibinitperiod},
+           given={Fabrizio},
+           giveni={F\bibinitperiod}}}%
+        {{hash=c081f7eefcdb71b8a4126ca5b05a26ae}{%
+           family={Orsino},
+           familyi={O\bibinitperiod},
+           given={Alessio},
+           giveni={A\bibinitperiod}}}%
+        {{hash=9f3f9c5f8f2dac399677e6a768ecb9c3}{%
+           family={Talia},
+           familyi={T\bibinitperiod},
+           given={Domenico},
+           giveni={D\bibinitperiod}}}%
+        {{hash=c07607f570e8e69481ca82ca77bab395}{%
+           family={Trunfio},
+           familyi={T\bibinitperiod},
+           given={Paolo},
+           giveni={P\bibinitperiod}}}%
       }
-      \list{organization}{1}{%
-        {Equipe abnTeX2}%
+      \list{publisher}{1}{%
+        {SpringerOpen}%
       }
-      \strng{namehash}{8319912dbd1b251627c1c0fd6b6e665a}
-      \strng{fullhash}{8319912dbd1b251627c1c0fd6b6e665a}
-      \strng{bibnamehash}{8319912dbd1b251627c1c0fd6b6e665a}
-      \strng{authorbibnamehash}{8319912dbd1b251627c1c0fd6b6e665a}
-      \strng{authornamehash}{8319912dbd1b251627c1c0fd6b6e665a}
-      \strng{authorfullhash}{8319912dbd1b251627c1c0fd6b6e665a}
-      \field{sortinit}{a}
-      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+      \strng{namehash}{ffb3748f20229c83e7a5ae0b56c3f2ec}
+      \strng{fullhash}{7747f163e5e987daac05175fc4a87c5c}
+      \strng{bibnamehash}{7747f163e5e987daac05175fc4a87c5c}
+      \strng{authorbibnamehash}{7747f163e5e987daac05175fc4a87c5c}
+      \strng{authornamehash}{ffb3748f20229c83e7a5ae0b56c3f2ec}
+      \strng{authorfullhash}{7747f163e5e987daac05175fc4a87c5c}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{annotation}{Este documento {é} derivado do \cite{abnt-bibtex-doc}}
-      \field{title}{O BBB abntex2cite: Estilos bibliogr{á}ficos compat{í}veis com a ABNT NBR 6023}
-      \field{year}{2013}
-      \verb{urlraw}
-      \verb http://abntex2.googlecode.com/
-      \endverb
-      \verb{url}
-      \verb http://abntex2.googlecode.com/
-      \endverb
+      \field{journaltitle}{Journal of Big Data}
+      \field{number}{1}
+      \field{title}{Programming big data analysis: principles and solutions}
+      \field{volume}{9}
+      \field{year}{2022}
+      \field{pages}{1\bibrangedash 50}
+      \range{pages}{50}
     \endentry
-    \entry{Khaleel2018}{article}{}
+    \entry{MapReduce04}{article}{}
+      \name{author}{2}{}{%
+        {{hash=4aecfb0cc2e1e3b7899129fa2a94e2b8}{%
+           family={Dean},
+           familyi={D\bibinitperiod},
+           given={Jeffrey},
+           giveni={J\bibinitperiod}}}%
+        {{hash=193bcec5240237591ad8fb697869f013}{%
+           family={Ghemawat},
+           familyi={G\bibinitperiod},
+           given={Sanjay},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{59b423e9fed33260f87a089f738c1beb}
+      \strng{fullhash}{59b423e9fed33260f87a089f738c1beb}
+      \strng{bibnamehash}{59b423e9fed33260f87a089f738c1beb}
+      \strng{authorbibnamehash}{59b423e9fed33260f87a089f738c1beb}
+      \strng{authornamehash}{59b423e9fed33260f87a089f738c1beb}
+      \strng{authorfullhash}{59b423e9fed33260f87a089f738c1beb}
+      \field{extraname}{1}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{MapReduce: Simplified data processing on large clusters}
+      \field{year}{2004}
+    \endentry
+    \entry{MapReduce08}{article}{}
+      \name{author}{2}{}{%
+        {{hash=4aecfb0cc2e1e3b7899129fa2a94e2b8}{%
+           family={Dean},
+           familyi={D\bibinitperiod},
+           given={Jeffrey},
+           giveni={J\bibinitperiod}}}%
+        {{hash=193bcec5240237591ad8fb697869f013}{%
+           family={Ghemawat},
+           familyi={G\bibinitperiod},
+           given={Sanjay},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM New York, NY, USA}%
+      }
+      \strng{namehash}{59b423e9fed33260f87a089f738c1beb}
+      \strng{fullhash}{59b423e9fed33260f87a089f738c1beb}
+      \strng{bibnamehash}{59b423e9fed33260f87a089f738c1beb}
+      \strng{authorbibnamehash}{59b423e9fed33260f87a089f738c1beb}
+      \strng{authornamehash}{59b423e9fed33260f87a089f738c1beb}
+      \strng{authorfullhash}{59b423e9fed33260f87a089f738c1beb}
+      \field{extraname}{2}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Communications of the ACM}
+      \field{number}{1}
+      \field{title}{MapReduce: simplified data processing on large clusters}
+      \field{volume}{51}
+      \field{year}{2008}
+      \field{pages}{107\bibrangedash 113}
+      \range{pages}{7}
+    \endentry
+    \entry{OptmizationSoftwareHadoop18}{article}{}
       \name{author}{2}{}{%
         {{hash=51cbb0cd86fe034db30ffa5ddaf58039}{%
            family={Khaleel},
@@ -68,9 +154,8 @@
            given={Hamed},
            giveni={H\bibinitperiod}}}%
       }
-      \list{publisher}{2}{%
-        {Institute of Electrical}%
-        {Electronics Engineers ({IEEE})}%
+      \list{publisher}{1}{%
+        {IEEE}%
       }
       \strng{namehash}{d9746f4216e592d396cb220b87594e31}
       \strng{fullhash}{d9746f4216e592d396cb220b87594e31}
@@ -84,19 +169,114 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{{IEEE} Access}
-      \field{title}{Optimization of Computing and Networking Resources of a Hadoop Cluster Based on Software Defined Network}
+      \field{journaltitle}{IEEE Access}
+      \field{title}{Optimization of computing and networking resources of a Hadoop cluster based on software defined network}
       \field{volume}{6}
       \field{year}{2018}
       \field{pages}{61351\bibrangedash 61365}
       \range{pages}{15}
+    \endentry
+    \entry{PastAndFutureTrendsData19}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0617eceb8c14611883dce72bd54c8ea4}{%
+           family={Kuo},
+           familyi={K\bibinitperiod},
+           given={Yong-Hong},
+           giveni={Y\bibinithyphendelim H\bibinitperiod}}}%
+        {{hash=5adce0a94ef92041c47f347b4f14196e}{%
+           family={Kusiak},
+           familyi={K\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor {\&} Francis}%
+      }
+      \strng{namehash}{07336310418deb4f0dfb19ed01f5396e}
+      \strng{fullhash}{07336310418deb4f0dfb19ed01f5396e}
+      \strng{bibnamehash}{07336310418deb4f0dfb19ed01f5396e}
+      \strng{authorbibnamehash}{07336310418deb4f0dfb19ed01f5396e}
+      \strng{authornamehash}{07336310418deb4f0dfb19ed01f5396e}
+      \strng{authorfullhash}{07336310418deb4f0dfb19ed01f5396e}
+      \field{sortinit}{K}
+      \field{sortinithash}{d3edc18d54b9438a72c24c925bfb38f4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Production Research}
+      \field{number}{15-16}
+      \field{title}{From data to big data in production research: the past and future trends}
+      \field{volume}{57}
+      \field{year}{2019}
+      \field{pages}{4828\bibrangedash 4853}
+      \range{pages}{26}
       \verb{doi}
-      \verb 10.1109/access.2018.2876385
+      \verb 10.1080/00207543.2018.1443230
       \endverb
-      \keyw{consulta}
+      \verb{eprint}
+      \verb https://doi.org/10.1080/00207543.2018.1443230
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1080/00207543.2018.1443230
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1080/00207543.2018.1443230
+      \endverb
+    \endentry
+    \entry{DigitalizationWorld18}{article}{}
+      \name{author}{1}{}{%
+        {{hash=6f588ad62d860734f9319ecd8896735b}{%
+           family={Rydning},
+           familyi={R\bibinitperiod},
+           given={David\bibnamedelimb Reinsel-John\bibnamedelima Gantz-John},
+           giveni={D\bibinitperiod\bibinitdelim R\bibinithyphendelim J\bibinitperiod\bibinitdelim G\bibinithyphendelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{6f588ad62d860734f9319ecd8896735b}
+      \strng{fullhash}{6f588ad62d860734f9319ecd8896735b}
+      \strng{bibnamehash}{6f588ad62d860734f9319ecd8896735b}
+      \strng{authorbibnamehash}{6f588ad62d860734f9319ecd8896735b}
+      \strng{authornamehash}{6f588ad62d860734f9319ecd8896735b}
+      \strng{authorfullhash}{6f588ad62d860734f9319ecd8896735b}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Framingham: International Data Corporation}
+      \field{title}{The digitization of the world from edge to core}
+      \field{year}{2018}
+      \field{pages}{16}
+      \range{pages}{1}
+    \endentry
+    \entry{HadoopBook15}{book}{}
+      \name{author}{1}{}{%
+        {{hash=fec0f7585932951edb687003842f3da9}{%
+           family={White},
+           familyi={W\bibinitperiod},
+           given={Tom},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {" O'Reilly Media, Inc."}%
+      }
+      \strng{namehash}{fec0f7585932951edb687003842f3da9}
+      \strng{fullhash}{fec0f7585932951edb687003842f3da9}
+      \strng{bibnamehash}{fec0f7585932951edb687003842f3da9}
+      \strng{authorbibnamehash}{fec0f7585932951edb687003842f3da9}
+      \strng{authornamehash}{fec0f7585932951edb687003842f3da9}
+      \strng{authorfullhash}{fec0f7585932951edb687003842f3da9}
+      \field{sortinit}{W}
+      \field{sortinithash}{1af34bd8c148ffb32de1494636b49713}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Hadoop: The definitive guide}
+      \field{year}{2015}
     \endentry
   \enddatalist
-  \missing{0230}
 \endrefsection
 \endinput
 
