@@ -18,7 +18,7 @@ As operações de mapeamento e redução são baseadas em conceitos presentes em
 
 \subsection{Modelo de programação}\label{ssec:mapreducemodelo}
 
-A computação recebe um conjunto de pares (VALOR, CHAVE) e produz um conjunto de pares de (VALOR, CHAVE). O usuário cria as funções \textit{Map} e \textit{Reduce} de acordo com seu caso de uso. \textit{Map} recebe um único par (VALOR, CHAVE) e produz um conjunto intermediário de pares. Em seguida, a biblioteca \textit{MapReduce} agrupa os valores com a mesma chave e esses valores servirão de entrada para a função \textit{Reduce}. A função \textit{Reduce} então junta os valores com a mesma chave de modo a criar um conjunto menor, sendo possível dessa forma lidar com listas muito grandes para a memória disponível \cite{MapReduce04}.
+A computação recebe um conjunto de pares (VALOR, CHAVE) e produz um conjunto de pares de (VALOR, CHAVE). O usuário cria as funções \textit{Map} e \textit{Reduce} de acordo com seu caso de uso. \textit{Map} recebe um único par (VALOR, CHAVE) e produz um conjunto intermediário de pares. Em seguida, a biblioteca \textit{MapReduce} agrupa os valores com a mesma chave e esses valores servirão de entrada para a função \textit{Reduce}. A função \textit{Reduce} então junta os valores com a mesma chave de modo a criar um conjunto menor, sendo possível dessa forma lidar com listas muito grandes para a memória disponível \cite{MapReduce08}.
 
 Como exemplo, considere o problem de contar quantas vezes determinada palavra aparece em um documento. Nesse problema, as funções \textit{Map} e \textit{Reduce} seriam similares aos seguintes pseudocódigos \cite{MapReduce08}:
 

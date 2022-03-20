@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.11.29)  20 MAR 2022 12:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.11.29)  20 MAR 2022 12:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1709,7 +1709,15 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
- (/home/maria/Documents/Trabalhos/tcc/arqs/main.bbl)
+ (/home/maria/Documents/Trabalhos/tcc/arqs/main.bbl
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                MapReduce04
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+)
 Package biblatex Info: Reference section=0 on input line 104.
 Package biblatex Info: Reference segment=0 on input line 104.
 
@@ -1793,7 +1801,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 ]) (/home/maria/Documents/Trabalhos/tcc/arqs/refteorica.tex [9] [10
 
 ] [11]
-<fig/figura1.png, id=230, 1200.485pt x 678.535pt>
+<fig/figura1.png, id=227, 1200.485pt x 678.535pt>
 File: fig/figura1.png Graphic file (type png)
 <use fig/figura1.png>
 Package pdftex.def Info: fig/figura1.png  used on input line 49.
@@ -1822,18 +1830,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 277.
  ) 
 Here is how much of TeX's memory you used:
- 49879 strings out of 481239
- 1064994 string characters out of 5920376
- 2120811 words of memory out of 5000000
- 64038 multiletter control sequences out of 15000+600000
- 581187 words of font info for 105 fonts, out of 8000000 for 9000
+ 49875 strings out of 481239
+ 1064854 string characters out of 5920376
+ 2120762 words of memory out of 5000000
+ 64033 multiletter control sequences out of 15000+600000
+ 581303 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  78i,12n,121p,1190b,4155s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
-Output written on /home/maria/Documents/Trabalhos/tcc/arqs/main.pdf (14 pages, 539275 bytes).
+Output written on /home/maria/Documents/Trabalhos/tcc/arqs/main.pdf (14 pages, 539259 bytes).
 PDF statistics:
- 384 PDF objects out of 1000 (max. 8388607)
- 331 compressed objects within 4 object streams
- 80 named destinations out of 1000 (max. 500000)
+ 379 PDF objects out of 1000 (max. 8388607)
+ 326 compressed objects within 4 object streams
+ 79 named destinations out of 1000 (max. 500000)
  17755 words of extra memory for PDF output out of 20736 (max. 10000000)
 

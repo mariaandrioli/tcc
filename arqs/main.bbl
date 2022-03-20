@@ -75,35 +75,6 @@
       \field{pages}{1\bibrangedash 50}
       \range{pages}{50}
     \endentry
-    \entry{MapReduce04}{article}{}
-      \name{author}{2}{}{%
-        {{hash=4aecfb0cc2e1e3b7899129fa2a94e2b8}{%
-           family={Dean},
-           familyi={D\bibinitperiod},
-           given={Jeffrey},
-           giveni={J\bibinitperiod}}}%
-        {{hash=193bcec5240237591ad8fb697869f013}{%
-           family={Ghemawat},
-           familyi={G\bibinitperiod},
-           given={Sanjay},
-           giveni={S\bibinitperiod}}}%
-      }
-      \strng{namehash}{59b423e9fed33260f87a089f738c1beb}
-      \strng{fullhash}{59b423e9fed33260f87a089f738c1beb}
-      \strng{bibnamehash}{59b423e9fed33260f87a089f738c1beb}
-      \strng{authorbibnamehash}{59b423e9fed33260f87a089f738c1beb}
-      \strng{authornamehash}{59b423e9fed33260f87a089f738c1beb}
-      \strng{authorfullhash}{59b423e9fed33260f87a089f738c1beb}
-      \field{extraname}{1}
-      \field{sortinit}{D}
-      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{MapReduce: Simplified data processing on large clusters}
-      \field{year}{2004}
-    \endentry
     \entry{MapReduce08}{article}{}
       \name{author}{2}{}{%
         {{hash=4aecfb0cc2e1e3b7899129fa2a94e2b8}{%
@@ -126,7 +97,6 @@
       \strng{authorbibnamehash}{59b423e9fed33260f87a089f738c1beb}
       \strng{authornamehash}{59b423e9fed33260f87a089f738c1beb}
       \strng{authorfullhash}{59b423e9fed33260f87a089f738c1beb}
-      \field{extraname}{2}
       \field{sortinit}{D}
       \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
       \field{extradatescope}{labelyear}
@@ -311,6 +281,7 @@
       \field{year}{2015}
     \endentry
   \enddatalist
+  \missing{MapReduce04}
 \endrefsection
 \endinput
 
