@@ -2270,14 +2270,15 @@
     <bcf:citekey order="5">DigitalizationWorld18</bcf:citekey>
     <bcf:citekey order="6">MapReduce04</bcf:citekey>
     <bcf:citekey order="7">HadoopBook15</bcf:citekey>
-    <bcf:citekey order="8">MapReduce08</bcf:citekey>
+    <bcf:citekey order="8">ClusterGridCloudComparison11</bcf:citekey>
     <bcf:citekey order="9">MapReduce08</bcf:citekey>
-    <bcf:citekey order="10">MapReduce04</bcf:citekey>
-    <bcf:citekey order="11">MapReduce08</bcf:citekey>
+    <bcf:citekey order="10">MapReduce08</bcf:citekey>
+    <bcf:citekey order="11">MapReduce04</bcf:citekey>
     <bcf:citekey order="12">MapReduce08</bcf:citekey>
     <bcf:citekey order="13">MapReduce08</bcf:citekey>
     <bcf:citekey order="14">MapReduce08</bcf:citekey>
     <bcf:citekey order="15">MapReduce08</bcf:citekey>
+    <bcf:citekey order="16">MapReduce08</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

@@ -1,10 +1,18 @@
 \chapter{REFERENCIAL TEÓRICO} \label{cha:refteorico}
 
-Esse capítulo tem como objetivo apresentar detalhadamente os conceitos técnicos que serão utilizados ao longo do trabalho. A Seção 2.1 apresenta o \textit{MapReduce}, o modelo de manipulação de dados feito pelo Google e a Seção 2.2 trata do \textit{Hadoop}, o \textit{framework} desenvolvido pela Apache. A seção 2.3 introduz o \textit{Hadoop MapReduce}.
+Esse capítulo tem como objetivo apresentar detalhadamente os conceitos técnicos que serão utilizados ao longo do trabalho. A \autoref{sec:mapreduce} apresenta o \textit{MapReduce}, o modelo de manipulação de dados feito pelo Google e a \autoref{sec:hadoop} trata do \textit{Hadoop}, o \textit{framework} desenvolvido pela Apache. A \autoref{sec:hadoopmapreduce} introduz o \textit{Hadoop MapReduce}.
+
+\section{CLUSTERS} \label{sec:clusters}
+
+Um \textit{cluster} é um conjunto de computadores que trabalham juntos paralelamente em uma determinada aplicação. Cada computador desse conjunto é usualmente chamado de nodo. Além disso, existem diversas categorias de clusters dependendo do problema que eles buscam computar.
+
+Algumas aplicações comuns de \textit{clusters} são modelagem de clima, simulação de acidentes automotivos, mineração de dados e aplicações da área de astrofísica. Além disso, é comumente visto em aplicações comerciais como bancos e serviços de email \cite{ClusterGridCloudComparison11}.
+
+Uma das maiores vantagens desse tipo de instalação é a tolerância de falhas, pois os sistemas conseguem continuar suas tarefas caso um nodo pare de funcionar. Ainda, é altamente escalável com a adição de novos nodos, não precisa de manutenção frequente e tem um gerenciamento centralizado. Por fim, uma das suas maiores possíveis vantagens é o balanceamento de carga, que busca atingir o equilíbrio entre as tarefas de cada nodo de modo a otimizar os recursos.
 
 \section{MAPREDUCE} \label{sec:mapreduce}
 
-MapReduce é um modelo de programação associado a uma implementação que tem como objetivo processar, manipular e gerar grandes \textit{datasets} de modo eficiente, escalável e com aplicações no mundo real. As computações acontecem de acordo com funções de mapeamento e redução e o sistema do MapReduce paraleliza essa computações entre grandes \textit{clusters}, lidando com possíveis falhas, escalonamentos e uso eficiente de rede e discos \cite{MapReduce08}.
+\textit{MapReduce} é um modelo de programação associado a uma implementação que tem como objetivo processar, manipular e gerar grandes \textit{datasets} de modo eficiente, escalável e com aplicações no mundo real. As computações acontecem de acordo com funções de mapeamento e redução e o sistema do \textit{MapReduce} paraleliza essa computações entre grandes \textit{clusters}, lidando com possíveis falhas, escalonamentos e uso eficiente de rede e discos \cite{MapReduce08}.
 
 As operações de mapeamento e redução são baseadas em conceitos presentes em linguagens funcionais e fazem com que seja possível fazer diversas reutilizações, assim lidando com tolerância de falhas \cite{MapReduce08}. 
 
@@ -13,14 +21,14 @@ As operações de mapeamento e redução são baseadas em conceitos presentes em
 A computação recebe um conjunto de pares (VALOR, CHAVE) e produz um conjunto de pares de (VALOR, CHAVE). O usuário cria as funções \textit{Map} e \textit{Reduce} de acordo com seu caso de uso. \textit{Map} recebe um único par (VALOR, CHAVE) e produz um conjunto intermediário de pares. Em seguida, a biblioteca \textit{MapReduce} agrupa os valores com a mesma chave e esses valores servirão de entrada para a função \textit{Reduce}. A função \textit{Reduce} então junta os valores com a mesma chave de modo a criar um conjunto menor, sendo possível dessa forma lidar com listas muito grandes para a memória disponível \cite{MapReduce04}.
 
 Como exemplo, considere o problem de contar quantas vezes determinada palavra aparece em um documento. Nesse problema, as funções \textit{Map} e \textit{Reduce} seriam similares aos seguintes pseudocódigos \cite{MapReduce08}:
-\newpage
+
 \begin{lstlisting}[title={Código 1: Exemplo de função Map em pseudocódigo adaptado de \cite{MapReduce08}}]
 map(String chave, String valor):
 // chave: nome do documento
 // valor: conteudo do documento
 
   para cada palavra W em valor:
-    criaIntermediario(W, '1');
+    criaIntermediario(W, 1);
 \end{lstlisting}
 
 \begin{lstlisting}[title={Código 2: Exemplo de função Reduce em pseudocódigo adaptado de \cite{MapReduce08}}]
@@ -30,12 +38,30 @@ reduce(String chave, Iterador valores):
 
   int resultado = 0;
   para cada V em valores:
-    resultado = resultado + converteEmInt(V);
+    resultado = resultado + 1;
   cria(resultado);
 \end{lstlisting}
 
 A função \textit{Map} gera um objeto intermediário de cada palavra associada a uma lista do seu número de occorrências no texto e a função \textit{Reduce} soma os valores até ter o total de ocorrências por palavra. Além disso, o usuário cria um configuração de \textit{MapReduce} com os parâmetros de entrada e saída e eventuais parâmetros de \textit{tuning}.
 
+Para exemplificar ainda mais, considere um arquivo de texto com três linhas nas quais estão as seguintes frases, respectivamente, uma em cada linha: "vamos para casa", "na minha casa", "para na casa". Nesse exemplo, a função \textit{Map} é chamada três vezes, uma para cada linha, gerando os pares (CHAVE, VALOR) intermediários, um para cada palavra encontrada no texto, como é exemplificado na \autoref{fig:execmapreduce}. Para cada palavra distinta ("vamos", "para", "casa", "na", "minha"), é executada a função \textit{Reduce}, que soma quantas vezes cada uma dessas palavras apareceu no texto e gera um arquivo de saída.
+
+\figura{Exemplo de execução do MapReduce}{.750}{fig/figura1.png}{A autora (2022)}{execmapreduce}{}{}
+
+\subsection{Execução do MapReduce}\label{ssec:execucaomapreduce}
+
+\subsection{Características do MapReduce}\label{ssec:caracteristicasmapreduce}
+\subsubsection{Tolerância de falhas}\label{sssec:toleranciafalhas}
+\subsubsection{Backup Tasks}\label{sssec:backuptasks}
+\subsubsection{Localidade}\label{sssec:localidade}
+\subsubsection{Granularidade}\label{sssec:granularidade}
+
+
 \section{HADOOP} \label{sec:hadoop}
 
+\subsection{Arquitetura do Hadoop}\label{ssec:arquiteturahadoop}
+\subsection{Hadoop HDFS}\label{ssec:hadoophdfs}
+
 \section{HADOOP MAPREDUCE} \label{sec:hadoopmapreduce}
+\subsection{Componentes do Hadoop MapReduce}\label{ssec:componentehmp}
+\subsection{Fluxo de Execução}\label{ssec:fluxoexecucaohmp}

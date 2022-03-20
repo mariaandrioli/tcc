@@ -584,6 +584,9 @@ INPUT /home/maria/Documents/Trabalhos/tcc/arqs/refteorica.tex
 INPUT /home/maria/Documents/Trabalhos/tcc/arqs/refteorica.tex
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmtt10.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmtt12.tfm
+INPUT /home/maria/Documents/Trabalhos/tcc/arqs/fig/figura1.png
+INPUT /home/maria/Documents/Trabalhos/tcc/arqs/fig/figura1.png
+INPUT /home/maria/Documents/Trabalhos/tcc/arqs/fig/figura1.png
 OUTPUT /home/maria/Documents/Trabalhos/tcc/arqs/main.toc
 INPUT /home/maria/Documents/Trabalhos/tcc/arqs/main.aux
 INPUT /usr/share/texlive/texmf-dist/tex/latex/biblatex-abnt/brazil-abnt.lbx

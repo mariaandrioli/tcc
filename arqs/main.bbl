@@ -250,6 +250,40 @@
       \field{pages}{16}
       \range{pages}{1}
     \endentry
+    \entry{ClusterGridCloudComparison11}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=863c7b474f9bdd916dced3912d7af2af}{%
+           family={Sadashiv},
+           familyi={S\bibinitperiod},
+           given={Naidila},
+           giveni={N\bibinitperiod}}}%
+        {{hash=155f2b286317a5da1044e57ee52c1455}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={SM\bibnamedelima Dilip},
+           giveni={S\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{c3a33f8d3e372464b86974440683ef75}
+      \strng{fullhash}{c3a33f8d3e372464b86974440683ef75}
+      \strng{bibnamehash}{c3a33f8d3e372464b86974440683ef75}
+      \strng{authorbibnamehash}{c3a33f8d3e372464b86974440683ef75}
+      \strng{authornamehash}{c3a33f8d3e372464b86974440683ef75}
+      \strng{authorfullhash}{c3a33f8d3e372464b86974440683ef75}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2011 6th international conference on computer science \& education (ICCSE)}
+      \field{title}{Cluster, grid and cloud computing: A detailed comparison}
+      \field{year}{2011}
+      \field{pages}{477\bibrangedash 482}
+      \range{pages}{6}
+    \endentry
     \entry{HadoopBook15}{book}{}
       \name{author}{1}{}{%
         {{hash=fec0f7585932951edb687003842f3da9}{%
