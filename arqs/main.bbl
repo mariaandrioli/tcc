@@ -194,6 +194,34 @@
       \verb https://doi.org/10.1080/00207543.2018.1443230
       \endverb
     \endentry
+    \entry{ImprovingNavarro18}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=178ad5517b5a3ea9c9091ef2ba1a2a10}{%
+           family={Navarro\bibnamedelima Belmonte},
+           familyi={N\bibinitperiod\bibinitdelim B\bibinitperiod},
+           given={Victor\bibnamedelima Pablo},
+           giveni={V\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Carleton University}%
+      }
+      \strng{namehash}{178ad5517b5a3ea9c9091ef2ba1a2a10}
+      \strng{fullhash}{178ad5517b5a3ea9c9091ef2ba1a2a10}
+      \strng{bibnamehash}{178ad5517b5a3ea9c9091ef2ba1a2a10}
+      \strng{authorbibnamehash}{178ad5517b5a3ea9c9091ef2ba1a2a10}
+      \strng{authornamehash}{178ad5517b5a3ea9c9091ef2ba1a2a10}
+      \strng{authorfullhash}{178ad5517b5a3ea9c9091ef2ba1a2a10}
+      \field{sortinit}{N}
+      \field{sortinithash}{98cf339a479c0454fe09153a08675a15}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{bookpagination}{sheet}
+      \field{title}{Improving Real Time Tuning on YARN}
+      \field{type}{phdthesis}
+      \field{year}{2018}
+    \endentry
     \entry{DigitalizationWorld18}{article}{}
       \name{author}{1}{}{%
         {{hash=6f588ad62d860734f9319ecd8896735b}{%
@@ -281,7 +309,6 @@
       \field{year}{2015}
     \endentry
   \enddatalist
-  \missing{MapReduce04}
 \endrefsection
 \endinput
 

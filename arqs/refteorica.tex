@@ -10,11 +10,20 @@ Algumas aplicações comuns de \textit{clusters} são modelagem de clima, simula
 
 Uma das maiores vantagens desse tipo de instalação é a tolerância de falhas, pois os sistemas conseguem continuar suas tarefas caso um nodo pare de funcionar. Ainda, é altamente escalável com a adição de novos nodos, não precisa de manutenção frequente e tem um gerenciamento centralizado. Por fim, uma das suas maiores possíveis vantagens é o balanceamento de carga, que busca atingir o equilíbrio entre as tarefas de cada nodo de modo a otimizar os recursos.
 
+\section{CONTAINERS} \label{sec:containers}
+
+[TODO: CONTAINERS]
+
+
 \section{MAPREDUCE} \label{sec:mapreduce}
 
 \textit{MapReduce} é um modelo de programação associado a uma implementação que tem como objetivo processar, manipular e gerar grandes \textit{datasets} de modo eficiente, escalável e com aplicações no mundo real. As computações acontecem de acordo com funções de mapeamento e redução e o sistema do \textit{MapReduce} paraleliza essa computações entre grandes \textit{clusters}, lidando com possíveis falhas, escalonamentos e uso eficiente de rede e discos \cite{MapReduce08}.
 
-As operações de mapeamento e redução são baseadas em conceitos presentes em linguagens funcionais e fazem com que seja possível fazer diversas reutilizações, assim lidando com tolerância de falhas \cite{MapReduce08}. 
+As operações de mapeamento e redução são baseadas em conceitos presentes em linguagens funcionais e fazem com que seja possível fazer diversas reutilizações, assim lidando com tolerância de falhas \cite{MapReduce08}.
+
+\subsection{Terminologia}\label{ssec:mapreduceterminlogia}
+
+Para entender o \textit{MapReduce}, antes é necessário que sejam estabelecidades algumas terminologias. Um \textit{job} é uma unidade do que será processado: consiste nos dados de entrada, o programa \textit{MapReduce} em si e as informações de configuração. O \textit{Hadoop} executa essas unidade separando-a em tarefas (\textit{tasks}), que podem ser do tipo de mapeamento (\textit{map}) ou redção (\textit{reduce}). O escalonamento dessas tarefas é feito automaticamento e cada uma roda em um nodo do \textit{cluster}. Com existe a tolerância de falhas já implementada, se uma tarefa falha, ela é reescalonada. \cite{HadoopBook15}
 
 \subsection{Modelo de programação}\label{ssec:mapreducemodelo}
 
@@ -22,7 +31,7 @@ A computação recebe um conjunto de pares (VALOR, CHAVE) e produz um conjunto d
 
 Como exemplo, considere o problem de contar quantas vezes determinada palavra aparece em um documento. Nesse problema, as funções \textit{Map} e \textit{Reduce} seriam similares aos seguintes pseudocódigos \cite{MapReduce08}:
 
-\begin{lstlisting}[title={Código 1: Exemplo de função Map em pseudocódigo adaptado de \cite{MapReduce08}}]
+\begin{lstlisting}[caption={Exemplo de função Map em pseudocódigo adaptado de \cite{MapReduce08}}, label=code:codigo1]
 map(String chave, String valor):
 // chave: nome do documento
 // valor: conteudo do documento
@@ -31,7 +40,8 @@ map(String chave, String valor):
     criaIntermediario(W, 1);
 \end{lstlisting}
 
-\begin{lstlisting}[title={Código 2: Exemplo de função Reduce em pseudocódigo adaptado de \cite{MapReduce08}}]
+\newpage
+\begin{lstlisting}[caption={Exemplo de função Reduce em pseudocódigo adaptado de \cite{MapReduce08}}, label=code:codigo2]
 reduce(String chave, Iterador valores):
 // chave: uma palavra
 // valores: lista de contagens
@@ -44,20 +54,30 @@ reduce(String chave, Iterador valores):
 
 A função \textit{Map} gera um objeto intermediário de cada palavra associada a uma lista do seu número de occorrências no texto e a função \textit{Reduce} soma os valores até ter o total de ocorrências por palavra. Além disso, o usuário cria um configuração de \textit{MapReduce} com os parâmetros de entrada e saída e eventuais parâmetros de \textit{tuning}.
 
-Para exemplificar ainda mais, considere um arquivo de texto com três linhas nas quais estão as seguintes frases, respectivamente, uma em cada linha: "vamos para casa", "na minha casa", "para na casa". Nesse exemplo, a função \textit{Map} é chamada três vezes, uma para cada linha, gerando os pares (CHAVE, VALOR) intermediários, um para cada palavra encontrada no texto, como é exemplificado na \autoref{fig:execmapreduce}. Para cada palavra distinta ("vamos", "para", "casa", "na", "minha"), é executada a função \textit{Reduce}, que soma quantas vezes cada uma dessas palavras apareceu no texto e gera um arquivo de saída.
+Para exemplificar ainda mais, considere um arquivo de texto com três linhas nas quais estão as seguintes frases, respectivamente, uma em cada linha: "vamos para casa", "na minha casa", "para na casa". Nesse exemplo, a função \textit{Map} é chamada três vezes, uma para cada linha, gerando os pares (CHAVE, VALOR) intermediários, um para cada palavra encontrada no texto, como é exemplificado na \autoref{fig:fig1}. Para cada palavra distinta ("vamos", "para", "casa", "na", "minha"), é executada a função \textit{Reduce}, que soma quantas vezes cada uma dessas palavras apareceu no texto e gera um arquivo de saída.
 
-\figura{Exemplo de execução do MapReduce}{.750}{fig/figura1.png}{A autora (2022)}{execmapreduce}{}{}
+\figura{Exemplo de execução do MapReduce}{.900}{fig/fig1.png}{A autora (2022)}{fig1}{}{}
 
 \subsection{Execução do MapReduce}\label{ssec:execucaomapreduce}
 
-\subsection{Características do MapReduce}\label{ssec:caracteristicasmapreduce}
-\subsubsection{Tolerância de falhas}\label{sssec:toleranciafalhas}
-\subsubsection{Backup Tasks}\label{sssec:backuptasks}
-\subsubsection{Localidade}\label{sssec:localidade}
-\subsubsection{Granularidade}\label{sssec:granularidade}
+[TODO: AQUI COLOCAR ESTRUTURA CLIENTE SERVIDOR MASTER WORKER]
 
+Na \autoref{fig:fig1} foi possível ver como o \textit{MapReduce} funcionaria em pequena escala. Uma das maiores vantagens do \textit{MapReduce} é, no entanto, sua escalabilidade visto que ele permite uma execução distribuída entre uma grande quantidade de nodos. A \autoref{fig:fig2}  representa uma execução genérica do \textit{MapReduce}, na qual os dados de entrada são separados e para cada uma dessas separações o nodo \textit{master} designa um \textit{worker map}. Cada \textit{worker} processa sua entrada e cria um objeto intermediário. Depois, o \textit{master} utiliza esses objetos intermediários como entrada de um \textit{worker reduce} e estes geram os arquivos finais de saída.
+
+\figura{Exemplo de execução do MapReduce}{.900}{fig/fig1.png}{A autora (2022)}{fig2}{}{}
 
 \section{HADOOP} \label{sec:hadoop}
+
+\textit{Hadoop} é um \textit{framework} desenvolvido na linguagem Java pela Apache com os seguintes princípios arquiteturais, segundo \textcite{ImprovingNavarro18}:
+\begin{itemize}
+  \item A possibilidade de escalar o sistema ao adicionar nodos no \textit{cluster}.
+  \item Possibilidade de funcionar bem em \textit{hardware} não necessariamente caro e de luxo.
+  \item Tolerância a falhas, com implementações que identificam estas e permitem que o sistema funciona independente delas acontecerem.
+  \item Fornecer serviçoes transparentes de modo que o usuário possa focar no problema que ele quer resolver.
+\end{itemize}
+
+Esse \textit{framework} disponibiliza ferramentas para que o usuário possa escrever as funções necessárias em diversas linguagens de programação, conforme a necessidade do programador. O \textit{framework} funciona na mesma estrutura de Cliente/Servidor apresentada anteriormente e que é usada pelo \textit{MapReduce}. Além disso, oferece ao programador um sistema complexo paralelo e distribuído (\textit{Hadoop HDFS}), com os recursos ocultos do usuário, mas capaz de lidar com a comunicação entre as máquinas, quaisquer falhas que possam vir a ocorrer e o escalonamento das tarefas.
+
 
 \subsection{Arquitetura do Hadoop}\label{ssec:arquiteturahadoop}
 \subsection{Hadoop HDFS}\label{ssec:hadoophdfs}
@@ -65,3 +85,5 @@ Para exemplificar ainda mais, considere um arquivo de texto com três linhas nas
 \section{HADOOP MAPREDUCE} \label{sec:hadoopmapreduce}
 \subsection{Componentes do Hadoop MapReduce}\label{ssec:componentehmp}
 \subsection{Fluxo de Execução}\label{ssec:fluxoexecucaohmp}
+
+\section{DOCKER} \label{sec:docker}
