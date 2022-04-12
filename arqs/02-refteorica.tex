@@ -47,7 +47,7 @@ A função \textit{Map} gera um objeto intermediário de cada palavra associada 
 
 Para exemplificar ainda mais, considere um arquivo de texto com três linhas nas quais estão as seguintes frases, respectivamente, uma em cada linha: "vamos para casa", "na minha casa", "para na casa". Nesse exemplo, a função \textit{Map} é chamada três vezes, uma para cada linha, gerando os pares (CHAVE, VALOR) intermediários, um para cada palavra encontrada no texto, como é exemplificado na \autoref{fig:fig1}. Para cada palavra distinta ("vamos", "para", "casa", "na", "minha"), é executada a função \textit{Reduce}, que soma quantas vezes cada uma dessas palavras apareceu no texto e gera um arquivo de saída.
 
-\figura{Exemplo de execução do MapReduce}{1.00}{fig/fig1.png}{A autora (2022)}{fig1}{}{}
+\figura{Execução Genérica do MapReduce}{1.00}{fig/fig1.png}{A autora (2022)}{fig1}{}{}
 
 \subsection{Execução do MapReduce}\label{ssec:execucaomapreduce}
 
@@ -84,7 +84,15 @@ Segundo \textcite{HDFSDesign20}
 
 \subsection{Hadoop MapReduce} \label{ssec:hadoopmapreduce}
 
-\subsection{Hadoop YARN} \label{ssec:hadoopmapreduce}
+\subsection{Hadoop YARN} \label{ssec:hadoopyarn}
+
+O \textit{Hadoop YARN} é um subprojeto que tem como objetivo dividir as funcionalidade de gerenciamento de recursos de escalonamento de tarefas em módulos diferentes tendo, então, um gerenciador global de recursos de um gerenciado local por aplicação. 
+
+O gerenciador global trabalha em conjunto com um gerenciador de nodos que é responsável pelos contêiners e pelo monitoramento de uso de recursos, como CPU, memória, uso de disco e uso de redes, assim como o repasse dessas informações para o gerenciador global \cite{HadoopYarn22}.
+
+O YARN foi adicionado ao \textit{Hadoop} versão 2.0 e com isso permitiu que exista a separação das camadas de gerenciamento de recursos e que estes pudessem ser alocados pela aplicação. Com essa camada independente, como é visto na \autoref{fig:fig3} é possível que aplicações \textit{MapReduce} possam ser utilizadas em conjunto com aplicações não \textit{MapReduce}. Além disso, esse formato de implementação possibilita economizar custos com o melhor aproveitamento dos nodos \cite{KobylinskaMartins14}. 
+
+\figura{Nova arquitetura do Hadoop 2.0}{.700}{fig/fig3.png}{\cite{KobylinskaMartins14}}{fig3}{}{}
 
 \section{DOCKER} \label{sec:docker}
 
@@ -93,3 +101,4 @@ Virtualização é o processo de criar um ambiente ou uma versão virtual de alg
 Docker é uma ferramenta que tem como objetivo automatizar a implantação de aplicações em contêiners. Essa ferramenta empilha uma implantação de uma aplicação em cima de um ambiente de execução em um contêiner. Ou seja, simula um ambiente virtual de modo que o programador possa trabalhar com sua aplicação em produção de forma extremamente configurável para as necessidades dele. Para fazer isso, o Docker utiliza um recurso de imagem, que nada mais é que uma referência aos arquivos de sistemas que determinada aplicação necessita para ser executada. Esse arquivos são, então, empilhados um em cima do outro e servem como uma receita para construção de um ou múltiplos contêiners \cite{DockerBook14}.
 
 Nesse trabalho será utilizada a imagem do Hadoop distribuída pela Apache de modo que o framework possa ser devidamente simulado, configurado e testado.
+

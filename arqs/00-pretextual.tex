@@ -115,6 +115,14 @@
 }
 }{}
 
+% inserir lista de codigos
+% ----------------------------------------------------------
+\ifthenelse{\equal{\terListaCodigos}{Sim}}{
+%\pdfbookmark[0]{\listfigurename}{lof}
+\lstlistoflistings
+\cleardoublepage
+}{}
+
 % inserir lista de ilustrações
 % ----------------------------------------------------------
 \ifthenelse{\equal{\terListaFiguras}{Sim}}{
