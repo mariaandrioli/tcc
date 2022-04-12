@@ -1,0 +1,95 @@
+\chapter{REFERENCIAL TEÓRICO} \label{cha:refteorico}
+
+Esse capítulo tem como objetivo apresentar detalhadamente os conceitos técnicos que serão utilizados ao longo do trabalho. A \autoref{sec:clusters} introduz o conceito de \textit{clusters}. A \autoref{sec:mapreduce} apresenta o \textit{MapReduce}, o modelo de manipulação de dados feito pelo Google e a \autoref{sec:hadoop} trata do \textit{Hadoop}, o \textit{framework} desenvolvido pela Apache. A \autoref{sec:hadoopmapreduce} explica então o \textit{Hadoop MapReduce} e, por fim, a \autoref{sec:docker} explica virtualização, contêiners e a ferramenta Docker.
+
+\section{CLUSTERS} \label{sec:clusters}
+
+Um \textit{cluster} é um conjunto de computadores que trabalham juntos paralelamente em uma determinada aplicação. Cada computador desse conjunto é usualmente chamado de nodo. Além disso, existem diversas categorias de clusters dependendo do problema que eles buscam computar.
+
+Algumas aplicações comuns de \textit{clusters} são modelagem de clima, simulação de acidentes automotivos, mineração de dados e aplicações da área de astrofísica. Além disso, é comumente visto em aplicações comerciais como bancos e serviços de email \cite{ClusterGridCloudComparison11}.
+
+Uma das maiores vantagens desse tipo de instalação é a tolerância de falhas, pois os sistemas conseguem continuar suas tarefas caso um nodo pare de funcionar. Ainda, é altamente escalável com a adição de novos nodos, não precisa de manutenção frequente e tem um gerenciamento centralizado. Por fim, uma das suas maiores possíveis vantagens é o balanceamento de carga, que busca atingir o equilíbrio entre as tarefas de cada nodo de modo a otimizar os recursos.
+
+\section{MAPREDUCE} \label{sec:mapreduce}
+
+\textit{MapReduce} é um modelo de programação associado a uma implementação que tem como objetivo processar, manipular e gerar grandes \textit{datasets} de modo eficiente, escalável e com aplicações no mundo real. As computações acontecem de acordo com funções de mapeamento e redução e o sistema do \textit{MapReduce} paraleliza essa computações entre grandes \textit{clusters}, lidando com possíveis falhas, escalonamentos e uso eficiente de rede e discos \cite{MapReduce08}.
+
+As operações de mapeamento e redução são baseadas em conceitos presentes em linguagens funcionais e fazem com que seja possível fazer diversas reutilizações, assim lidando com tolerância de falhas \cite{MapReduce08}.
+
+\subsection{Modelo de programação}\label{ssec:mapreducemodelo}
+
+A computação recebe um conjunto de pares (VALOR, CHAVE) e produz um conjunto de pares de (VALOR, CHAVE). O usuário cria as funções \textit{Map} e \textit{Reduce} de acordo com seu caso de uso. \textit{Map} recebe um único par (VALOR, CHAVE) e produz um conjunto intermediário de pares. Em seguida, a biblioteca \textit{MapReduce} agrupa os valores com a mesma chave e esses valores servirão de entrada para a função \textit{Reduce}. A função \textit{Reduce} então junta os valores com a mesma chave de modo a criar um conjunto menor, sendo possível dessa forma lidar com listas muito grandes para a memória disponível \cite{MapReduce08}. Entre o momento que são executadas as funções \textit{Map} e \textit{Reduce}, existe a fase \textit{Shuffle}, que é criada automaticamente em tempo de execução e executa operações de ordenação (\textit{sort}) e junção (\textit{merge}) \cite{ProHadoop09}. Ainda, segundo \textcite{HadoopBook15}, a operação \textit{Shuffle} é um dos fatores mais influentes no bom desempenho de aplicações \textit{MapReduce}, já que operações de ordenação e junções podem prejudicar ou melhorar muito um algoritmo conforme sua implementação.
+
+Como exemplo, considere o problem de contar quantas vezes determinada palavra aparece em um documento. Nesse problema, as funções \textit{Map} e \textit{Reduce} seriam similares aos seguintes pseudocódigos \cite{MapReduce08}:
+
+\begin{lstlisting}[caption={Exemplo de função Map em pseudocódigo adaptado de \cite{MapReduce08}}, label=code:codigo1]
+map(String chave, String valor):
+// chave: nome do documento
+// valor: conteudo do documento
+
+  para cada palavra W em valor:
+    criaIntermediario(W, 1);
+\end{lstlisting}
+
+% \newpage
+\begin{lstlisting}[caption={Exemplo de função Reduce em pseudocódigo adaptado de \cite{MapReduce08}}, label=code:codigo2]
+reduce(String chave, Iterador valores):
+// chave: uma palavra
+// valores: lista de contagens
+
+  int resultado = 0;
+  para cada V em valores:
+    resultado = resultado + 1;
+  cria(resultado);
+\end{lstlisting}
+
+A função \textit{Map} gera um objeto intermediário de cada palavra associada a uma lista do seu número de occorrências no texto e a função \textit{Reduce} soma os valores até ter o total de ocorrências por palavra. Além disso, o usuário cria um configuração de \textit{MapReduce} com os parâmetros de entrada e saída e eventuais parâmetros de \textit{tuning}.
+
+Para exemplificar ainda mais, considere um arquivo de texto com três linhas nas quais estão as seguintes frases, respectivamente, uma em cada linha: "vamos para casa", "na minha casa", "para na casa". Nesse exemplo, a função \textit{Map} é chamada três vezes, uma para cada linha, gerando os pares (CHAVE, VALOR) intermediários, um para cada palavra encontrada no texto, como é exemplificado na \autoref{fig:fig1}. Para cada palavra distinta ("vamos", "para", "casa", "na", "minha"), é executada a função \textit{Reduce}, que soma quantas vezes cada uma dessas palavras apareceu no texto e gera um arquivo de saída.
+
+\figura{Exemplo de execução do MapReduce}{1.00}{fig/fig1.png}{A autora (2022)}{fig1}{}{}
+
+\subsection{Execução do MapReduce}\label{ssec:execucaomapreduce}
+
+O \textit{MapReduce} funciona usando uma estrutura Cliente/Servidor sobre um \textit{cluster}, que segundo \textcite{MapReduce08} consiste em primeiramente particionar os dados de entrada em bloco de tamanho já definidos e distribuir cópias do programa MapReduce entre cada um desses blocos. Existe uma cópia Master, que é responsável por distribuir as tarefas (\textit{tasks}). O restante das cópias são denominadas Workers e elas recebem da Master as tarefas junto com os arquivos de entrada. Ao finalizar a execução de uma tarefa do tipo \textit{Map}, a cópia Worker responsável repassa à Master os arquivos de saída e esta repassa à um Worker esse arquivo com a tarefa de \textit{Reduce}. Então, esse worker executa a redução, lendo os pares intermediários que passaram pela fase \textit{Shuffle} e agrupando as instâncias de mesma chave. Quando todas as tarefas \textit{Map} e \textit{Reduce} forem executadas, o programa é finalizado.
+
+Na \autoref{fig:fig1} foi possível ver como o \textit{MapReduce} funcionaria em pequena escala. Uma das maiores vantagens do \textit{MapReduce} é, no entanto, sua escalabilidade, visto que ele permite uma execução distribuída entre uma grande quantidade de nodos. A \autoref{fig:fig2}  representa uma execução genérica do \textit{MapReduce}, descrita no parágrafo acima.
+
+\figura{Exemplo de execução do MapReduce}{.900}{fig/fig2.png}{Adaptado de \cite{MapReduce08}}{fig2}{}{}
+
+\section{HADOOP} \label{sec:hadoop}
+
+\textit{Hadoop} é um \textit{framework} desenvolvido na linguagem Java pela Apache Software Foundation com os seguintes princípios arquiteturais, segundo \textcite{ImprovingNavarro18}:
+\begin{itemize}
+  \item A possibilidade de escalar o sistema ao adicionar nodos no \textit{cluster}.
+  \item Possibilidade de funcionar bem em \textit{hardware} não necessariamente caro e de luxo.
+  \item Tolerância a falhas, com implementações que identificam estas e permitem que o sistema funcione independente delas acontecerem.
+  \item Fornecimento de serviços transparentes de modo que o usuário possa focar no problema que ele quer resolver.
+\end{itemize}
+
+Esse \textit{framework} disponibiliza ferramentas para que o usuário possa escrever as funções necessárias em diversas linguagens de programação, conforme a necessidade do programador. O \textit{framework} funciona na mesma estrutura de Cliente/Servidor apresentada anteriormente e que é usada pelo \textit{MapReduce}. Além disso, oferece ao programador um sistema paralelo e distribuído (\textit{Hadoop HDFS}), com os recursos ocultos do usuário, mas capaz de lidar com a comunicação entre as máquinas, quaisquer falhas que possam vir a ocorrer e o escalonamento das tarefas.
+
+Além do \textit{Hadoop Map Reduce} e do \textit{Hadoop HDFS}, existem outros subprojetos do Hadoop que compôe sua estrtutura principal: o \textit{Hadoop Common}, que fornece ferramentas comuns aos outros subprojetos e \textit{Hadoop YARN}, um \textit{framework} para escalonamento de tarefas e gerenciamento de recursos em \textit{clusters}.
+
+\subsection{Terminologia}\label{ssec:mapreduceterminlogia}
+
+Para entender o \textit{Hadoop}, antes é necessário que sejam estabelecidades algumas terminologias. Um \textit{job} é uma unidade do que será processado: consiste nos dados de entrada, o programa \textit{MapReduce} em si e as informações de configuração. O \textit{Hadoop} executa essas unidade separando-a em tarefas (\textit{tasks}), que podem ser do tipo de mapeamento (\textit{map}) ou redução (\textit{reduce}). O escalonamento dessas tarefas é feito automaticamento e cada uma roda em um nodo do \textit{cluster}. Com existe a tolerância de falhas já implementada, se uma tarefa falha, ela é reescalonada \cite{HadoopBook15}.
+
+\subsection{Hadoop Common}\label{ssec:hadoopcommon}
+
+Esse subprojeto contém os utilitários e bibliotecas comuns aos outros subprojetos. Por exemplo, funções de manipulação de arquivos, funções auxiliares de serialização de dados, etc.
+
+\subsection{Hadoop HDFS}\label{ssec:hadoophdfs}
+Segundo \textcite{HDFSDesign20}
+
+\subsection{Hadoop MapReduce} \label{ssec:hadoopmapreduce}
+
+\subsection{Hadoop YARN} \label{ssec:hadoopmapreduce}
+
+\section{DOCKER} \label{sec:docker}
+
+Virtualização é o processo de criar um ambiente ou uma versão virtual de algum componente computacional, tal como \textit{hardwares}, dispositivos de armazenamento e recursos de rede. A virtualização permite que haja economia nos custos de \textit{hardware}, melhoria na recuperação em caso de falhas e redução da necessidade de espaço físico para \textit{datacenters}. Uma das técnicas da virtualização é a utilização de contêiners. Contêiners, uma virtualização a nível de sistema, permite que existam múltiplos espaços do usuário por cima de um determinada kernel de sistema. 
+
+Docker é uma ferramenta que tem como objetivo automatizar a implantação de aplicações em contêiners. Essa ferramenta empilha uma implantação de uma aplicação em cima de um ambiente de execução em um contêiner. Ou seja, simula um ambiente virtual de modo que o programador possa trabalhar com sua aplicação em produção de forma extremamente configurável para as necessidades dele. Para fazer isso, o Docker utiliza um recurso de imagem, que nada mais é que uma referência aos arquivos de sistemas que determinada aplicação necessita para ser executada. Esse arquivos são, então, empilhados um em cima do outro e servem como uma receita para construção de um ou múltiplos contêiners \cite{DockerBook14}.
+
+Nesse trabalho será utilizada a imagem do Hadoop distribuída pela Apache de modo que o framework possa ser devidamente simulado, configurado e testado.
