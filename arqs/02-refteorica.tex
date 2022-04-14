@@ -4,11 +4,11 @@ Esse capítulo tem como objetivo apresentar detalhadamente os conceitos técnico
 
 \section{CLUSTERS} \label{sec:clusters}
 
-Um \textit{cluster} é um conjunto de computadores que trabalham juntos paralelamente em uma determinada aplicação. Cada computador desse conjunto é usualmente chamado de nodo. Além disso, existem diversas categorias de clusters dependendo do problema que eles buscam computar.
+Um \textit{cluster} é um conjunto de computadores que trabalham juntos paralelamente em uma determinada aplicação. Cada computador desse conjunto é usualmente chamado de nodo. Além disso, existem diversas categorias de clusters dependendo do problema que eles buscam computar \cite{GoldmanApache12}.
 
 Algumas aplicações comuns de \textit{clusters} são modelagem de clima, simulação de acidentes automotivos, mineração de dados e aplicações da área de astrofísica. Além disso, é comumente visto em aplicações comerciais como bancos e serviços de email \cite{ClusterGridCloudComparison11}.
 
-Uma das maiores vantagens desse tipo de instalação é a tolerância de falhas, pois os sistemas conseguem continuar suas tarefas caso um nodo pare de funcionar. Além disso, é altamente escalável com a adição de novos nodos, não precisa de manutenção frequente e tem um gerenciamento centralizado. Por fim, uma das suas maiores possíveis vantagens é o balanceamento de carga, que busca atingir o equilíbrio entre as tarefas de cada nodo de modo a otimizar os recursos.
+Uma das maiores vantagens desse tipo de instalação é a tolerância de falhas, pois os sistemas conseguem continuar suas tarefas caso um nodo pare de funcionar. Além disso, é altamente escalável com a adição de novos nodos, não precisa de manutenção frequente e tem um gerenciamento centralizado. Por fim, uma das suas maiores possíveis vantagens é o balanceamento de carga, que busca atingir o equilíbrio entre as tarefas de cada nodo de modo a otimizar os recursos \cite{ClusterGridCloudComparison11}.
 
 \section{MAPREDUCE} \label{sec:mapreduce}
 
@@ -76,7 +76,7 @@ Além do \textit{Hadoop Map Reduce} e do \textit{Hadoop HDFS}, existem outros su
 
 \subsection{Hadoop Common}\label{ssec:hadoopcommon}
 
-Esse subprojeto contém os utilitários e bibliotecas comuns aos outros subprojetos. Por exemplo, funções de manipulação de arquivos, funções auxiliares de serialização de dados, etc.
+Esse subprojeto contém os utilitários e bibliotecas comuns aos outros subprojetos. Por exemplo, funções de manipulação de arquivos, funções auxiliares de serialização de dados, etc \cite{GoldmanApache12}.
 
 \subsection{Hadoop HDFS}\label{ssec:hadoophdfs}
 
@@ -99,7 +99,7 @@ A estrutura Cliente/Servidor tem como nodo Master o \textit{JobTracker} e como n
 
 \subsection{Hadoop YARN} \label{ssec:hadoopyarn}
 
-O \textit{Hadoop YARN} é um subprojeto que tem como objetivo dividir as funcionalidade de gerenciamento de recursos de escalonamento de tarefas em módulos diferentes, tendo então um gerenciador global de recursos de um gerenciado local por aplicação. 
+O \textit{Hadoop YARN} é um subprojeto que tem como objetivo dividir as funcionalidade de gerenciamento de recursos de escalonamento de tarefas em módulos diferentes, tendo então um gerenciador global de recursos de um gerenciado local por aplicação \cite{GoldmanApache12}. 
 
 O gerenciador global trabalha em conjunto com um gerenciador de nodos responsável pelos contêiners e pelo monitoramento de uso de recursos, como CPU, memória, uso de disco e uso de redes, assim como o repasse dessas informações para o gerenciador global \cite{HadoopYarn22}.
 
@@ -110,7 +110,7 @@ O YARN foi adicionado ao \textit{Hadoop} versão 2.0 permitindo a separação da
 \newpage
 \section{DOCKER} \label{sec:docker}
 
-Virtualização é o processo de criar um ambiente ou uma versão virtual de algum componente computacional, tal como \textit{hardwares}, dispositivos de armazenamento e recursos de rede. A virtualização permite que haja economia nos custos de \textit{hardware}, melhoria na recuperação em caso de falhas e redução da necessidade de espaço físico para \textit{datacenters}. 
+Virtualização é o processo de criar um ambiente ou uma versão virtual de algum componente computacional, tal como \textit{hardwares}, dispositivos de armazenamento e recursos de rede. A virtualização permite que haja economia nos custos de \textit{hardware}, melhoria na recuperação em caso de falhas e redução da necessidade de espaço físico para \textit{datacenters} \cite{PortnoyVirtualization12}. 
 
 Uma das técnicas da virtualização é a utilização de contêiners. Contêiners, uma virtualização a nível de sistema, permite que existam múltiplos espaços do usuário por cima de um determinada kernel de sistema. 
 
