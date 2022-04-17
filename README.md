@@ -45,3 +45,23 @@ COMPUTADOR SPECS
 Usando a imagem do hadoop para docker disponibilizada pelo BigDataEurope (REF), foi configurado um contêiner Docker de um cluster Hadoop com 3 datanodes (workers), um namenode HDFS (master), um gerenciador de recursos YARN, um servidor com histórico de operações e um gerenciador de nodos.
 
 time hadoop jar hadoop-mapreduce-client-jobclient-3.2.1-tests.jar TestDFSIO -write -nrFiles 10 -fileSize 1000
+
+
+> 1. intro
+> 2. referencia teorica
+> 3. analise dos parametros de configuração (falar sobre os parametros que eu vou mudar e porque)
+> 4. metodologia (explicar sobre a ferramenta que será usando para obter as métricas, ambiente de teste e resultados) (nao gostei mto do nome metodologia)  
+>   4.1 ferramentas  
+>   4.2 ambiente  
+>   4.3 resultados dos experimentos
+> 5. conclusao
+
+
+> 1. intro
+> 2. referencia teorica
+> 3. otimizacao do hadoop map reduce  
+>   3.1 parametros  
+>   3.2 ferramentas  
+>   3.3 ambiente
+> 4. resultados 
+> 5. conclusao
