@@ -42,7 +42,7 @@ Os parâmetros do \autoref{qua:quadro2} descrevem as configurações disponívei
 \subsection{\textit{Tuning} das funções \textit{Map}}\label{ssec:tuningmapper}
 [TODO: quais parametros serao configurados e porque - ProHadoop, HadoopBook]
 
-\section{\textit{TeraSort}} \label{sec:terasort}
+\section{TeraSort} \label{sec:terasort}
 
 Na área da computação, \textit{benchmarking} é o ato de executar um determinado programa, ou um \textit{Job} no caso do \textit{MapReduce}, várias vezes de modo a testar se os resultados obtidos são os esperados. Esse processo é eficiente pois é possível comparar os diversos resultados obtidos e obter avaliações de performance \cite{HadoopBook15}.
 
@@ -76,10 +76,10 @@ Os parâmetros de configuração do \textit{tuning} podem ser usados no comando 
 
 \figura{Execução do \textit{TeraSort} com parâmetros de \textit{tuning}}{.900}{fig/fig5.png}{A autora (2022)}{fig5}{}{}
 
-\section{\textit{Ambiente experimental}} \label{sec:ambienteexperimental}
+\section{Ambiente experimental} \label{sec:ambienteexperimental}
 
 O ambiente no qual serão realizadas as execuções e testes tem as seguintes configurações: LENOVO Ideapad 310 com processador Intel(R) Core(TM) i5-6200U, 2.30GHz de velocidade de processamento,  memória RAM de 8GB, armazenamento de disco de 1TB e SSD Kingston A400 de 480, com leitura de 500 MB/s e gravação de 450 MB/s. 
 
-No entanto, a imagem Docker é executada no Windows WSL2, Substema do Windows para Linux, que possibilitam que programadores executem um ambiente Linux mesmo usando um sistema Windows \cite{MicrosoftWSL22}. Nesse ambiente virtual, está sendo executado Linux na distribuição Ubuntu 20.04, Docker na versão 20.10.12 e Hadoop na versão 3.2.1.
+No entanto, a imagem Docker é executada no Windows WSL2, Substema do Windows para Linux, que possibilitam aos programadores executar um ambiente Linux mesmo usando um sistema Windows \cite{MicrosoftWSL22}. Nesse ambiente virtual, está sendo executado Linux na distribuição Ubuntu 20.04, Docker na versão 20.10.12 e Hadoop na versão 3.2.1.
 
 Usando a imagem do \textit{Hadoop} para Docker disponibilizada pelo Big Data Europe \cite{BigDataHadoopGithub}, foi configurado um contêiner Docker com um \textit{cluster Hadoop} com 3 \textit{datanodes (workers)}, um \textit{namenode HDFS (master)}, um gerenciador de recursos YARN, um servidor com histórico de operações e um gerenciador de nodos.
