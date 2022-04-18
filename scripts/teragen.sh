@@ -11,12 +11,19 @@ EXAMPLES_JAR=hadoop-mapreduce-examples-3.2.1.jar
 
 
 #SIZE=500G
+#ROWS=5000000000
+
 #SIZE=100G
+#ROWS=1000000000
+
 SIZE=1T
-#SIZE=1G
-#SIZE=10G
-#INPUT=/${SIZE}-terasort-input
-#OUTPUT=/${SIZE}-terasort-output
+ROWS=10000000000
+
+# SIZE=10G
+# ROWS=100000000
+
+# SIZE=1G
+# ROWS=10000000
 
 
 LOGDIR=logs
@@ -28,20 +35,18 @@ fi
 
 DATE=`date +%Y-%m-%d:%H:%M:%S`
 
-RESULTSFILE="./$LOGDIR/terasort_results_$DATE"
+RESULTSFILE="./$LOGDIR/teragen_results_$DATE"
 
+OUTPUT=/user/root/terasort/${SIZE}-terasort-input
 
-OUTPUT=/user/root/terasort/${SIZE}-terasort-output
-INPUT=/user/root/terasort/${SIZE}-terasort-input
-
-# terasort.sh
+# teragen.sh
 # Kill any running MapReduce jobs
 mapred job -list | grep job_ | awk ' { system("mapred job -kill " $1) } '
 # Delete the output directory
 hadoop fs -rm -r -f -skipTrash ${OUTPUT}
 
-# Run terasort
-time hadoop jar $EXAMPLES_JAR terasort \
+# Run teragen
+time hadoop jar $EXAMPLES_JAR teragen \
 -Dmapreduce.map.log.level=INFO \
 -Dmapreduce.reduce.log.level=INFO \
 -Dyarn.app.mapreduce.am.log.level=INFO \
@@ -56,10 +61,13 @@ time hadoop jar $EXAMPLES_JAR terasort \
 -Dmapreduce.reduce.java.opts=-Xmx1536m \
 -Dmapreduce.reduce.maxattempts=1 \
 -Dmapreduce.reduce.memory.mb=2048 \
--Dmapreduce.task.io.sort.factor=300 \
+-Dmapreduce.task.io.sort.factor=100 \
 -Dmapreduce.task.io.sort.mb=384 \
 -Dyarn.app.mapreduce.am.command.opts=-Xmx768m \
 -Dyarn.app.mapreduce.am.resource.mb=1024 \
--Dmapred.reduce.tasks=92 \
--Dmapreduce.terasort.output.replication=1 \
-${INPUT} ${OUTPUT} >> $RESULTSFILE 2>&1
+-Dmapred.map.tasks=92 \
+${ROWS} ${OUTPUT} >> $RESULTSFILE 2>&1
+
+#-Dmapreduce.map.log.level=TRACE \
+#-Dmapreduce.reduce.log.level=TRACE \
+#-Dyarn.app.mapreqduce.am.log.level=TRACE \
