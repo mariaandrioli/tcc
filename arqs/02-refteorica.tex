@@ -108,11 +108,13 @@ O YARN foi adicionado ao \textit{Hadoop} versão 2.0 permitindo a separação da
 \figura{Nova arquitetura do Hadoop 2.0}{.700}{fig/fig3.png}{\cite{KobylinskaMartins14}}{fig3}{}{}
 
 \newpage
-\section{DOCKER} \label{sec:docker}
+\section{VIRTUALIZAÇÃO} \label{sec:virtualizacao}
 
 Virtualização é o processo de criar um ambiente ou uma versão virtual de algum componente computacional, tal como \textit{hardwares}, dispositivos de armazenamento e recursos de rede. A virtualização permite que haja economia nos custos de \textit{hardware}, melhoria na recuperação em caso de falhas e redução da necessidade de espaço físico para \textit{datacenters} \cite{PortnoyVirtualization12}. 
 
 Uma das técnicas da virtualização é a utilização de contêiners. Contêiners, uma virtualização a nível de sistema, permite que existam múltiplos espaços do usuário por cima de um determinada kernel de sistema. 
+
+\subsection{Docker} \label{ssec:docker}
 
 Docker é uma ferramenta que tem como objetivo automatizar a implantação de aplicações em contêiners. Essa ferramenta empilha uma implantação de uma aplicação em cima de um ambiente de execução em um contêiner, ou seja, simula um ambiente virtual de modo que o programador possa trabalhar com sua aplicação em produção de forma extremamente configurável para as suas necessidades. Para isso, o Docker utiliza um recurso de imagem, que se refere aos arquivos de sistemas que determinada aplicação necessita para ser executada. Então, esses arquivos são empilhados entre si e servem como uma receita para construção de um ou múltiplos contêiners \cite{DockerBook14}. Na \autoref{fig:fig4} está exemplificado a estrutura geral da arquitetura do Docker.
 

@@ -1,0 +1,33 @@
+\section{TERASORT} \label{sec:terasort}
+
+A técnica de \textit{benchmarking} consiste na execução, por diversas vezes, de um programa (no caso do \textit{MapReduce}, de um \textit{Job}), a fim de testar se os resultados obtidos são os esperados. Esse processo é eficiente pois é possível comparar os diversos resultados obtidos e obter avaliações de performance \cite{HadoopBook15}.
+
+O \textit{Hadoop} possui várias métricas de \textit{benchmarks} imbutidas que podem ser utilizadas para melhorar o funcionamento do \textit{Job}, cada uma delas com o objetivo de monitorar um fator diferente, como por exemplo, TestDFSIO  - responsável por testar a performance dos dispositivos de entrada e saída - e MRBench/NNBench - testam em conjunto vários \textit{Jobs} pequenos múltiplas vezes \cite{HadoopBook15}.
+
+Nesse trabalho será utilizado a ferramenta \textit{TeraSort}, que ordena o arquivo de entrada completamente. Para \textcite{HadoopBook15}, ela é extremamente eficaz no \textit{benchmarking} do \textit{HDFS} e \textit{MapReduce} em conjunto, já que todo os dados de entrada são processados. Essa ferramenta funciona em três etapas:
+
+\begin{itemize}
+  \item \textit{TeraGen} executa um \textit{Job} só de funções \textit{Map} que cria um conjunto de dados binários aleatórios. A execução desse comando é exemplificada no \autoref{code:codigo3}.
+  
+  \begin{lstlisting}[caption={Exemplo de execução do \textit{TeraGen} adaptado de \cite{HadoopBook15}}, label=code:codigo3]
+  hadoop jar hadoop-mapreduce-examples-*.jar \
+  teragen <numero de linhas de 100 bytes cada> <diretorio de saida>
+  \end{lstlisting}
+  
+  \item \textit{TeraSort} executa a ordenação dos dados. É nesse passo que é avaliada a performance do \textit{MapReduce}, pois é aqui que as operações do paradigma em si são executadas. A execução desse comando é exemplificada no \autoref{code:codigo4}.
+  \begin{lstlisting}[caption={Exemplo de execução do \textit{TeraSort} adaptado de \cite{HadoopBook15}}, label=code:codigo4]
+  hadoop jar hadoop-mapreduce-examples-*.jar \
+  terasort <diretorio de entrada> <diretorio de saida>
+  \end{lstlisting}  
+
+  \item \textit{TeraValidate} executa checagens nos dados ordenados resultantes da fase anterior para verificar se a ordenação foi feita corretamente. A execução desse comando é exemplificada no \autoref{code:codigo5}.
+  \begin{lstlisting}[caption={Exemplo de execução do \textit{TeraValidate} adaptado de \cite{HadoopBook15}}, label=code:codigo5]
+  hadoop jar hadoop-mapreduce-examples-*.jar \
+  teravalidate <arquivo de entrada (diretorio de saida do terasort)> <diretorio de saida>
+  \end{lstlisting}
+
+\end{itemize}
+
+Os parâmetros de configuração do \textit{tuning} podem ser usados no comando que executa o \textit{TeraSort}, processo exemplificado na \autoref{fig:fig5}.
+
+\figura{Execução do \textit{TeraSort} com parâmetros de \textit{tuning}}{.900}{fig/fig5.png}{A autora (2022)}{fig5}{}{}
