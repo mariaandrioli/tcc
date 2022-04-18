@@ -139,7 +139,6 @@
 \input{01-introducao}
 \input{02-refteorica}
 \input{03-analise}
-% \input{cap01}
 
 % PARTE DA PREPARAÇÃO DA PESQUISA
 % ----------------------------------------------------------
@@ -186,7 +185,7 @@
 \begingroup
 
 \printbibliography[heading=bay, notkeyword= {consulta}, notkeyword={npub-informal}]
-  
+
 \endgroup
 
 % ----------------------------------------------------------
@@ -199,86 +198,86 @@
 % ----------------------------------------------------------
 % Consulte o manual da classe abntex2 para orientações sobre o glossário.
 %
-%\glossary
+% \glossary
 
 % Apêndices
 % ----------------------------------------------------------
 \ifthenelse{\equal{\terApendice}{Sim}}
 {\begin{apendicesenv}
 
-        % Numeração arábica para os apêndices
-        % --------------------------------------------------
-        \renewcommand{\thechapter}{\arabic{chapter}}
-        % Imprime uma página indicando o início dos apêndices
-        % \partapendices
+                % Numeração arábica para os apêndices
+                % --------------------------------------------------
+                \renewcommand{\thechapter}{\arabic{chapter}}
+                % Imprime uma página indicando o início dos apêndices
+                % \partapendices
 
-        % Existem várias formas de se colocar anexos.
-        % O exemplo abaixo coloca 2 apêndices denominados de 
-        % DESENVOLVIMENTO DETALHADO DA PINTURA e 
-        % ESCOLHA DO MATERIAL DE IMPRESSÃO:
-        % ---
-        % --- insere um capítulo que é tratado como um apêndice
-        %\chapter{DESENVOLVIMENTO DETALHADO DA PINTURA}
-        % 
-        %\lipsum[29] % gera um parágrafo
-        %
-        % --- insere um capítulo que é tratado como um apêndice
-        %\chapter{ESCOLHA DO MATERIAL DE IMPRESSÃO}
-        % 
-        %\lipsum[30] % gera um parágrafo
+                % Existem várias formas de se colocar anexos.
+                % O exemplo abaixo coloca 2 apêndices denominados de 
+                % DESENVOLVIMENTO DETALHADO DA PINTURA e 
+                % ESCOLHA DO MATERIAL DE IMPRESSÃO:
+                % ---
+                % --- insere um capítulo que é tratado como um apêndice
+                %\chapter{DESENVOLVIMENTO DETALHADO DA PINTURA}
+                % 
+                %\lipsum[29] % gera um parágrafo
+                %
+                % --- insere um capítulo que é tratado como um apêndice
+                %\chapter{ESCOLHA DO MATERIAL DE IMPRESSÃO}
+                % 
+                %\lipsum[30] % gera um parágrafo
 
-        % --- Insere o texto do arquivo ap01.tex
-        % 
-        % --- O conteúdo do arquivo pode ser vários anexos ou um único apêndices.
-        %     A vantagem de se utilizar este procedimento é de suprimi-lo
-        %     das compilações enquanto se processa o resto do documento.
+                % --- Insere o texto do arquivo ap01.tex
+                % 
+                % --- O conteúdo do arquivo pode ser vários anexos ou um único apêndices.
+                %     A vantagem de se utilizar este procedimento é de suprimi-lo
+                %     das compilações enquanto se processa o resto do documento.
 
-        \input{ap01}
+                \input{ap01}
 
-\end{apendicesenv}
+        \end{apendicesenv}
 }{}
 
 
 % Anexos
 % ----------------------------------------------------------
 \ifthenelse{\equal{\terAnexo}{Sim}}{
-\begin{anexosenv}
+        \begin{anexosenv}
 
-        % Numeração arábica para os apêndices
-        % --------------------------------------------------
-        \renewcommand{\thechapter}{\arabic{chapter}}
-        % --- Imprime uma página indicando o início dos anexos
-        % \partanexos
+                % Numeração arábica para os apêndices
+                % --------------------------------------------------
+                \renewcommand{\thechapter}{\arabic{chapter}}
+                % --- Imprime uma página indicando o início dos anexos
+                % \partanexos
 
-        % Existem várias formas de se colocar anexos.
-        % O exemplo abaixo coloca 2 anexos denominados de 
-        % TABELA DE VALORES e GRÁFICOS DE BALANCEMANTO:
-        % ---
-        % --- insere um capítulo que é tratado como um anexo
-        %\chapter{TABELAS DE VALORES}
-        % 
-        %\lipsum[31] % gera um parágrafo
-        %
-        % --- insere um capítulo que é tratado como um anexo
-        %\chapter{GRÁFICOS DE BALANCEAMENTO}
-        % 
-        %\lipsum[32] % gera um parágrafo
+                % Existem várias formas de se colocar anexos.
+                % O exemplo abaixo coloca 2 anexos denominados de 
+                % TABELA DE VALORES e GRÁFICOS DE BALANCEMANTO:
+                % ---
+                % --- insere um capítulo que é tratado como um anexo
+                %\chapter{TABELAS DE VALORES}
+                % 
+                %\lipsum[31] % gera um parágrafo
+                %
+                % --- insere um capítulo que é tratado como um anexo
+                %\chapter{GRÁFICOS DE BALANCEAMENTO}
+                % 
+                %\lipsum[32] % gera um parágrafo
 
-        % --- Insere o texto do arquivo ax01.tex
-        % 
-        % --- O conteúdo do arquivo pode ser vários anexos ou um único anexo.
-        %     A vantagem de se utilizar este procedimento é de suprimi-lo
-        %     das compilações enquanto se processa o resto do documento.
+                % --- Insere o texto do arquivo ax01.tex
+                % 
+                % --- O conteúdo do arquivo pode ser vários anexos ou um único anexo.
+                %     A vantagem de se utilizar este procedimento é de suprimi-lo
+                %     das compilações enquanto se processa o resto do documento.
 
-         \input{ax01} 
-\end{anexosenv}
+                \input{ax01}
+        \end{anexosenv}
 }{}
 
 % INDICE REMISSIVO
 %---------------------------------------------------------------------
 \ifthenelse{\equal{\terIndiceR}{Sim}}{
-\phantompart
-\printindex
+        \phantompart
+        \printindex
 }{}
 
 \end{document}

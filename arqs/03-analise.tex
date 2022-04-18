@@ -1,19 +1,85 @@
-\chapter{ANÁLISE DOS PARÂMETROS DE CONFIGURAÇÃO} \label{cha:analiseparamconfig}
+\chapter{HOLDER} \label{cha:holder}
 
-Como visto anteriormente, o \textit{MapReduce} é um processo com diversas etapas, e portanto, há muitas permutações possíveis das suas configurações que permitem que sua performance seja melhorada. A melhora da performance através da modificação dos parâmetros de configuração é chamado de \textit{tuning}. Para \textcite{HadoopBook15}, existem algum fatores do \textit{Job} a serem considerados - exibidos no \autoref{qua:quadro1} - do \textit{Job} com o objetivo de obter aumento da performance.
+Como visto anteriormente, o \textit{MapReduce} é um processo com diversas etapas, e portanto, há muitas permutações possíveis das suas configurações que permitem que sua performance seja melhorada. A melhora da performance através da modificação dos parâmetros de configuração é chamado de \textit{tuning}. Para \textcite{HadoopBook15}, existem algum fatores do \textit{Job} a serem considerados - exibidos no \autoref{qua:quadro1} - com objetivo de obter aumento da performance.
 
 \qquadro{Fatores para \textit{Tuning} do \textit{Job MapReduce}}
 {\footnotesize
   \centering
   \begin{tabular}{|p{50mm}|p{100mm}|}\hline
-    \textbf{ÁREA A SER OTIMIZADA} & \textbf{COMO OTIMIZAR} \\\hline
-    \textbf{Quantidade de mapeadores} & Verificar se é possível diminuir a quantidade de execuções da função \textit{Map} de modo que cada uma seja executada por mais tempo. O tempo médio recomendado na literatura é de 1 minuto.  \\\hline
-    \textbf{Quantidade de redutores} & Verificar se mais de um redutor está sendo utilizado. O recomendado é que cada tarefa seja executada em média durante 5 minutos e produza 1 bloco de dados.  \\\hline
-    \textbf{Uso de combinadores} & Verificar se é possível utilizar algum combinador de dados de modo que a quantidade de data passada à função \textit{Shuffle} seja menor.  \\\hline
-    \textbf{Compressão} & Usualmente, o tempo de execução de um \textit{Job} é diminuídp ao usar compressão de dados. \\\hline
-    \textbf{Ajustes na parte Shuffle} & A parte \textit{Shuffle} do processo possui vários parâmetros de \textit{tuning} de memória que podem ser utilizados para a melhora da performance do \textit{Job}. \\\hline
-\end{tabular}}
+    \textbf{ÁREA A SER OTIMIZADA}     & \textbf{COMO OTIMIZAR}                                                                                                                                                                       \\\hline
+    \textbf{Quantidade de mapeadores} & Verificar se é possível diminuir a quantidade de execuções da função \textit{Map} de modo que cada uma seja executada por mais tempo. O tempo médio recomendado na literatura é de 1 minuto. \\\hline
+    \textbf{Quantidade de redutores}  & Verificar se mais de um redutor está sendo utilizado. O recomendado é que cada tarefa seja executada em média durante 5 minutos e produza 1 bloco de dados.                                  \\\hline
+    \textbf{Uso de combinadores}      & Verificar se é possível utilizar algum combinador de dados de modo que a quantidade de data passada à função \textit{Shuffle} seja menor.                                                    \\\hline
+    \textbf{Compressão}               & Usualmente, o tempo de execução de um \textit{Job} é diminuídp ao usar compressão de dados.                                                                                                  \\\hline
+    \textbf{Ajustes na parte Shuffle} & A parte \textit{Shuffle} do processo possui vários parâmetros de \textit{tuning} de memória que podem ser utilizados para a melhora da performance do \textit{Job}.                          \\\hline
+  \end{tabular}}
 {Adaptado de \cite{HadoopBook15}}{quadro1}{}{}
 
+\section{Parâmetros do \textit{MapReduce}} \label{sec:parametrosmapreduce}
+
+Como mencionado, o \textit{tuning} pode ser realizado através da avaliação e mudança dos parâmetros de configuração do \textit{MapReduce}. Cada parâmetro tem um objetivo específico e pode melhorar uma característica do processo. Algumas variáveis mudam configurações no \textit{Job} e algumas afetam o \textit{cluster} diretamente.
+
+\textit{Hadoop} foi feito para processar grandes arquivos de entradas e é otimizado para \textit{clusters} em máquinas heterogêneas, ou seja, sistemas que usam mais de um tipo de processador com o objetivo de melhorar a performance. Cada \textit{Job} segue a seguinte sequência de passos: configuração, fase \textit{shuffle/sort} e fase \textit{reduce}. O \textit{Hadoop} é responsável por configurar e gerenciar cada um desses passos \cite{ProHadoop09}.
+
+Existem parâmetros específicos para otimização da cada passo, citados e explicados a seguir.
+
+\subsection{Quantidade de tarefas \textit{Map}}\label{ssec:usomemoria}
+
+Os parâmetros do \autoref{qua:quadro2} descrevem as configurações disponíveis para alterar os valores relacionados à quantidade de tarefas \textit{Map} do \textit{Job}.
+
+\qquadro{Parâmetros de ajuste da quantidade de tarefas \textit{Map}}
+{\footnotesize
+  \centering
+  \begin{tabular}{|p{35mm}|p{50mm}|p{30mm}|}\hline
+    \textbf{PARÂMETRO}             & \textbf{DESCRIÇÃO}                                      & \textbf{VALOR PADRÃO} \\\hline
+    \textbf{mapred.map.tasks}      & Quantidade de tarefas \textit{Map} para um \textit{Job} & 1                     \\\hline
+    \textbf{mapred.min.split.size} & Valor mínimo de divisões de um arquivo de entrada.      & 1                     \\\hline
+    \textbf{dfs.block.size}        & Tamanho do bloco em \textit{bytes}                      & 67108864              \\\hline
+  \end{tabular}}
+{Adaptado de \cite{ProHadoop09}}{quadro2}{}{}
+
+\subsection{Minimizar o uso de espaço em disco}\label{ssec:minimizardisco}
+\subsection{\textit{Tuning} das funções \textit{Map}}\label{ssec:tuningmapper}
 [TODO: quais parametros serao configurados e porque - ProHadoop, HadoopBook]
-[TODO: metodologia: explicar teragen, terasort etc]
+
+\section{\textit{TeraSort}} \label{sec:terasort}
+
+Na área da computação, \textit{benchmarking} é o ato de executar um determinado programa, ou um \textit{Job} no caso do \textit{MapReduce}, várias vezes de modo a testar se os resultados obtidos são os esperados. Esse processo é eficiente pois é possível comparar os diversos resultados obtidos e obter avaliações de performance \cite{HadoopBook15}.
+
+O \textit{Hadoop} possui várias métricas de \textit{benchmarks} imbutidas que podem ser utilizadas para melhorar o funcionamento do \textit{Job}, cada uma delas com o objetivo de monitorar um fator diferente, como por exemplo, TestDFSIO  - responsável por testar a performance dos dispositivos de entrada e saída - e MRBench/NNBench - testam em conjunto vários \textit{Jobs} pequenos múltiplas vezes \cite{HadoopBook15}.
+
+Nesse trabalho será utilizado a ferramenta \textit{TeraSort}, que ordena o arquivo de entrada completamente. Para \textcite{HadoopBook15}, ela é extremamente eficaz no \textit{benchmarking} do \textit{HDFS} e \textit{MapReduce} em conjunto, já que todo os dados de entrada são processados. Essa ferramenta funciona em três etapas:
+
+\begin{itemize}
+  \item \textit{TeraGen} executa um \textit{Job} só de funções \textit{Map} que cria um conjunto de dados binários aleatórios. A execução desse comando é exemplificada no \autoref{code:codigo3}.
+  
+  \begin{lstlisting}[caption={Exemplo de execução do \textit{TeraGen} adaptado de \cite{HadoopBook15}}, label=code:codigo3]
+  hadoop jar hadoop-mapreduce-examples-*.jar \
+  teragen <numero de linhas de 100 bytes cada> <diretorio de saida>
+  \end{lstlisting}
+  
+  \item \textit{TeraSort} executa a ordenação dos dados. A execução desse comando é exemplificada no \autoref{code:codigo4}.
+  \begin{lstlisting}[caption={Exemplo de execução do \textit{TeraSor} adaptado de \cite{HadoopBook15}}, label=code:codigo4]
+  hadoop jar hadoop-mapreduce-examples-*.jar \
+  terasort <diretorio de entrada> <diretorio de saida>
+  \end{lstlisting}  
+
+  \item \textit{TeraValidate} executa checagens nos dados ordenados resultantes da fase anterior para verificar se a ordenação foi feita corretamente. A execução desse comando é exemplificada no \autoref{code:codigo5}.
+  \begin{lstlisting}[caption={Exemplo de execução do \textit{TeraValidate} adaptado de \cite{HadoopBook15}}, label=code:codigo5]
+  hadoop jar hadoop-mapreduce-examples-*.jar \
+  teravalidate <arquivo de entrada (diretorio de saida do terasort)> <diretorio de saida>
+  \end{lstlisting}
+
+\end{itemize}
+
+Os parâmetros de configuração do \textit{tuning} podem ser usados no comando que executa o \textit{TeraSort}, processo exemplificado na \autoref{fig:fig5}.
+
+\figura{Execução do \textit{TeraSort} com parâmetros de \textit{tuning}}{.900}{fig/fig5.png}{A autora (2022)}{fig5}{}{}
+
+\section{\textit{Ambiente experimental}} \label{sec:ambienteexperimental}
+
+O ambiente no qual serão realizadas as execuções e testes tem as seguintes configurações: LENOVO Ideapad 310 com processador Intel(R) Core(TM) i5-6200U, 2.30GHz de velocidade de processamento,  memória RAM de 8GB, armazenamento de disco de 1TB e SSD Kingston A400 de 480, com leitura de 500 MB/s e gravação de 450 MB/s. 
+
+No entanto, a imagem Docker é executada no Windows WSL2, Substema do Windows para Linux, que possibilitam que programadores executem um ambiente Linux mesmo usando um sistema Windows \cite{MicrosoftWSL22}. Nesse ambiente virtual, está sendo executado Linux na distribuição Ubuntu 20.04, Docker na versão 20.10.12 e Hadoop na versão 3.2.1.
+
+Usando a imagem do \textit{Hadoop} para Docker disponibilizada pelo Big Data Europe \cite{BigDataHadoopGithub}, foi configurado um contêiner Docker com um \textit{cluster Hadoop} com 3 \textit{datanodes (workers)}, um \textit{namenode HDFS (master)}, um gerenciador de recursos YARN, um servidor com histórico de operações e um gerenciador de nodos.
