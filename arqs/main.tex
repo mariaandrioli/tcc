@@ -77,6 +77,20 @@
 
 \makeindex
 
+% ---
+% GLOSSARIO
+% ---
+\makeglossaries
+
+\include{glossario}
+
+% ---
+% Exemplo de configurações do glossairo
+\renewcommand*{\glsseeformat}[3][\seename]{\textit{#1}  
+ \glsseelist{#2}}
+% ---
+      
+
 \lstset{frame=tb,
   language=C,
   aboveskip=25pt,
@@ -185,11 +199,38 @@
 % ----------------------------------------------------------
 %\bibliography{referencias}
 
+
 \begingroup
 
 \printbibliography[heading=bay, notkeyword= {consulta}, notkeyword={npub-informal}]
 
 \endgroup
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+
+% ---
+% Define nome e preâmbulo do glossário
+% ---
+\phantompart
+\renewcommand{\glossaryname}{Glossário}
+
+% ---
+% Estilo de glossário
+% ---
+% \setglossarystyle{mystyle}
+\setglossarystyle{index}
+% \glossarystyle{altlisthypergroup}
+% \setglossarystyle{tree}
+% ---
+% Imprime o glossário
+% ---
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\glossaryname}
+\printglossaries
+% ---
 
 % ----------------------------------------------------------
 
