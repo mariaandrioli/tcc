@@ -1,6 +1,6 @@
 \chapter{REFERENCIAL TEÓRICO} \label{cha:refteorico}
 
-Esse capítulo tem como objetivo apresentar detalhadamente os conceitos técnicos que serão utilizados ao longo do trabalho. A \autoref{sec:clusters} introduz o conceito de \textit{clusters}. A \autoref{sec:mapreduce} apresenta o \textit{MapReduce}, o modelo de manipulação de dados feito pelo Google e a \autoref{sec:hadoop} trata do \textit{Hadoop}, o \textit{\gls{framework}} desenvolvido pela Apache. Por fim, a \autoref{sec:docker} explica virtualização, contêiners e a ferramenta Docker.
+Esse capítulo tem como objetivo apresentar detalhadamente os conceitos técnicos que serão utilizados ao longo do trabalho. A \autoref{sec:clusters} introduz o conceito de \textit{clusters}. A \autoref{sec:mapreduce} apresenta o \textit{MapReduce}, o modelo de manipulação de dados feito pelo Google e a \autoref{sec:hadoop} trata do \textit{Hadoop}, o \textit{\gls{framework}} desenvolvido pela Apache. Por fim, a \autoref{sec:virtualizacao} explica virtualização, contêiners e a ferramenta Docker.
 
 \section{CLUSTERS} \label{sec:clusters}
 
@@ -18,7 +18,7 @@ As operações de mapeamento e redução são baseadas em conceitos presentes em
 
 \subsection{Modelo de programação}\label{ssec:mapreducemodelo}
 
-A computação recebe um conjunto de pares (VALOR, CHAVE) e produz um conjunto de pares de (VALOR, CHAVE). O usuário cria as funções \textit{Map} e \textit{Reduce} de acordo com seu caso de uso. \textit{Map} recebe um único par (VALOR, CHAVE) e produz um conjunto intermediário de pares. Em seguida, a biblioteca \textit{MapReduce} agrupa os valores com a mesma chave e esses valores servirão de entrada para a função \textit{Reduce}. A função \textit{Reduce} então junta os valores com a mesma chave de modo a criar um conjunto menor, sendo possível dessa forma lidar com listas muito grandes para a memória disponível \cite{MapReduce08}. 
+A computação recebe um conjunto de pares (CHAVE, VALOR) e produz um conjunto de pares de (CHAVE, VALOR). O usuário cria as funções \textit{Map} e \textit{Reduce} de acordo com seu caso de uso. \textit{Map} recebe um único par (CHAVE, VALOR) e produz um conjunto intermediário de pares. Em seguida, a biblioteca \textit{MapReduce} agrupa os valores com a mesma chave e esses valores servirão de entrada para a função \textit{Reduce}. A função \textit{Reduce} então junta os valores com a mesma chave de modo a criar um conjunto menor, sendo possível dessa forma lidar com listas muito grandes para a memória disponível \cite{MapReduce08}. 
 
 Entre o momento que são executadas as funções \textit{Map} e \textit{Reduce}, existe a fase \textit{Shuffle}, que é criada automaticamente em tempo de execução e executa operações de ordenação (\textit{sort}) e junção (\textit{merge}) \cite{ProHadoop09}. Para \textcite{HadoopBook15}, a operação \textit{Shuffle} é um dos fatores mais influentes no bom desempenho de aplicações \textit{MapReduce}, já que operações de ordenação e junções podem prejudicar ou melhorar muito um algoritmo conforme sua implementação.
 
