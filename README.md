@@ -25,13 +25,22 @@ RODANDO DOCKER E TESTES
 - http://localhost:9870 mostra o status do sistema
 - para entrar no namenode:  
 `docker exec -it namenode bash`
-- pegar exemplo de map reduce do apache de https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-mapreduce-examples/3.3.2/
+- pegar exemplo de map reduce do apache de https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-mapreduce-examples/3.2.1/
 - executar `docker cp hadoop-mapreduce-examples-3.2.1-sources.jar namenode:/tmp/` para copiar o arquivo .jar para a pasta tmp
+- `hadoop fs -mkdir -p terasort/10G-terasort-input` criar pasta
 - `hadoop fs -rm -r /user/root/output` para remover pasta de saida
 - `hadoop jar hadoop-mapreduce-examples-3.2.1-sources.jar org.apache.hadoop.examples.WordCount input output` na pasta tmp para executar o word count com os arquivos na pasta input
 - `hdfs dfs -cat output/part-r-00000` para ver resultados
-- `/tmp# hdfs dfs -ls output` ls na pasta output
+- `hdfs dfs -ls output` ls na pasta output
 - `docker-compose down` para matar o cluster
+
+
+INSTALL PERF  
+```
+apt-get update
+apt-get install linux-tools
+```
+
 
 COMPUTADOR SPECS
  - Processador Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz   2.40 GHz
