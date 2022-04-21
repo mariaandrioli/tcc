@@ -8,7 +8,23 @@ Uma das seções do capítulo 7 de \textcite{HadoopBook15} é dedicado ao proces
 
 \subsection{Configuração de parâmetros}\label{ssec:configuracaooparametros}
 
-Com o propósito de atingir os objetivos demonstrados no \autoref{qua:quadro1}, \textcite{HadoopBook15} sugere configurar os seguintes parâmetros, descritos no \autoref{qua:quadro2} e \autoref{qua:quadro3}:
+O objetivo principal a ser atingido durante o \textit{tuning} é possibilitar que a fase \textit{Shuffle} tenha a maior quantidade de memória disponível, ao mesmo tempo que as fases \textit{Map} e \textit{Reduce} tenham memória suficiente para funcionar propriamente. A quantidade de memória disponibilizada à cada \textit{Java Virtual Machine} é determinada pelo parâmetro \textit{mapred.child.java.opts} \cite{HadoopBook15}.
+
+Na fase \textit{Map}, os pares (CHAVE, VALOR) são particionados, e essas partições são ordenadas na fase \textit{Shuffle}. O arquivo criado para cada partição é chamado de \textit{spill}. Para cada tarefa \textit{Reduce}, existe um \textit{spill}, que passará por uma ordenação do tipo \textit{Merge Sort}, na etapa segunda etapa da fase \textit{Shuffle}, chamada de \textit{Sort} \cite{ProHadoop09}.
+
+Segundo \textcite{HadoopBook15}, a melhor performance da fase \textit{Map} pode ser obtida através da minimalização da quantidade de \textit{spills} - o valor ótimo é 1 - cujos parâmetros de controles são \textit{mapreduce.task.io.sort.factor} - número máximo de entradas para a função \textit{Merge Sort} - e \textit{mapreduce.task.io.sort.mb} - tamanho do \textit{buffer} de memória para a saída da função \textit{Map}. O último é especialmente importante e deve ser aumentado sempre que possível. Quando o \textit{buffer} atinge a capacidade percentual determinada pelo parâmetro \textit{(mapreduce.map.sort.spill.percent} ocorre um vazamento de memória e os conteúdos restantes do arquivo de saída são colocados no disco (no arquivo chamado de \textit{spill}).
+
+Caso exista mais de uma determinada quantidade de arquivos \textit{spill} (quantidade determinada pela propriedade \textit{mapreduce.map.combine.minspills}), a função combinadora é executada novamente antes de ser criado o arquivo de saída. Uma outra otimização possível é o uso de compressores de dados nos arquivos de saída da fase \textit{Map}, processo facilmente habilitado através dos parâmetros \textit{mapreduce.map.output.compress} - valor booleano que habilita a compressão - e \textit{mapreduce.map.output.compress.codec} - define a classe que vai realizar a compressão \cite{HadoopBook15}.
+
+A fase \textit{Reduce} é otimizada quando os dados intermediários são armazenados na memória, o que não acontece por padrão, visto que sem a alteração dos parâmetros, toda a memória é alocada para a fase \textit{Reduce} em si. As propriedades que podem ser alteradas para atingir este objetivo são \textit{mapreduce.reduce.merge.inmem.threshold}, \textit{mapreduce.reduce.input.buffer.percent} e \textit{mapreduce.reduce.shuffle.merge.percent}, cujos valores ótimos são 0 e 1.0, respectivamente \cite{HadoopBook15}.
+
+Um dos parâmetros que pode ser otimizado na fase \textit{Reduce} é o \textit{mapreduce.reduce.shuffle.parallelcopies}, que determina a quantidade de tarefas que serão executadas em paralelo pelos \textit{reducers} para copiar os arquivos de saída das tarefas \textit{Map} quando estas são finalizadas e seu valor ótimo depende da quantidade de dados que já passou pela fase \textit{Shuffle} \cite{MRONLINELi14}.
+
+Nessa parte do processo onde as cópias dos arquivos de saída da fase \textit{Map} são feitas, o tamanho do \textit{buffer} é controlado pela propriedade \textit{mapreduce.reduce.shuffle.input.buffer.percent}, que especifica a proporção do \textit{heap} que será usada para a finalidade mencionda. Quando esse \textit{buffer} atinge um número determinado por \textit{mapreduce.reduce.shuffle.merge.percent} ou \textit{mapreduce.reduce.merge.inmem.threshold}, o restante dos arquivos é alocado no disco \cite{HadoopBook15}.
+
+Para cada gerenciador de nodo, o número de partições do arquivo de saída disponilizados para a fase \textit{Reduce} é determinado pela propriedade \textit{mapreduce.shuffle.max.threads}. O valor padrão de 0 determina que o número máximo de tarefas é o dobro do número de processadores da máquina \cite{ProHadoop09}.
+
+O \autoref{qua:quadro2} e \autoref{qua:quadro3} resumem os parâmetros mencionados previamente, assim como outros parâmetros relevantes e os valores padrões de cada um:
 
 \qquadro{Parâmetros de ajuste da quantidade de tarefas \textit{Map}}
 {\footnotesize
@@ -16,8 +32,8 @@ Com o propósito de atingir os objetivos demonstrados no \autoref{qua:quadro1}, 
   \begin{tabular}{|p{30mm}|p{50mm}|p{35mm}|}\hline
     \textbf{PARÂMETRO}                         & \textbf{DESCRIÇÃO}                                                                                                                   & \textbf{VALOR PADRÃO} \\\hline
     \textbf{mapreduce.task. io.sort.mb}        & Tamanho em \textit{bytes} usado no \textit{buffer} de memória na ordenação na saída da função \textit{Map}.                          & 100                   \\\hline
-    \textbf{mapreduce.map. sort.spill.percent} & Limite de uso do \textit{buffer} de memória e de início do processo de vazamento em disco.                                           & 0.80                  \\\hline
-    \textbf{mapreduce.task. io.sort.factor}    & Número máximo de entradas para a função de junção na ordenação. \textit{bytes}                                                       & 10                    \\\hline
+    \textbf{mapreduce.task.io.sort. factor}    & Número máximo de arquivos para juntar simultaneamente durante a ordenação.                                                           & 10                    \\\hline
+    \textbf{mapreduce.map. sort.spill.percent} & Limite de uso do \textit{buffer} de memória que pode ser usado antes que os dados sejam colocados em disco.                          & 0.80                  \\\hline
     \textbf{mapreduce.map. combine.minspills}  & Número mínimo de arquivos de vazamento necessário para o combinador funcionar (se um combinador for especificado)                    & 3                     \\\hline
     \textbf{mapreduce.map. output.compress}    & Define se a saída da função \textit{Map} será comprimida.                                                                            & false                 \\\hline
     \textbf{mapreduce.map. output.compress}    & Codificador usado na compressão.                                                                                                     & DefaultCodec (classe) \\\hline
@@ -29,16 +45,15 @@ Com o propósito de atingir os objetivos demonstrados no \autoref{qua:quadro1}, 
 {\footnotesize
   \centering
   \begin{tabular}{|p{40mm}|p{50mm}|p{30mm}|}\hline
-    \textbf{PARÂMETRO}                                       & \textbf{DESCRIÇÃO}                                                                                                                                                                      & \textbf{VALOR PADRÃO} \\\hline
-    \textbf{mapreduce.reduce.shuffle. parallelcopies}        & Número de tarefas usadas para copiar saída de funções \textit{Map} para funções \textit{Reduce}.                                                                                        & 5                     \\\hline
-    \textbf{mapreduce.reduce.shuffle. maxfetchfailures}      & Número de vezes que uma tarefa \textit{Reduce} tenta obter arquivo de entrada.                                                                                                          & 10                    \\\hline
-    \textbf{mapreduce.task.io.sort. factor}                  & Número máximo de arquivos para juntar simultaneamente durante a ordenação.                                                                                                              & 10                    \\\hline
+    \textbf{PARÂMETRO}                                      & \textbf{DESCRIÇÃO}                                                                                                                                                                      & \textbf{VALOR PADRÃO} \\\hline
+    \textbf{mapreduce.task.io.sort. factor}                 & Número máximo de arquivos para juntar simultaneamente durante a ordenação.                                                                                                              & 10                    \\\hline
+    \textbf{mapreduce.reduce.shuffle. parallelcopies}       & Número de tarefas usadas para copiar saída de funções \textit{Map} para funções \textit{Reduce}.                                                                                        & 5                     \\\hline
+    \textbf{mapreduce.reduce.shuffle. maxfetchfailures}     & Número de vezes que uma tarefa \textit{Reduce} tenta obter arquivo de entrada.                                                                                                          & 10                    \\\hline
     \textbf{mapreduce.reduce.shuffle. input.buffer.percent} & Porcentagem de tamanho do \textit{heap} a ser alocada para a saída da fase \textit{Map}.                                                                                                & 0.70                  \\\hline
-    \textbf{mapreduce.reduce.shuffle. merge.percent}         & Limite porcentual da saída da fase \textit{Map} para iniciar o processo de juntar saídas.                                                                                               & 0.66                  \\\hline
-    \textbf{mapreduce.reduce.merge. inmem.threshold}         & Quantidade de saídas da função \textit{Map} para a saída da fase \textit{Map}. Se for igual ou menor a zero, esse fator é definido apenas pelo mapreduce.reduce. shuffle.merge.percent. & 1000                  \\\hline
-    \textbf{mapreduce.reduce.input. buffer.percent}          & Percentual que determinar o tamanho do \textit{heap} que será utilizado para armazenar saídas da função \textit{Map} durante a fase \textit{Reduce}.                                    & 0.0                   \\\hline
+    \textbf{mapreduce.reduce.shuffle. merge.percent}        & Limite porcentual da saída da fase \textit{Map} para iniciar o processo de juntar saídas.                                                                                               & 0.66                  \\\hline
+    \textbf{mapreduce.reduce.merge. inmem.threshold}        & Quantidade de saídas da função \textit{Map} para a saída da fase \textit{Map}. Se for igual ou menor a zero, esse fator é definido apenas pelo mapreduce.reduce. shuffle.merge.percent. & 1000                  \\\hline
+    \textbf{mapreduce.reduce.input. buffer.percent}         & Percentual que determinar o tamanho do \textit{heap} que será utilizado para armazenar saídas da função \textit{Map} durante a fase \textit{Reduce}.                                    & 0.0                   \\\hline
   \end{tabular}}
 {Adaptado de \cite{HadoopBook15}}{quadro3}{}{}
 
-% \subsection{Shuffle e sort}\label{ssec:shufflesort}
-% O JobTracker tem um número determiado de lugares para a execução das tarefas Map. Cada divisão feita no split é alocada um desses lugares para ser executada. Manda tarefas para um lugar local da máquina melhora a performance do dispositivo de entrada e saída. Se existem lugares sobrando e o map speculative execution está habilitado, várias instância da uma tarefa map podem ser agendadas para serem executadas. Se ele valor nao estiver habilitado, apenas uma instância de tarefa map será executada por vez.
+\subsection{Aplicação do processo de \textit{tuning}}\label{ssec:aplicacao tuning}

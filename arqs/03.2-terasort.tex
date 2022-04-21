@@ -4,7 +4,7 @@ A técnica de \textit{benchmarking} consiste na execução, por diversas vezes, 
 
 O \textit{Hadoop} possui várias métricas de \textit{benchmarks} imbutidas que podem ser utilizadas para melhorar o funcionamento do \textit{Job}, cada uma delas com o objetivo de monitorar um fator diferente, como por exemplo, TestDFSIO  - responsável por testar a performance dos dispositivos de entrada e saída - e MRBench/NNBench - testam em conjunto vários \textit{Jobs} pequenos múltiplas vezes \cite{HadoopBook15}.
 
-Nesse trabalho será utilizado a ferramenta \textit{TeraSort}, que ordena o arquivo de entrada completamente. Para \textcite{HadoopBook15}, ela é extremamente eficaz no \textit{benchmarking} do \textit{HDFS} e \textit{MapReduce} em conjunto, já que todo os dados de entrada são processados. Essa ferramenta funciona em três etapas:
+Nesse trabalho será utilizado a ferramenta \textit{TeraSort}. Para \textcite{HadoopBook15}, ela é extremamente eficaz no \textit{benchmarking} do \textit{HDFS} e \textit{MapReduce} em conjunto, já que todos executa e avalia todos os passos do paradigma \textit{MapReduce}. Essa ferramenta funciona em três etapas:
 
 \begin{itemize}
   \item \textit{TeraGen} executa um \textit{Job} só de funções \textit{Map} que cria um conjunto de dados binários aleatórios. A execução desse comando é exemplificada no \autoref{code:codigo3}.

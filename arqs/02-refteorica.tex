@@ -1,10 +1,10 @@
 \chapter{REFERENCIAL TEÓRICO} \label{cha:refteorico}
 
-Esse capítulo tem como objetivo apresentar detalhadamente os conceitos técnicos que serão utilizados ao longo do trabalho. A \autoref{sec:clusters} introduz o conceito de \textit{clusters}. A \autoref{sec:mapreduce} apresenta o \textit{MapReduce}, o modelo de manipulação de dados feito pelo Google e a \autoref{sec:hadoop} trata do \textit{Hadoop}, o \textit{framework} desenvolvido pela Apache. Por fim, a \autoref{sec:docker} explica virtualização, contêiners e a ferramenta Docker.
+Esse capítulo tem como objetivo apresentar detalhadamente os conceitos técnicos que serão utilizados ao longo do trabalho. A \autoref{sec:clusters} introduz o conceito de \textit{clusters}. A \autoref{sec:mapreduce} apresenta o \textit{MapReduce}, o modelo de manipulação de dados feito pelo Google e a \autoref{sec:hadoop} trata do \textit{Hadoop}, o \textit{\gls{framework}} desenvolvido pela Apache. Por fim, a \autoref{sec:docker} explica virtualização, contêiners e a ferramenta Docker.
 
 \section{CLUSTERS} \label{sec:clusters}
 
-Um \textit{cluster} é um conjunto de computadores que trabalham juntos paralelamente em uma determinada aplicação. Cada computador desse conjunto é usualmente chamado de nodo. Além disso, existem diversas categorias de clusters dependendo do problema que eles buscam computar \cite{GoldmanApache12}.
+Um \textit{cluster} é um conjunto de computadores que trabalham juntos paralelamente em uma determinada aplicação. Cada computador desse conjunto é usualmente chamado de nodo. Além disso, existem diversas categorias de \textit{clusters} dependendo do problema que eles buscam computar \cite{GoldmanApache12}.
 
 Algumas aplicações comuns de \textit{clusters} são modelagem de clima, simulação de acidentes automotivos, mineração de dados e aplicações da área de astrofísica. Além disso, é comumente visto em aplicações comerciais como bancos e serviços de email \cite{ClusterGridCloudComparison11}.
 
@@ -62,7 +62,7 @@ Na \autoref{fig:fig1} foi possível ver como o \textit{MapReduce} funcionaria em
 
 \section{HADOOP} \label{sec:hadoop}
 
-\textit{Hadoop} é um \textit{framework} desenvolvido na linguagem Java pela Apache Software Foundation com os seguintes princípios arquiteturais, segundo \textcite{ImprovingNavarro18}:
+\textit{Hadoop} é um \textit{\gls{framework}} desenvolvido na linguagem Java pela Apache Software Foundation com os seguintes princípios arquiteturais, segundo \textcite{ImprovingNavarro18}:
 \begin{itemize}
   \item A possibilidade de escalar o sistema ao adicionar nodos no \textit{cluster}.
   \item Possibilidade de funcionar bem em \textit{hardware} que não necessite ser caro e de luxo.
@@ -70,9 +70,9 @@ Na \autoref{fig:fig1} foi possível ver como o \textit{MapReduce} funcionaria em
   \item Fornecimento de serviços para que o usuário foque no problema que deseja resolver.
 \end{itemize}
 
-Esse \textit{framework} disponibiliza ferramentas para que o usuário possa escrever as funções necessárias em diversas linguagens de programação, conforme a necessidade do programador. O \textit{framework} funciona na mesma estrutura de Cliente/Servidor apresentada anteriormente, utilizada pelo \textit{MapReduce}. Além disso, oferece ao programador um sistema paralelo e distribuído (\textit{Hadoop HDFS}), com os recursos ocultos ao usuário, mas capaz de lidar com a comunicação entre as máquinas, quaisquer falhas que possam vir a ocorrer e o escalonamento das tarefas.
+Esse \textit{\gls{framework}} disponibiliza ferramentas para que o usuário possa escrever as funções necessárias em diversas linguagens de programação, conforme a necessidade do programador. O \textit{\gls{framework}} funciona na mesma estrutura de Cliente/Servidor apresentada anteriormente, utilizada pelo \textit{MapReduce}. Além disso, oferece ao programador um sistema paralelo e distribuído (\textit{Hadoop HDFS}), com os recursos ocultos ao usuário, mas capaz de lidar com a comunicação entre as máquinas, quaisquer falhas que possam vir a ocorrer e o escalonamento das tarefas.
 
-Além do \textit{Hadoop Map Reduce} e do \textit{Hadoop HDFS}, existem outros subprojetos do Hadoop que compôe sua estrutura principal: o \textit{Hadoop Common}, que fornece ferramentas comuns aos outros subprojetos e \textit{Hadoop YARN}, um \textit{framework} para escalonamento de tarefas e gerenciamento de recursos em \textit{clusters}.
+Além do \textit{Hadoop Map Reduce} e do \textit{Hadoop HDFS}, existem outros subprojetos do Hadoop que compôe sua estrutura principal: o \textit{Hadoop Common}, que fornece ferramentas comuns aos outros subprojetos e \textit{Hadoop YARN}, um \textit{\gls{framework}} para escalonamento de tarefas e gerenciamento de recursos em \textit{clusters}.
 
 \subsection{Hadoop Common}\label{ssec:hadoopcommon}
 
@@ -91,9 +91,9 @@ Uma das características essenciais desse sistema é sua capacidade de lidar com
 
 \subsection{Hadoop MapReduce} \label{ssec:hadoopmapreduce}
 
-O \textit{Hadoop MapReduce} é um \textit{framework} que implementa o modelo de programação \textit{MapReduce} para facilitar a criação de aplicações que são capazes de processar grandes quantidades de dados em paralelo em \textit{clusters} de uma forma confiável e com tolerância a falhas. 
+O \textit{Hadoop MapReduce} é um \textit{\gls{framework}} que implementa o modelo de programação \textit{MapReduce} para facilitar a criação de aplicações que são capazes de processar grandes quantidades de dados em paralelo em \textit{clusters} de uma forma confiável e com tolerância a falhas. 
 
-Esse \textit{framework} é constituído de um \textit{Job} responsável por dividir os arquivos de entrada em blocos independentes que serão processados pelas tarefas (\textit{tasks}) \textit{Map}, ordenados na fase \textit{Shuffle} e inseridos nas tarefas \textit{Reduce} de forma paralela. Os arquivos de entrada e saída são armazenados no sistema de arquivos e o sistema é responsável pelo escalonamento, agendamento e reexecução de tarefas que tenham falhado \cite{HadoopMapReduce22}.
+Esse \textit{\gls{framework}} é constituído de um \textit{Job} responsável por dividir os arquivos de entrada em blocos independentes que serão processados pelas tarefas (\textit{tasks}) \textit{Map}, ordenados na fase \textit{Shuffle} e inseridos nas tarefas \textit{Reduce} de forma paralela. Os arquivos de entrada e saída são armazenados no sistema de arquivos e o sistema é responsável pelo escalonamento, agendamento e reexecução de tarefas que tenham falhado \cite{HadoopMapReduce22}.
 
 A estrutura Cliente/Servidor tem como nodo Master o \textit{JobTracker} e como nodos Worker os \textit{TaskTrackers}. Como apresentado anteriormente, o nodo Master designa as tarefas e os nodos Worker as executam. A aplicação do programador fornece o local dos arquivos de entrada e saída, a implementação das funções de \textit{Map} e \textit{Reduce} e outros parâmetros de configuração do \textit{Job}. Então, o cliente \textit{Hadoop} envia o \textit{Job} e o arquivo de configuração para o \textit{JobTracker} que distribui as tarefas e controla o funcionamento desse \textit{Job}.
 
