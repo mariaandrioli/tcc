@@ -183,8 +183,8 @@
 % ---
 % Conclusão (outro exemplo de capítulo sem numeração e presente no sumário)
 % ---
-%\chapter*[Conclusão]{Conclusão}
-%\addcontentsline{toc}{chapter}{Conclusão}
+% \chapter*[GLOSSÁRIO]{GLOSSÁRIO}
+% \addcontentsline{toc}{chapter}{GLOSSÁRIO}
 % ---
 %\input{cap06}
 
@@ -214,21 +214,22 @@
 % ---
 % Define nome e preâmbulo do glossário
 % ---
-\phantompart
-\renewcommand{\glossaryname}{Glossário}
+% \phantompart
+\renewcommand{\glossaryname}{GLOSSÁRIO}
 
 % ---
 % Estilo de glossário
 % ---
-% \setglossarystyle{index}
-% \setglossarystyle{altlisthypergroup}
 \setglossarystyle{tree}
+
 % ---
 % Imprime o glossário
 % ---
 \cleardoublepage
 \phantomsection
-\addcontentsline{toc}{chapter}{\glossaryname}
+% \chapter*[GLOSSÁRIO]{GLOSSÁRIO}
+\addtocontents{toc}{\vspace{-12pt}}
+\addcontentsline{toc}{chapter}{\protect\numberline{}\glossaryname}
 \printglossaries
 % ---
 

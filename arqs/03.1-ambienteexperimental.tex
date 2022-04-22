@@ -2,6 +2,6 @@
 
 O ambiente no qual serão realizadas as execuções e testes tem as seguintes configurações: LENOVO Ideapad 310 com processador Intel(R) Core(TM) i5-6200U, 2.30GHz de velocidade de processamento,  memória RAM de 8GB, armazenamento de disco de 1TB e SSD Kingston A400 de 480, com leitura de 500 MB/s e gravação de 450 MB/s. 
 
-No entanto, a imagem Docker é executada no Windows WSL2, Substema do Windows para Linux, que possibilitam aos programadores executar um ambiente Linux mesmo usando um sistema Windows \cite{MicrosoftWSL22}. Nesse ambiente virtual, está sendo executado Linux na distribuição Ubuntu 20.04, Docker na versão 20.10.12 e Hadoop na versão 3.2.1.
+No entanto, a imagem Docker é executada no Windows WSL2, Subsistema do Windows para Linux, que possibilita aos programadores executar um ambiente Linux mesmo usando um sistema Windows \cite{MicrosoftWSL22}. Nesse ambiente virtual está sendo executado Linux na distribuição Ubuntu 20.04, Docker na versão 20.10.12 e Hadoop na versão 3.2.1.
 
 Usando a imagem do \textit{Hadoop} para Docker disponibilizada pelo Big Data Europe \cite{BigDataHadoopGithub}, foi configurado um \textit{cluster Hadoop} em um contêiner Docker com 3 \textit{datanodes (workers)}, um \textit{namenode HDFS (master)}, um gerenciador de recursos YARN, um servidor com histórico de operações e um gerenciador de nodos.
