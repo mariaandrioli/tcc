@@ -1,0 +1,119 @@
+2022-04-22 17:07:13,288 INFO client.RMProxy: Connecting to ResourceManager at resourcemanager/172.25.0.8:8032
+2022-04-22 17:07:13,721 INFO client.AHSProxy: Connecting to Application History server at historyserver/172.25.0.7:10200
+2022-04-22 17:07:14,811 INFO conf.Configuration: resource-types.xml not found
+2022-04-22 17:07:14,812 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+Deleted /user/root/terasort/10G-terasort-report
+2022-04-22 17:07:20,201 INFO client.RMProxy: Connecting to ResourceManager at resourcemanager/172.25.0.8:8032
+2022-04-22 17:07:20,480 INFO client.AHSProxy: Connecting to Application History server at historyserver/172.25.0.7:10200
+2022-04-22 17:07:20,817 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/root/.staging/job_1650646695465_0002
+2022-04-22 17:07:21,001 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2022-04-22 17:07:21,219 INFO input.FileInputFormat: Total input files to process : 1
+Spent 88ms computing base-splits.
+Spent 5ms computing TeraScheduler splits.
+2022-04-22 17:07:21,258 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2022-04-22 17:07:21,354 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2022-04-22 17:07:21,770 INFO mapreduce.JobSubmitter: number of splits:1
+2022-04-22 17:07:22,058 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2022-04-22 17:07:22,071 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1650646695465_0002
+2022-04-22 17:07:22,071 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2022-04-22 17:07:22,371 INFO conf.Configuration: resource-types.xml not found
+2022-04-22 17:07:22,371 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2022-04-22 17:07:22,702 INFO impl.YarnClientImpl: Submitted application application_1650646695465_0002
+2022-04-22 17:07:22,777 INFO mapreduce.Job: The url to track the job: http://resourcemanager:8088/proxy/application_1650646695465_0002/
+2022-04-22 17:07:22,779 INFO mapreduce.Job: Running job: job_1650646695465_0002
+2022-04-22 17:07:30,940 INFO mapreduce.Job: Job job_1650646695465_0002 running in uber mode : false
+2022-04-22 17:07:30,943 INFO mapreduce.Job:  map 0% reduce 0%
+2022-04-22 17:07:49,076 INFO mapreduce.Job:  map 14% reduce 0%
+2022-04-22 17:07:55,121 INFO mapreduce.Job:  map 22% reduce 0%
+2022-04-22 17:08:01,155 INFO mapreduce.Job:  map 30% reduce 0%
+2022-04-22 17:08:07,196 INFO mapreduce.Job:  map 39% reduce 0%
+2022-04-22 17:08:13,203 INFO mapreduce.Job:  map 47% reduce 0%
+2022-04-22 17:08:19,235 INFO mapreduce.Job:  map 55% reduce 0%
+2022-04-22 17:08:25,269 INFO mapreduce.Job:  map 63% reduce 0%
+2022-04-22 17:08:28,314 INFO mapreduce.Job:  map 100% reduce 0%
+2022-04-22 17:08:33,342 INFO mapreduce.Job:  map 100% reduce 100%
+2022-04-22 17:08:34,360 INFO mapreduce.Job: Job job_1650646695465_0002 completed successfully
+2022-04-22 17:08:34,511 INFO mapreduce.Job: Counters: 54
+	File System Counters
+		FILE: Number of bytes read=95
+		FILE: Number of bytes written=458679
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=10000000137
+		HDFS: Number of bytes written=25
+		HDFS: Number of read operations=8
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+		HDFS: Number of bytes read erasure-coded=0
+	Job Counters
+		Launched map tasks=1
+		Launched reduce tasks=1
+		Rack-local map tasks=1
+		Total time spent by all maps in occupied slots (ms)=53344
+		Total time spent by all reduces in occupied slots (ms)=3247
+		Total time spent by all map tasks (ms)=53344
+		Total time spent by all reduce tasks (ms)=3247
+		Total vcore-milliseconds taken by all map tasks=53344
+		Total vcore-milliseconds taken by all reduce tasks=3247
+		Total megabyte-milliseconds taken by all map tasks=54624256
+		Total megabyte-milliseconds taken by all reduce tasks=3324928
+	Map-Reduce Framework
+		Map input records=100000000
+		Map output records=3
+		Map output bytes=83
+		Map output materialized bytes=95
+		Input split bytes=137
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=3
+		Reduce shuffle bytes=95
+		Reduce input records=3
+		Reduce output records=1
+		Spilled Records=6
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=183
+		CPU time spent (ms)=51140
+		Physical memory (bytes) snapshot=596570112
+		Virtual memory (bytes) snapshot=5298937856
+		Total committed heap usage (bytes)=397934592
+		Peak Map Physical memory (bytes)=436387840
+		Peak Map Virtual memory (bytes)=2647097344
+		Peak Reduce Physical memory (bytes)=169750528
+		Peak Reduce Virtual memory (bytes)=2651840512
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters
+		Bytes Read=10000000000
+	File Output Format Counters
+		Bytes Written=25
+	Command being timed: "hadoop jar hadoop-mapreduce-examples-3.2.1.jar teravalidate -D mapreduce.task.io.sort.mb=100 -D mapreduce.task.io.sort.factor=10 -D mapreduce.map.sort.spill.percent=0.80 -D mapreduce.map.combine.minspills=3 -D mapreduce.map.output.compress=false -D mapreduce.map.output.compress=org.apache.hadoop.io.compress.DefaultCodec -D mapreduce.shuffle.max.threads=0 -D mapreduce.reduce.shuffle.parallelcopies=5 -D mapreduce.reduce.shuffle.maxfetchfailures=10 -D mapreduce.reduce.shuffle.input.buffer.percent=0.70 -D mapreduce.reduce.shuffle.merge.percent=0.66 -D mapreduce.reduce.merge.inmem.threshold=1000 -D mapreduce.reduce.input.buffer.percent=0.0 -D dfs.blocksize=67108864 /user/root/terasort/10G-terasort-output /user/root/terasort/10G-terasort-report"
+	User time (seconds): 5.13
+	System time (seconds): 2.62
+	Percent of CPU this job got: 10%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:17.03
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 254572
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 42
+	Minor (reclaiming a frame) page faults: 72616
+	Voluntary context switches: 7472
+	Involuntary context switches: 2046
+	Swaps: 0
+	File system inputs: 12040
+	File system outputs: 2344
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
