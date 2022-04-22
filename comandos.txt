@@ -1,0 +1,13 @@
+docker cp hadoop-mapreduce-examples-3.2.1.jar namenode:/tmp/
+
+docker cp teragen.sh namenode:/tmp/
+docker cp terasort.sh namenode:/tmp/
+docker cp teravalidate.sh namenode:/tmp/
+
+apt-get update
+apt-get install time
+
+hdfs dfs -ls /user/root/terasort/10G-terasort-input/
+
+hdfs dfs -rm -r -f /user/root/terasort/10G-terasort-output/*
+hdfs dfs -rm -r -f /user/root/terasort/10G-terasort-report/*
