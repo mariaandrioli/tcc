@@ -61,8 +61,6 @@ hadoop fs -rm -r -f -skipTrash ${OUTPUT}
 -D mapreduce.reduce.merge.inmem.threshold=1000 \
 -D mapreduce.reduce.input.buffer.percent=0.0 \
 -D dfs.blocksize=67108864 \
--D mapreduce.map.memory.mb=2048 \
--D mapreduce.reduce.memory.mb=4096 \
 ${INPUT} ${OUTPUT} #  >> $RESULTSFILE 2>&1
 
 # -Dmapreduce.map.log.level=INFO \

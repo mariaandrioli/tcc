@@ -53,7 +53,6 @@ hadoop fs -rm -r -f -skipTrash ${REPORT}
 -D mapreduce.reduce.merge.inmem.threshold=1000 \
 -D mapreduce.reduce.input.buffer.percent=0.0 \
 -D dfs.blocksize=67108864 \
--D mapred.child.java.opts=-Xmx200m \
 ${OUTPUT} ${REPORT} #  >> $RESULTSFILE 2>&1
 
 # -Ddfs.blocksize=256M \
