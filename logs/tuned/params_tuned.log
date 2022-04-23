@@ -2,7 +2,7 @@ CORE_CONF_fs_defaultFS=hdfs://namenode:9000
 CORE_CONF_hadoop_http_staticuser_user=root
 CORE_CONF_hadoop_proxyuser_hue_hosts=*
 CORE_CONF_hadoop_proxyuser_hue_groups=*
-CORE_CONF_io_compression_codecs=org.apache.hadoop.io.compress.DefaultCodec
+CORE_CONF_io_compression_codecs=org.apache.hadoop.io.compress.SnappyCodec
 
 HDFS_CONF_dfs_webhdfs_enabled=true
 HDFS_CONF_dfs_permissions_enabled=false
@@ -27,7 +27,7 @@ YARN_CONF_yarn_timeline___service_enabled=true
 YARN_CONF_yarn_timeline___service_generic___application___history_enabled=true
 YARN_CONF_yarn_timeline___service_hostname=historyserver
 YARN_CONF_mapreduce_map_output_compress=true
-YARN_CONF_mapred_map_output_compress_codec=org.apache.hadoop.io.compress.DefaultCodec
+YARN_CONF_mapred_map_output_compress_codec=org.apache.hadoop.io.compress.SnappyCodec
 YARN_CONF_yarn_nodemanager_resource_memory___mb=8192
 YARN_CONF_yarn_nodemanager_resource_cpu___vcores=8
 YARN_CONF_yarn_nodemanager_disk___health___checker_max___disk___utilization___per___disk___percentage=98.5
@@ -40,3 +40,27 @@ MAPRED_CONF_mapreduce_reduce_memory_mb=1024
 MAPRED_CONF_yarn_app_mapreduce_am_env=HADOOP_MAPRED_HOME=/opt/hadoop-3.2.1/
 MAPRED_CONF_mapreduce_map_env=HADOOP_MAPRED_HOME=/opt/hadoop-3.2.1/
 MAPRED_CONF_mapreduce_reduce_env=HADOOP_MAPRED_HOME=/opt/hadoop-3.2.1/
+
+-D mapreduce.map.log.level=INFO \
+-D mapreduce.reduce.log.level=INFO \
+-D yarn.app.mapreduce.am.log.level=INFO \
+-D yarn.nodemanager.resource.detect-hardware-capabilities=true \
+-D yarn.nodemanager.resource.memory-mb=-1 \
+-D mapreduce.task.io.sort.mb=5626 \*
+-D mapreduce.task.io.sort.factor=100 \*
+-D mapreduce.map.sort.spill.percent=1.0 \*
+-D mapreduce.map.combine.minspills=3 \
+-D mapreduce.map.output.compress=true \*
+-D mapreduce.map.output.compress.codec=org.apache.hadoop.io.compress.SnappyCodec \*
+-D mapreduce.shuffle.max.threads=0 \
+-D mapreduce.reduce.shuffle.parallelcopies=30 \*
+-D mapreduce.reduce.shuffle.maxfetchfailures=5 \
+-D mapreduce.reduce.shuffle.input.buffer.percent=0.70 \
+-D mapreduce.reduce.shuffle.merge.percent=0.66 \
+-D mapreduce.reduce.merge.inmem.threshold=1000 \
+-D mapreduce.reduce.input.buffer.percent=0.0 \
+-D dfs.blocksize=134217728 \*
+-D dfs.replication=1 \#
+-D mapreduce.output.fileoutputformat.compress=true \#
+-D mapreduce.output.fileoutputformat.compress.codec=org.apache.hadoop.io.compress.GzipCodec \#
+-D mapreduce.output.fileoutputformat.compress.type=BLOCK \#
