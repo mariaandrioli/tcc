@@ -1,18 +1,18 @@
 \section{PARÂMETROS DO \textit{MAPREDUCE}} \label{sec:parametrosmapreduce}
 
-O \textit{tuning} pode ser realizado através da avaliação e mudança dos parâmetros de configuração do \textit{MapReduce}. Cada parâmetro tem um objetivo específico e pode melhorar uma característica do processo. Algumas variáveis mudam configurações no \textit{Job} e algumas afetam o \textit{cluster} diretamente.
+O \textit{\gls{tuning}} pode ser realizado através da avaliação e mudança dos parâmetros de configuração do \textit{MapReduce}. Cada parâmetro tem um objetivo específico e pode melhorar uma característica do processo. Algumas variáveis mudam configurações no \textit{Job} e algumas afetam o \textit{cluster} diretamente.
 
 \textit{Hadoop} foi criado para processar grandes arquivos de entradas e é otimizado para \textit{clusters} em máquinas heterogêneas, ou seja, sistemas que usam mais de um tipo de processador com o objetivo de melhorar a performance. Cada \textit{Job} segue a seguinte sequência de passos: configuração, fase \textit{shuffle/sort} e fase \textit{reduce}. O \textit{Hadoop} é responsável por configurar e gerenciar cada um desses passos \cite{ProHadoop09}.
 
-\textcite{HadoopBook15} explica o processo de \textit{tuning} e explicar os parâmetros específicos para otimização da cada passo, detalhado nas seções a seguir.
+% \textcite{HadoopBook15} explica o processo de \textit{\gls{tuning}} e explicar os parâmetros específicos para otimização da cada passo, detalhado nas seções a seguir.
 
-\subsection{Configuração de parâmetros}\label{ssec:configuracaooparametros}
+% \subsection{Configuração de parâmetros}\label{ssec:configuracaooparametros}
 
-O objetivo principal a ser atingido durante o \textit{tuning} é possibilitar que a fase \textit{Shuffle} tenha a maior quantidade de memória disponível, ao mesmo tempo que as fases \textit{Map} e \textit{Reduce} tenham memória suficiente para funcionar propriamente. A quantidade de memória disponibilizada a cada \textit{Java Virtual Machine} é determinada pelo parâmetro \textit{mapred.child.java.opts} e também pode ser definida separadamente para cada fase com os parâmetros \textit{mapreduce.reduce.java.opts} e \textit{mapreduce.map.java.opts} \cite{HadoopBook15}.
+O objetivo principal a ser atingido durante o \textit{\gls{tuning}} é possibilitar que a fase \textit{Shuffle} tenha a maior quantidade de memória disponível, ao mesmo tempo que as fases \textit{Map} e \textit{Reduce} tenham memória suficiente para funcionar propriamente. A quantidade de memória disponibilizada a cada \textit{\gls{javavirtualmachine}} é determinada pelos parâmetros \textit{mapreduce.map.memory.mb} e \textit{mapreduce.reduce.memory.mb} \cite{HadoopBook15}.
 
-A fase \textit{Map} recebe de entrada um arquivo e o parâmetro \textit{dfs.block.size} é responsável por determinar o tamanho do bloco em \textit{bytes} sobre o qual este arquivo será dividido. Ainda nessa fase, os pares (CHAVE, VALOR) são particionados, e essas partições são ordenadas na fase \textit{Shuffle}. O arquivo criado para cada partição é chamado de \textit{spill}. Para cada tarefa \textit{Reduce} existe um \textit{spill}, que passará por uma ordenação do tipo \textit{Merge Sort}, na segunda etapa da fase \textit{Shuffle}, chamada de \textit{Sort} \cite{ProHadoop09}.
+A fase \textit{Map} recebe de entrada um arquivo e o parâmetro \textit{dfs.blocksize} é responsável por determinar o tamanho do bloco em \textit{\gls{byte}s} sobre o qual este arquivo será dividido enquanto o parâmetro \textit{dfs.replication} é responsável por determinar quantos blocos serão criados. Ainda nessa fase, os pares (CHAVE, VALOR) são particionados, e essas partições são ordenadas na fase \textit{Shuffle}. O arquivo criado para cada partição é chamado de \textit{spill}. Para cada tarefa \textit{Reduce} existe um \textit{spill}, que passará por uma ordenação do tipo \textit{\gls{mergesort}}, na segunda etapa da fase \textit{Shuffle}, chamada de \textit{Sort} \cite{ProHadoop09}.
 
-Segundo \textcite{HadoopBook15}, a melhor performance da fase \textit{Map} pode ser obtida através da minimalização da quantidade de \textit{spills}, cujos parâmetros de controles são \textit{mapreduce.task.io.sort.factor} - número máximo de entradas para a função \textit{Merge Sort} - e \textit{mapreduce.task.io.sort.mb} - tamanho do \textit{buffer} de memória para a saída da função \textit{Map}. O último é especialmente importante e deve ser aumentado sempre que possível. Quando o \textit{buffer} atinge a capacidade percentual determinada pelo parâmetro \textit{(mapreduce.map.sort.spill.percent)} ocorre um vazamento de memória e os conteúdos restantes do arquivo de saída são colocados no disco (no arquivo chamado de \textit{spill}).
+Segundo \textcite{HadoopBook15}, a melhor performance da fase \textit{Map} pode ser obtida através da minimalização da quantidade de \textit{spills}, cujos parâmetros de controles são \textit{mapreduce.task.io.sort.factor} - número máximo de entradas para a função \textit{\gls{mergesort}} - e \textit{mapreduce.task.io.sort.mb} - tamanho do \textit{\gls{buffer}} de memória para a saída da função \textit{Map}. O último é especialmente importante e deve ser aumentado sempre que possível. Quando o \textit{\gls{buffer}} atinge a capacidade percentual determinada pelo parâmetro \textit{(mapreduce.map.sort.spill.percent)} ocorre um vazamento de memória e os conteúdos restantes do arquivo de saída são colocados no disco (no arquivo chamado de \textit{spill}).
 
 Caso exista mais de uma determinada quantidade de arquivos \textit{spill} (quantidade determinada pela propriedade \textit{mapreduce.map.combine.minspills}), a função combinadora é executada novamente antes de ser criado o arquivo de saída. Uma outra otimização possível é o uso de compressores de dados nos arquivos de saída da fase \textit{Map}, processo facilmente habilitado através dos parâmetros \textit{mapreduce.map.output.compress} - valor booleano que habilita a compressão - e \textit{mapreduce.map.output.compress.codec} - classe que vai realizar a compressão \cite{HadoopBook15}.
 
@@ -20,9 +20,11 @@ A fase \textit{Reduce} é otimizada quando os dados intermediários são armazen
 
 Um dos parâmetros que pode ser otimizado na fase \textit{Reduce} é o \textit{mapreduce.reduce. shuffle.parallelcopies}, que determina a quantidade de tarefas que serão executadas em paralelo pelos \textit{reducers} para copiar os arquivos de saída das tarefas \textit{Map} quando estas são finalizadas e seu valor ótimo depende da quantidade de dados que já passou pela fase \textit{Shuffle} \cite{MRONLINELi14}.
 
-Na parte do processo onde as cópias dos arquivos de saída da fase \textit{Map} são feitas, o tamanho do \textit{buffer} é controlado pela propriedade \textit{mapreduce.reduce.shuffle.input.buffer.percent}, que especifica a proporção do \textit{heap} que será usada para a finalidade mencionada. Quando esse \textit{buffer} atinge um número determinado por \textit{mapreduce.reduce.shuffle.merge.percent} ou \textit{mapreduce.reduce.merge.inmem.threshold}, o restante dos arquivos é alocado no disco \cite{HadoopBook15}.
+Na parte do processo onde as cópias dos arquivos de saída da fase \textit{Map} são feitas, o tamanho do \textit{\gls{buffer}} é controlado pela propriedade \textit{mapreduce.reduce.shuffle.input.buffer.percent}, que especifica a proporção do \textit{\gls{heap}} que será usada para a finalidade mencionada. Quando esse \textit{\gls{buffer}} atinge um número determinado por \textit{mapreduce.reduce.shuffle.merge.percent} ou \textit{mapreduce.reduce.merge.inmem.threshold}, o restante dos arquivos é alocado no disco \cite{HadoopBook15}.
 
 Para cada gerenciador de nodo, o número de partições do arquivo de saída disponilizados para a fase \textit{Reduce} é determinado pela propriedade \textit{mapreduce.shuffle.max.threads}. O valor padrão de 0 determina que o número máximo de tarefas é o dobro do número de processadores da máquina \cite{ProHadoop09}.
+
+Ainda, as propriedades \textit{mapreduce.output.fileoutputformat.compress}, \textit{mapreduce.out- put.fileoutputformat.compress} e \textit{mapreduce.output.fileoutputformat.compress} determinam, respectivamente, se os arquivos de saída do \textit{Job} serão comprimidos, qual será a classe responsável pela compressão e como essa compressão ocorrerá. Por fim, o parâmetro \textit{io.file.buffer.size} determina o tamanho do \textit{\gls{buffer}} que será usado nas operações de leitura e escrita.
 
 Os quadros a seguir resumem os parâmetros mencionados previamente, assim como outros parâmetros relevantes e os valores padrões de cada um:
 
@@ -30,44 +32,47 @@ Os quadros a seguir resumem os parâmetros mencionados previamente, assim como o
 {\footnotesize
   \centering
   \begin{tabular}{|p{30mm}|p{50mm}|p{35mm}|}\hline
-    \textbf{PARÂMETRO}                         & \textbf{DESCRIÇÃO}                                                                                                                   & \textbf{VALOR PADRÃO} \\\hline
-    \textbf{mapreduce.task. io.sort.mb}        & Tamanho em \textit{bytes} usado no \textit{buffer} de memória na ordenação na saída da função \textit{Map}.                          & 100                   \\\hline
-    \textbf{mapreduce.task.io. sort.factor}    & Número máximo de arquivos para juntar simultaneamente durante a ordenação.                                                           & 10                    \\\hline
-    \textbf{mapreduce.map. sort.spill.percent} & Limite de uso do \textit{buffer} de memória que pode ser usado antes que os dados sejam colocados em disco.                          & 0.80                  \\\hline
-    \textbf{mapreduce.map. combine.minspills}  & Número mínimo de arquivos de vazamento necessário para o combinador funcionar (se um combinador for especificado).                   & 3                     \\\hline
-    \textbf{mapreduce.map. output.compress}    & Define se a saída da função \textit{Map} será comprimida.                                                                            & false                 \\\hline
-    \textbf{mapreduce.map. output.compress}    & Codificador usado na compressão.                                                                                                     & DefaultCodec (classe) \\\hline
-    \textbf{mapreduce.shuffle. max.threads}    & Número de tarefas \textit{Worker} por gerenciador de nodos. Esse parâmetro não funciona por \textit{Job} e sim por \textit{cluster}. & 0                     \\\hline
+    \textbf{PARÂMETRO}                             & \textbf{DESCRIÇÃO}                                                                                                                   & \textbf{VALOR PADRÃO} \\\hline
+    \textbf{mapreduce.task. io.sort.mb}            & Tamanho em \textit{\gls{byte}s} do \textit{\gls{buffer}} de memória na ordenação na saída da função \textit{Map}.                          & 100                   \\\hline
+    \textbf{mapreduce.task.io. sort.factor}        & Número máximo de arquivos para juntar simultaneamente durante a ordenação.                                                           & 10                    \\\hline
+    \textbf{mapreduce.map. sort.spill.percent}     & Limite de uso do \textit{\gls{buffer}} de memória que pode ser usado antes que os dados sejam colocados em disco.                          & 0.80                  \\\hline
+    \textbf{mapreduce.map. combine.minspills}      & Número mínimo de arquivos de vazamento necessário para o combinador funcionar (se um combinador for especificado).                   & 3                     \\\hline
+    \textbf{mapreduce.map. output.compress}        & Define se a saída da função \textit{Map} será comprimida.                                                                            & false                 \\\hline
+    \textbf{mapreduce.map. output.compress. codec} & Codificador usado na compressão.                                                                                                     & DefaultCodec          \\\hline
+    \textbf{mapreduce.shuffle. max.threads}        & Número de tarefas \textit{Worker} por gerenciador de nodos. Esse parâmetro não funciona por \textit{Job} e sim por \textit{cluster}. & 0                     \\\hline
   \end{tabular}}
-{Adaptado de \cite{HadoopBook15}}{quadro2}{}{}
+{Adaptado de \cite{HadoopDocs321}}{quadro2}{}{}
 
-\qquadro{Parâmetros de ajuste da quantidade de tarefas \textit{Map}}
+\qquadro{Parâmetros de ajuste da quantidade de tarefas \textit{Reduce}}
 {\footnotesize
   \centering
   \begin{tabular}{|p{40mm}|p{50mm}|p{30mm}|}\hline
-    \textbf{PARÂMETRO}                                      & \textbf{DESCRIÇÃO}                                                                                                                                                                      & \textbf{VALOR PADRÃO} \\\hline
-    \textbf{mapreduce.task.io.sort. factor}                 & Número máximo de arquivos para juntar simultaneamente durante a ordenação.                                                                                                              & 10                    \\\hline
-    \textbf{mapreduce.reduce.shuffle. parallelcopies}       & Número de tarefas usadas para copiar saída de funções \textit{Map} para funções \textit{Reduce}.                                                                                        & 5                     \\\hline
-    \textbf{mapreduce.reduce.shuffle. maxfetchfailures}     & Número de vezes que uma tarefa \textit{Reduce} tenta obter arquivo de entrada.                                                                                                          & 10                    \\\hline
-    \textbf{mapreduce.reduce.shuffle. input.buffer.percent} & Porcentagem de tamanho do \textit{heap} a ser alocada para a saída da fase \textit{Map}.                                                                                                & 0.70                  \\\hline
-    \textbf{mapreduce.reduce.shuffle. merge.percent}        & Limite porcentual da saída da fase \textit{Map} para iniciar o processo de juntar saídas.                                                                                               & 0.66                  \\\hline
-    \textbf{mapreduce.reduce.merge. inmem.threshold}        & Quantidade de saídas da função \textit{Map} para a saída da fase \textit{Map}. Se for igual ou menor a zero, esse fator é definido apenas pelo \textit{mapreduce.reduce.shuffle. merge.percent.} & 1000                  \\\hline
-    \textbf{mapreduce.reduce.input. buffer.percent}         & Percentual que determinar o tamanho do \textit{heap} que será utilizado para armazenar saídas da função \textit{Map} durante a fase \textit{Reduce}.                                    & 0.0                   \\\hline
+    \textbf{PARÂMETRO}                                      & \textbf{DESCRIÇÃO}                                                                                                                                   & \textbf{VALOR PADRÃO} \\\hline
+    \textbf{mapreduce.task.io.sort. factor}                 & Número máximo de arquivos para juntar simultaneamente durante a ordenação.                                                                           & 10                    \\\hline
+    \textbf{mapreduce.reduce.shuffle. parallelcopies}       & Número de tarefas usadas para copiar saída de funções \textit{Map} para funções \textit{Reduce}.                                                     & 5                     \\\hline
+    \textbf{mapreduce.reduce.shuffle. maxfetchfailures}     & Número de vezes que uma tarefa \textit{Reduce} tenta obter arquivo de entrada.                                                                       & 10                    \\\hline
+    \textbf{mapreduce.reduce.shuffle. input.buffer.percent} & Porcentagem de tamanho do \textit{\gls{heap}} a ser alocada para a saída da fase \textit{Map}.                                                             & 0.70                  \\\hline
+    \textbf{mapreduce.reduce.shuffle. merge.percent}        & Limite porcentual da saída da fase \textit{Map} para iniciar o processo de juntar saídas.                                                            & 0.66                  \\\hline
+    \textbf{mapreduce.reduce.merge. inmem.threshold}        & Quantidade de saídas da função \textit{Map} para a saída da fase \textit{Map}.                                                                       & 1000                  \\\hline
+    \textbf{mapreduce.reduce.input. buffer.percent}         & Percentual que determinar o tamanho do \textit{\gls{heap}} que será utilizado para armazenar saídas da função \textit{Map} durante a fase \textit{Reduce}. & 0.0                   \\\hline
+    \textbf{mapreduce.job.reduce. slowstart.completedmaps}  & Percentual de tarefas \textit{Map} que devem estar completas antes que as tarefas \textit{Reduce} sejam iniciadas.                                   & 0.05                  \\\hline
   \end{tabular}}
-{Adaptado de \cite{HadoopBook15}}{quadro3}{}{}
+{Adaptado de \cite{HadoopDocs321}}{quadro3}{}{}
 
 \qquadro{Parâmetros adicionais de configuração}
 {\footnotesize
   \centering
-  \begin{tabular}{|p{40mm}|p{50mm}|p{30mm}|}\hline
-    \textbf{PARÂMETRO}                   & \textbf{DESCRIÇÃO}                                                                                   & \textbf{VALOR PADRÃO} \\\hline
-    \textbf{dfs.block.size}              & Tamanho do bloco em \textit{bytes} sobre o qual arquivo de entrada do \textit{Map} será.            & 67108864 bytes        \\\hline
-    \textbf{mapred.child.java.opts}      & Memória alocada para a \textit{Java Virtual Machine} que executará o processo de \textit{MapReduce}. & 200MB                 \\\hline
-    \textbf{mapreduce.map.java.opts}     & Memória alocada para a fase de \textit{Map}.                                                         & 200MB                 \\\hline
-    \textbf{mapreduce.reduce.java. opts} & Memória alocada para a fase de \textit{Reduce}.                                                      & 200MB                 \\\hline
+  \begin{tabular}{|p{30mm}|p{50mm}|p{30mm}|}\hline
+    \textbf{PARÂMETRO}                                          & \textbf{DESCRIÇÃO}                                                                       & \textbf{VALOR PADRÃO} \\\hline
+    \textbf{dfs.blocksize}                                      & Tamanho do bloco em \textit{\gls{byte}s} sobre o qual arquivo de entrada do \textit{Map} será. & 67108864 \gls{byte}s        \\\hline
+    \textbf{dfs.replication}                                    & Quantidade de replicação dos blocos.                                                     & 3                     \\\hline
+    \textbf{mapreduce.map. memory.mb}                           & Memória alocada para cada tarefa \textit{Map}.                                           & 1024                  \\\hline
+    \textbf{mapreduce.reduce. memory.mb}                           & Memória alocada para cada tarefa \textit{Reduce}.                                        & 1024                  \\\hline
+    \textbf{mapreduce.output. fileoutputformat.compress}        & Define se a saída do \textit{Job} será comprimida.                                       & false                 \\\hline
+    \textbf{mapreduce.output. fileoutputformat. compress.codec} & Codificador usado na compressão.                                                         & DefaultCodec          \\\hline
+    \textbf{mapreduce.output. fileoutputformat. compress.type}  & Define como os arquivos de saída do \textit{Job} serão comprimidos.                      & RECORD                \\\hline
+    \textbf{io.file.buffer.size}                                & Tamanho do \textit{buffer} que será usado durante operações de leitura e escrita.        & 4096                  \\\hline
   \end{tabular}}
-{A autora (2022)}{quadro4}{}{}
+{Adaptado de \cite{HadoopDocs321}}{quadro4}{}{}
 
 
-\newpage
-\subsection{Aplicação do processo de \textit{tuning}}\label{ssec:aplicacao tuning}

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILES="*/terasort_default_*"
+FILES="*/*/*terasort_tuned*.log"
 REGEX="[0-9]+"
 for f in $FILES
 do
@@ -10,6 +10,7 @@ do
   time_secs1=`echo "scale=2;${LINE//[!0-9]/}/1000" | bc`
   time_secs2=`echo "scale=2;${LINE2//[!0-9]/}/1000" | bc`
   sum=$(echo "$time_secs1 + $time_secs2" | bc)
-  echo "$f MAP TIME: ${sum}"
+  # echo "$f MAP TIME:"
+  echo "${sum}"
 #   cat "$f"
 done

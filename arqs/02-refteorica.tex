@@ -46,7 +46,7 @@ reduce(String chave, Iterador valores):
 \end{lstlisting}
 
 \newpage
-A função \textit{Map} gera um objeto intermediário de cada palavra associada a uma lista do seu número de ocorrências no texto e a função \textit{Reduce} soma os valores até que essas ocorrências por palavras sejam totalizadas. Além disso, o usuário cria um configuração de \textit{MapReduce} com os parâmetros de entrada e saída e eventuais parâmetros de \textit{tuning}.
+A função \textit{Map} gera um objeto intermediário de cada palavra associada a uma lista do seu número de ocorrências no texto e a função \textit{Reduce} soma os valores até que essas ocorrências por palavras sejam totalizadas. Além disso, o usuário cria um configuração de \textit{MapReduce} com os parâmetros de entrada e saída e eventuais parâmetros de \textit{\gls{tuning}}.
 
 Para exemplificar ainda mais, considere um arquivo de texto com três linhas nas quais estão as seguintes frases, respectivamente, uma em cada linha: "vamos para casa", "na minha casa", "para na casa". Nesse exemplo, a função \textit{Map} é chamada três vezes, uma para cada linha, gerando os pares (CHAVE, VALOR) intermediários, um para cada palavra encontrada no texto, como é mostrado na \autoref{fig:fig1}. Para cada palavra distinta ("vamos", "para", "casa", "na", "minha"), é executada a função \textit{Reduce}, que soma quantas vezes cada uma dessas palavras apareceu no texto e gera um arquivo de saída.
 
@@ -65,7 +65,7 @@ Na \autoref{fig:fig1} foi possível ver como o \textit{MapReduce} funcionaria em
 \textit{Hadoop} é um \textit{\gls{framework}} desenvolvido na linguagem Java pela Apache Software Foundation com os seguintes princípios arquiteturais, segundo \textcite{ImprovingNavarro18}:
 \begin{itemize}
   \item A possibilidade de escalar o sistema ao adicionar nodos no \textit{cluster}.
-  \item Possibilidade de funcionar bem em \textit{hardware} que não necessite ser caro e de luxo.
+  \item Possibilidade de funcionar bem em \textit{\gls{hardware}} que não necessite ser caro e de luxo.
   \item Tolerância a falhas, com implementações que as identificam e permitem que o sistema funcione independente delas acontecerem.
   \item Fornecimento de serviços para que o usuário foque no problema que deseja resolver.
 \end{itemize}
@@ -80,7 +80,7 @@ Esse subprojeto contém os utilitários e bibliotecas comuns aos outros subproje
 
 \subsection{Hadoop HDFS}\label{ssec:hadoophdfs}
 
-Segundo \textcite{HDFSDesign20} o \textit{Hadoop HDFS} é um sistema de arquivos distribuídos criado para funcionar em \textit{hardware} facilmente obtido e relativamento barato. Suas características principais são a alta capacidade de lidar com falhas e a possibilidade de ser usado com aplicações que possuem grande quantidades de dados como entrada.
+Segundo \textcite{HDFSDesign20} o \textit{Hadoop HDFS} é um sistema de arquivos distribuídos criado para funcionar em \textit{\gls{hardware}} facilmente obtido e relativamento barato. Suas características principais são a alta capacidade de lidar com falhas e a possibilidade de ser usado com aplicações que possuem grande quantidades de dados como entrada.
 
 Uma instância HDFS é composta de centenas ou milhares de máquinas, cada uma responsável por armazenar uma parte dos dados do sistema. Dessa forma, a rápida detecção e recuperação de falhas é essencial para sua estrutura. Seu \textit{design} foi pensado em aplicações de processamento de dados em blocos e o tamanho de seus arquivos pode variar entre Giga e Terabytes. Além disso, é adaptado para funcionar em diferentes plataformas e prover interfaces que possibilitam mover a aplicação para perto dos dados, permitindo que qualquer operação computacional aplicada seja muito mais eficiente \cite{HDFSDesign20}.
 
@@ -110,7 +110,7 @@ O YARN foi adicionado ao \textit{Hadoop} versão 2.0 permitindo a separação da
 \newpage
 \section{VIRTUALIZAÇÃO} \label{sec:virtualizacao}
 
-Virtualização é o processo de criar um ambiente ou uma versão virtual de algum componente computacional, tal como \textit{hardwares}, dispositivos de armazenamento e recursos de rede. A virtualização permite que haja economia nos custos de \textit{hardware}, melhoria na recuperação em caso de falhas e redução da necessidade de espaço físico para \textit{datacenters} \cite{PortnoyVirtualization12}. 
+Virtualização é o processo de criar um ambiente ou uma versão virtual de algum componente computacional, tal como \textit{\gls{hardware}s}, dispositivos de armazenamento e recursos de rede. A virtualização permite que haja economia nos custos de \textit{\gls{hardware}}, melhoria na recuperação em caso de falhas e redução da necessidade de espaço físico para \textit{\gls{datacenters}} \cite{PortnoyVirtualization12}. 
 
 Uma das técnicas da virtualização é a utilização de contêiners. Contêiners, uma virtualização a nível de sistema, permitem que existam múltiplos espaços do usuário por cima de um determinada kernel de sistema. 
 

@@ -11,7 +11,7 @@ Como visto anteriormente, o \textit{MapReduce} é um processo com diversas etapa
     \textbf{Quantidade de redutores}  & Verificar se mais de um redutor está sendo utilizado. O recomendado é que cada tarefa seja executada em média durante 5 minutos e produza 1 bloco de dados.                                  \\\hline
     \textbf{Uso de combinadores}      & Verificar se é possível utilizar algum combinador de dados de modo que a quantidade de data passada à função \textit{Shuffle} seja menor.                                                    \\\hline
     \textbf{Compressão}               & Usualmente, o tempo de execução de um \textit{Job} é diminuído ao usar compressão de dados.                                                                                                  \\\hline
-    \textbf{Ajustes na parte Shuffle} & A parte \textit{Shuffle} do processo possui vários parâmetros de \textit{tuning} de memória que podem ser utilizados para a melhora da performance do \textit{Job}.                          \\\hline
+    \textbf{Ajustes na parte Shuffle} & A parte \textit{Shuffle} do processo possui vários parâmetros de \textit{\gls{tuning}} de memória que podem ser utilizados para a melhora da performance do \textit{Job}.                          \\\hline
   \end{tabular}}
 {Adaptado de \cite{HadoopBook15}}{quadro1}{}{}
 

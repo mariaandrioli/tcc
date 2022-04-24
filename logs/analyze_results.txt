@@ -1,0 +1,25 @@
+➜ logs (main) ✗ ./analyze_terasort.sh
+default/terasort/terasort_default_1.log MAP TIME: 1631.50
+default/terasort/terasort_default_10.log MAP TIME: 1550.23
+default/terasort/terasort_default_2.log MAP TIME: 1992.96
+default/terasort/terasort_default_3.log MAP TIME: 1606.27
+default/terasort/terasort_default_4.log MAP TIME: 1606.69
+default/terasort/terasort_default_5.log MAP TIME: 1548.24
+default/terasort/terasort_default_6.log MAP TIME: 1545.68
+default/terasort/terasort_default_7.log MAP TIME: 1522.88
+default/terasort/terasort_default_8.log MAP TIME: 1538.37
+default/terasort/terasort_default_9.log MAP TIME: 1515.46
+tuned/terasort/terasort_tuned_1.log MAP TIME: 807.67
+tuned/terasort/terasort_tuned_10.log MAP TIME: 812.86
+tuned/terasort/terasort_tuned_2.log MAP TIME: 814.19
+tuned/terasort/terasort_tuned_3.log MAP TIME: 807.50
+tuned/terasort/terasort_tuned_4.log MAP TIME: 813.09
+tuned/terasort/terasort_tuned_5.log MAP TIME: 806.06
+tuned/terasort/terasort_tuned_6.log MAP TIME: 806.60
+tuned/terasort/terasort_tuned_7.log MAP TIME: 812.37
+tuned/terasort/terasort_tuned_8.log MAP TIME: 813.50
+tuned/terasort/terasort_tuned_9.log MAP TIME: 809.55
+
+1631.50, 1550.23, 1992.96, 1606.27, 1606.69, 1548.24, 1545.68, 1522.88, 1538.37, 1515.46 
+
+807.67 ,812.86 ,814.19 ,807.50 ,813.09 ,806.06 ,806.60 ,812.37 ,813.50 ,809.55

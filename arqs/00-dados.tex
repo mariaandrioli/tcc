@@ -34,7 +34,7 @@
 
 % Informações de dados para CAPA e FOLHA DE ROSTO
 %----------------------------------------------------------------------------- 
-\tipotrabalho{Tese}
+\tipotrabalho{Monografia}
 %    {Relatório Técnico}
 %    {Dissertação}
 %    {Tese}
@@ -46,7 +46,7 @@
  \providecommand{\terCapa}{Sim}
  \providecommand{\terFolhaRosto}{Sim}
  \providecommand{\terTermoAprovacao}{Sim}
- \providecommand{\terDedicatoria}{Sim}
+ \providecommand{\terDedicatoria}{Nao}
  \providecommand{\terFichaCatalografica}{Nao}
  \providecommand{\terEpigrafe}{Sim}
  \providecommand{\terAgradecimentos}{Sim}
@@ -187,19 +187,27 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 
 % ----------------------------------------------------------
 \newcommand{\ResumoTexto}{%\color{blue}
-O resumo deve ressaltar o  objetivo, o método, os resultados e as conclusões do documento. A ordem e a extensão destes itens dependem do tipo de resumo (informativo ou indicativo) e do tratamento que cada item recebe no documento original. O resumo deve ser precedido da referência do documento, com exceção do resumo inserido no próprio documento. (\ldots) As palavras-chave devem figurar logo abaixo do  resumo, antecedidas da expressão Palavras-chave:, separadas entre si por ponto e finalizadas também por ponto.Ter no máximo 500 palavras!!! As palavras chave são separadas por ponto e vírgula.
+Um dos grandes desafios da área de computação sempre foi lidar com o uso, armazenamento e controle de dados. \textit{Big Data} refere-se a grandes aglomerados de dados os quais ferramentas tradicionais não conseguem processar de forma otimizada. Assim, foi desenvolvido pelo Google o paradigma de programação \textit{MapReduce}, com o objetivo de simplificar esse processo. O \textit{Hadoop} é um \textit{\gls{framework}} criado pela Apache para armazenar e processar em paralelo grandes quantidades de dados. Em conjunto, eles formam o \textit{Hadoop MapReduce}, que agrega os benefícios das duas ferramentas a fim de obter uma execução otimizada.
+
+O \textit{Hadoop MapReduce} contém uma grande quantidade de parâmetros de configuração que podem - e devem - ser alterados com base na situação sobre o qual ele está sendo aplicado, o ambiente no qual ele está sendo executado e os objetivos a serem atingidos pela aplicação. A alteração deses parâmetros com objetivo de melhora performance é chamada de \textit{\gls{tuning}} e a boa manipulação desses valores é essencial para que o \textit{\gls{framework}} funcione da melhor maneira possível.
+
+Dessa forma, o presente trabalho apresenta as ferramentas mencionadas, os valores iniciais dos parâmetros e os experimentos realizados e resultados obtidos após o \textit{\gls{tuning}} das configurações do \textit{Hadoop MapReduce}.
 } 
 
 \newcommand{\PalavraschaveTexto}{%\color{blue}
-latex; abntex; editoração de texto.}
+Big Data; Hadoop; MapReduce; otimização; parâmetros.}
 
 % ----------------------------------------------------------
 \newcommand{\AbstractTexto}{%\color{blue}
-This is the english abstract.
+One of the biggest challenges of the computing area has always been dealing with data use, storage and manipulation. Big Data is the term that defines big conglomerates of data which cannot be processed by traditional tools in an optimized way. With that in mind, Google has developed the programming paradigm called MapReduce to simplify this process. Hadoop is a frameworkc created by Apache to storage and process big amount of data in parallel. Together, they make Hadoop MapReduce, which aggregates the benfits from both tools in order to obtain an optimized performance.
+
+Hadoop MapReduce has a vast amount of configuration parameters  that can - and should - be altered according to the application, the execution environment and which goals are to achieved after your execution. Altering those parameters in order to have an improvement in performance is called tuning and handling those values well is essential for the framework to work in the best way possible.
+
+Thereby, the present work presents the aforementioned tools, the default values for the parameteres and the experiments and results obtained after tuning Hadoop Map Reduce configuration.
 }
 % ---
 \newcommand{\KeywordsTexto}{%\color{blue}
-latex. abntex. text editoration.
+Big Data; Hadoop; MapReduce; otimization; framework; tuning; parameters.
 }
 
 % ----------------------------------------------------------
