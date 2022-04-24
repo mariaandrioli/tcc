@@ -47,22 +47,59 @@ hadoop fs -rm -r -f -skipTrash ${OUTPUT}
 -D yarn.app.mapreduce.am.log.level=INFO \
 -D yarn.nodemanager.resource.detect-hardware-capabilities=true \
 -D yarn.nodemanager.resource.memory-mb=-1 \
--D mapreduce.task.io.sort.mb=100 \
--D mapreduce.task.io.sort.factor=10 \
--D mapreduce.map.sort.spill.percent=0.80 \
+-D mapreduce.task.io.sort.mb=256 \
+-D mapreduce.task.io.sort.factor=400 \
+-D mapreduce.map.sort.spill.percent=1.0 \
 -D mapreduce.map.combine.minspills=3 \
--D mapreduce.map.output.compress=false \
--D mapreduce.map.output.compress=org.apache.hadoop.io.compress.DefaultCodec \
--D mapreduce.shuffle.max.threads=0 \
--D mapreduce.reduce.shuffle.parallelcopies=5 \
+-D mapreduce.map.output.compress=true \
+-D mapreduce.map.output.compress.codec=org.apache.hadoop.io.compress.Lz4Codec \
+-D mapreduce.shuffle.max.threads=1 \
+-D mapreduce.reduce.shuffle.parallelcopies=20 \
 -D mapreduce.reduce.shuffle.maxfetchfailures=10 \
--D mapreduce.reduce.shuffle.input.buffer.percent=0.70 \
+-D mapreduce.reduce.shuffle.input.buffer.percent=0.7 \
 -D mapreduce.reduce.shuffle.merge.percent=0.66 \
--D mapreduce.reduce.merge.inmem.threshold=1000 \
--D mapreduce.reduce.input.buffer.percent=0.0 \
--D dfs.blocksize=67108864 \
--D dfs.replication=3 \
+-D mapreduce.reduce.merge.inmem.threshold=2000 \
+-D mapreduce.reduce.input.buffer.percent=0.8 \
+-D dfs.blocksize=335544320 \
+-D dfs.replication=1 \
+-D mapreduce.output.fileoutputformat.compress=true \
+-D mapreduce.output.fileoutputformat.compress.codec=org.apache.hadoop.io.compress.Lz4Codec \
+-D mapreduce.output.fileoutputformat.compress.type=BLOCK \
+-D mapreduce.map.memory.mb=2048 \
+-D mapreduce.job.reduce.slowstart.completedmaps=0.7 \
+-D io.file.buffer.size=131072 \
 ${INPUT} ${OUTPUT} #  >> $RESULTSFILE 2>&1
+
+
+
+# -D mapreduce.task.io.sort.mb=256 \
+# -D mapreduce.task.io.sort.factor=100 \
+# -D mapreduce.map.sort.spill.percent=1.0 \
+# -D mapreduce.map.combine.minspills=3 \
+# -D mapreduce.map.output.compress=true \
+# -D mapreduce.map.output.compress.codec=org.apache.hadoop.io.compress.Lz4Codec \
+# -D mapreduce.shuffle.max.threads=0 \
+# -D mapreduce.reduce.shuffle.parallelcopies=30 \
+# -D mapreduce.reduce.shuffle.maxfetchfailures=5 \
+# -D mapreduce.reduce.shuffle.input.buffer.percent=0.70 \
+# -D mapreduce.reduce.shuffle.merge.percent=0.66 \
+# -D mapreduce.reduce.merge.inmem.threshold=1000 \
+# -D mapreduce.reduce.input.buffer.percent=0.0 \
+# -D dfs.blocksize=134217728 \
+# -D dfs.replication=1 \
+# -D mapreduce.output.fileoutputformat.compress=true \
+# -D mapreduce.output.fileoutputformat.compress.codec=org.apache.hadoop.io.compress.Lz4Codec \
+# -D mapreduce.output.fileoutputformat.compress.type=BLOCK \
+
+
+
+
+
+
+
+
+
+
 
 # -Dmapreduce.map.log.level=INFO \
 # -Dmapreduce.reduce.log.level=INFO \

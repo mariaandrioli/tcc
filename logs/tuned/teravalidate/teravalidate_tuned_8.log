@@ -1,0 +1,118 @@
+2022-04-24 17:26:48,791 INFO client.RMProxy: Connecting to ResourceManager at resourcemanager/192.168.48.6:8032
+2022-04-24 17:26:49,229 INFO client.AHSProxy: Connecting to Application History server at historyserver/192.168.48.7:10200
+2022-04-24 17:26:50,322 INFO conf.Configuration: resource-types.xml not found
+2022-04-24 17:26:50,322 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+Deleted /user/root/terasort/10G-terasort-report
+2022-04-24 17:26:55,693 INFO client.RMProxy: Connecting to ResourceManager at resourcemanager/192.168.48.6:8032
+2022-04-24 17:26:55,964 INFO client.AHSProxy: Connecting to Application History server at historyserver/192.168.48.7:10200
+2022-04-24 17:26:56,279 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/root/.staging/job_1650809992477_0024
+2022-04-24 17:26:56,446 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2022-04-24 17:26:56,622 INFO input.FileInputFormat: Total input files to process : 1
+Spent 59ms computing base-splits.
+Spent 4ms computing TeraScheduler splits.
+2022-04-24 17:26:56,661 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2022-04-24 17:26:56,729 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2022-04-24 17:26:56,742 INFO mapreduce.JobSubmitter: number of splits:1
+2022-04-24 17:26:56,971 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2022-04-24 17:26:56,988 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1650809992477_0024
+2022-04-24 17:26:56,988 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2022-04-24 17:26:57,264 INFO conf.Configuration: resource-types.xml not found
+2022-04-24 17:26:57,265 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2022-04-24 17:26:57,767 INFO impl.YarnClientImpl: Submitted application application_1650809992477_0024
+2022-04-24 17:26:57,836 INFO mapreduce.Job: The url to track the job: http://resourcemanager:8088/proxy/application_1650809992477_0024/
+2022-04-24 17:26:57,837 INFO mapreduce.Job: Running job: job_1650809992477_0024
+2022-04-24 17:27:05,952 INFO mapreduce.Job: Job job_1650809992477_0024 running in uber mode : false
+2022-04-24 17:27:05,955 INFO mapreduce.Job:  map 0% reduce 0%
+2022-04-24 17:27:24,074 INFO mapreduce.Job:  map 16% reduce 0%
+2022-04-24 17:27:30,113 INFO mapreduce.Job:  map 25% reduce 0%
+2022-04-24 17:27:36,154 INFO mapreduce.Job:  map 33% reduce 0%
+2022-04-24 17:27:42,154 INFO mapreduce.Job:  map 42% reduce 0%
+2022-04-24 17:27:48,198 INFO mapreduce.Job:  map 51% reduce 0%
+2022-04-24 17:27:54,246 INFO mapreduce.Job:  map 59% reduce 0%
+2022-04-24 17:27:59,293 INFO mapreduce.Job:  map 100% reduce 0%
+2022-04-24 17:28:05,333 INFO mapreduce.Job:  map 100% reduce 100%
+2022-04-24 17:28:06,351 INFO mapreduce.Job: Job job_1650809992477_0024 completed successfully
+2022-04-24 17:28:06,489 INFO mapreduce.Job: Counters: 54
+	File System Counters
+		FILE: Number of bytes read=0
+		FILE: Number of bytes written=458487
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=10000000137
+		HDFS: Number of bytes written=35
+		HDFS: Number of read operations=8
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+		HDFS: Number of bytes read erasure-coded=0
+	Job Counters
+		Launched map tasks=1
+		Launched reduce tasks=1
+		Rack-local map tasks=1
+		Total time spent by all maps in occupied slots (ms)=100636
+		Total time spent by all reduces in occupied slots (ms)=3326
+		Total time spent by all map tasks (ms)=50318
+		Total time spent by all reduce tasks (ms)=3326
+		Total vcore-milliseconds taken by all map tasks=50318
+		Total vcore-milliseconds taken by all reduce tasks=3326
+		Total megabyte-milliseconds taken by all map tasks=103051264
+		Total megabyte-milliseconds taken by all reduce tasks=3405824
+	Map-Reduce Framework
+		Map input records=100000000
+		Map output records=3
+		Map output bytes=83
+		Map output materialized bytes=96
+		Input split bytes=137
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=3
+		Reduce shuffle bytes=96
+		Reduce input records=3
+		Reduce output records=1
+		Spilled Records=3
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=237
+		CPU time spent (ms)=48920
+		Physical memory (bytes) snapshot=799481856
+		Virtual memory (bytes) snapshot=6201692160
+		Total committed heap usage (bytes)=705691648
+		Peak Map Physical memory (bytes)=619376640
+		Peak Map Virtual memory (bytes)=3534364672
+		Peak Reduce Physical memory (bytes)=180105216
+		Peak Reduce Virtual memory (bytes)=2667327488
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters
+		Bytes Read=10000000000
+	File Output Format Counters
+		Bytes Written=35
+	Command being timed: "hadoop jar hadoop-mapreduce-examples-3.2.1.jar teravalidate -D mapreduce.map.log.level=INFO -D mapreduce.reduce.log.level=INFO -D yarn.app.mapreduce.am.log.level=INFO -D yarn.nodemanager.resource.detect-hardware-capabilities=true -D yarn.nodemanager.resource.memory-mb=-1 -D mapreduce.task.io.sort.mb=256 -D mapreduce.task.io.sort.factor=400 -D mapreduce.map.sort.spill.percent=1.0 -D mapreduce.map.combine.minspills=3 -D mapreduce.map.output.compress=true -D mapreduce.map.output.compress.codec=org.apache.hadoop.io.compress.Lz4Codec -D mapreduce.shuffle.max.threads=1 -D mapreduce.reduce.shuffle.parallelcopies=20 -D mapreduce.reduce.shuffle.maxfetchfailures=10 -D mapreduce.reduce.shuffle.input.buffer.percent=0.7 -D mapreduce.reduce.shuffle.merge.percent=0.66 -D mapreduce.reduce.merge.inmem.threshold=2000 -D mapreduce.reduce.input.buffer.percent=0.8 -D dfs.blocksize=335544320 -D dfs.replication=1 -D mapreduce.output.fileoutputformat.compress=true -D mapreduce.output.fileoutputformat.compress.codec=org.apache.hadoop.io.compress.Lz4Codec -D mapreduce.output.fileoutputformat.compress.type=BLOCK -D mapreduce.map.memory.mb=2048 -D mapreduce.job.reduce.slowstart.completedmaps=0.7 -D io.file.buffer.size=131072 /user/root/terasort/10G-terasort-output /user/root/terasort/10G-terasort-report"
+	User time (seconds): 4.79
+	System time (seconds): 2.49
+	Percent of CPU this job got: 9%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:13.50
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 256144
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 33
+	Minor (reclaiming a frame) page faults: 73529
+	Voluntary context switches: 6991
+	Involuntary context switches: 2070
+	Swaps: 0
+	File system inputs: 8480
+	File system outputs: 2280
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

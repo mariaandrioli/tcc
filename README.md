@@ -18,15 +18,22 @@ RODANDO DOCKER E TESTES
 cd docker-hadoop
 docker-compose up -d
 docker ps
-docker cp hadoop-mapreduce-examples-3.2.1.jar namenode:/tmp/ | docker cp scripts/teragen.sh namenode:/tmp/ | docker cp scripts/terasort.sh namenode:/tmp/ | docker cp scripts/teravalidate.sh namenode:/tmp/
+docker cp hadoop-mapreduce-examples-3.2.1.jar namenode:/tmp/ \
+| docker cp scripts/teragen.sh namenode:/tmp/ \
+| docker cp scripts/terasort.sh namenode:/tmp/ \
+| docker cp scripts/teravalidate.sh namenode:/tmp/ \
+| docker cp scripts/start.sh namenode:/tmp/ \
+| docker cp scripts/clean.sh namenode:/tmp/ \
+| docker cp scripts/terasort_tuned.sh namenode:/tmp/
 
 docker exec -it namenode bash
+cd tmp
 hdfs dfsadmin -safemode leave
 apt-get update
 apt-get install time
 hdfs dfs -rm -r -f /user/root/terasort/10G-terasort-output/*
 hdfs dfs -rm -r -f /user/root/terasort/10G-terasort-report/*
-cd tmp
+
 ./teragen.sh
 ./terasort.sh
 ./teravalidate.sh
