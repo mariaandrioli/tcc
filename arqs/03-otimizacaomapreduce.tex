@@ -1,17 +1,17 @@
 \chapter{OTIMIZAÇÃO DO MAPREDUCE} \label{cha:otimizacaomapreduce}
 
-Como visto anteriormente, o \textit{MapReduce} é um processo com diversas etapas, e portanto, há muitas permutações possíveis das suas configurações que permitem a melhora da performance que, através da modificação dos parâmetros de configuração, é chamada de \textit{tuning}. Para \textcite{HadoopBook15}, os fatores do \textit{Job} mais relevantes a serem considerados com objetivo de obter aumento da performance são exibidos no \autoref{qua:quadro1}.
+Como visto anteriormente, o \textit{MapReduce} é um processo com diversas etapas e, portanto, há muitas permutações possíveis das suas configurações que permitem a melhora da performance que, através da modificação dos parâmetros de configuração, é chamada de \textit{tuning}. Para \textcite{HadoopBook15}, os fatores do \textit{Job} mais relevantes a serem considerados com objetivo de obter aumento da performance são exibidos no \autoref{qua:quadro1}.
 
 \qquadro{Fatores para \textit{Tuning} do \textit{Job MapReduce}}
 {\footnotesize
   \centering
   \begin{tabular}{|p{50mm}|p{100mm}|}\hline
-    \textbf{ÁREA A SER OTIMIZADA}     & \textbf{COMO OTIMIZAR}                                                                                                                                                                       \\\hline
-    \textbf{Quantidade de mapeadores} & Verificar se é possível diminuir a quantidade de execuções da função \textit{Map} de modo que cada uma seja executada por mais tempo. O tempo médio recomendado na literatura é de 1 minuto. \\\hline
-    \textbf{Quantidade de redutores}  & Verificar se mais de um redutor está sendo utilizado. O recomendado é que cada tarefa seja executada em média durante 5 minutos e produza 1 bloco de dados.                                  \\\hline
-    \textbf{Uso de combinadores}      & Verificar se é possível utilizar algum combinador de dados de modo que a quantidade de data passada à função \textit{Shuffle} seja menor.                                                    \\\hline
-    \textbf{Compressão}               & Usualmente, o tempo de execução de um \textit{Job} é diminuído ao usar compressão de dados.                                                                                                  \\\hline
-    \textbf{Ajustes na parte Shuffle} & A parte \textit{Shuffle} do processo possui vários parâmetros de \textit{\gls{tuning}} de memória que podem ser utilizados para a melhora da performance do \textit{Job}.                          \\\hline
+    \textbf{ÁREA A SER OTIMIZADA}              & \textbf{COMO OTIMIZAR}                                                                                                                                                                       \\\hline
+    \textbf{Quantidade de mapeadores}          & Verificar se é possível diminuir a quantidade de execuções da função \textit{Map} de modo que cada uma seja executada por mais tempo. O tempo médio recomendado na literatura é de 1 minuto. \\\hline
+    \textbf{Quantidade de redutores}           & Verificar se mais de um redutor está sendo utilizado. O recomendado é que cada tarefa seja executada em média durante 5 minutos e produza 1 bloco de dados.                                  \\\hline
+    \textbf{Uso de combinadores}               & Verificar se é possível utilizar algum combinador de dados de modo que a quantidade de data passada à função \textit{Shuffle} seja menor.                                                    \\\hline
+    \textbf{Compressão}                        & Usualmente, o tempo de execução de um \textit{Job} é diminuído ao usar compressão de dados.                                                                                                  \\\hline
+    \textbf{Ajustes na parte \textit{Shuffle}} & A parte \textit{Shuffle} do processo possui vários parâmetros de \textit{\gls{tuning}} de memória que podem ser utilizados para a melhora da performance do \textit{Job}.                    \\\hline
   \end{tabular}}
 {Adaptado de \cite{HadoopBook15}}{quadro1}{}{}
 
