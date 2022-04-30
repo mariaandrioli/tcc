@@ -6,9 +6,9 @@ Este capítulo tem como objetivo apresentar detalhadamente os conceitos técnico
 
 Um \textit{cluster} é um conjunto de computadores que trabalham juntos paralelamente em uma determinada aplicação. Cada computador desse conjunto é usualmente chamado de nodo. Além disso, existem diversas categorias de \textit{clusters}, dependendo do problema que eles buscam computar \cite{GoldmanApache12}.
 
-Algumas aplicações comuns de \textit{clusters} são modelagem de clima, simulação de acidentes automotivos, mineração de dados e aplicações na área de astrofísica. Além disso, é comumente visto em aplicações comerciais como bancos e serviços de email \cite{ClusterGridCloudComparison11}.
+Algumas aplicações comuns de \textit{clusters} são modelagem de clima, simulação de acidentes automotivos, mineração de dados e aplicações na área de astrofísica. Além disso, é comumente visto em aplicações que necessitam de computações complexas \cite{Nwobodo2015}.
 
-Uma das maiores vantagens desse tipo de instalação é a tolerância de falhas, pois os sistemas conseguem continuar suas tarefas caso um nodo pare de funcionar. Além disso, é altamente escalável com a adição de novos nodos, não precisa de manutenção frequente e tem um gerenciamento centralizado. Por fim, uma das suas maiores possíveis vantagens é o balanceamento de carga, que busca atingir o equilíbrio entre as tarefas de cada nodo de modo a otimizar os recursos \cite{ClusterGridCloudComparison11}.
+Uma das maiores vantagens desse tipo de instalação é a tolerância de falhas, porque os sistemas conseguem continuar suas tarefas caso um nodo pare de funcionar. Além disso, é altamente escalável com a adição de novos nodos, não precisa de manutenção frequente, tem um gerenciamento centralizado e possui balanceamento de carga, funcionalidade que busca atingir o equilíbrio entre as tarefas de cada nodo de modo a otimizar os recursos \cite{ClusterGridCloudComparison11}.
 
 \section{MAPREDUCE} \label{sec:mapreduce}
 
@@ -18,11 +18,11 @@ As operações de mapeamento e redução são baseadas em conceitos presentes em
 
 \subsection{Modelo de programação}\label{ssec:mapreducemodelo}
 
-A computação recebe um arquivo de entrada e produz um conjunto de pares (CHAVE, VALOR). O usuário cria as funções \textit{Map} e \textit{Reduce} de acordo com seu uso. \textit{Map} recebe um único par (CHAVE, VALOR) e produz um conjunto intermediário de pares. Em seguida, a biblioteca \textit{MapReduce} agrupa os valores com a mesma chave, os quais servirão de entrada para a função \textit{Reduce}. Nesse momento a função \textit{Reduce} unifica os valores com a mesma chave de modo a criar um conjunto menor, sendo possível dessa forma lidar com listas muito grandes para a memória disponível \cite{MapReduce08}. 
+A computação recebe um arquivo de entrada e produz um conjunto de objetos (CHAVE, VALOR). O usuário cria as funções \textit{Map} e \textit{Reduce} de acordo com sua aplicação e objetivo. Cada função \textit{Map} recebe uma parte do arquivo de entrada e produz um conjunto intermediário de objetos do tipo (CHAVE, VALOR). Em seguida, a fase intermediária \textit{Shuffle} agrupa os valores com a mesma chave, os quais servirão de entrada para a função \textit{Reduce}. Nesse momento a função \textit{Reduce} unifica os valores com a mesma chave de modo a criar um conjunto menor, fazendo com que seja possível lidar com listas muito grandes para a memória disponível \cite{MapReduce08}. 
 
 Entre o momento que são executadas as funções \textit{Map} e \textit{Reduce}, existe a fase \textit{Shuffle}, que é criada automaticamente em tempo de execução e executa operações de ordenação (\textit{sort}) e junção (\textit{merge}) \cite{ProHadoop09}. Para \textcite{HadoopBook15}, a operação \textit{Shuffle} é um dos fatores mais influentes no bom desempenho de aplicações \textit{MapReduce}, uma vez que operações de ordenação e junções podem prejudicar ou melhorar muito um algoritmo conforme sua implementação.
 
-Como exemplo, considere-se o problema de contar quantas vezes determinada palavra aparece em um documento. Nesse problema, as funções \textit{Map} e \textit{Reduce} seriam similares aos seguintes pseudocódigos \cite{MapReduce08}:
+Como exemplo, considere-se o problema de contar quantas vezes determinada palavra aparece em um documento. Nesse problema, as funções \textit{Map} e \textit{Reduce} seriam similares ao \autoref{code:codigo1} e ao \autoref{code:codigo2} \cite{MapReduce08}:
 
 \begin{lstlisting}[caption={Exemplo de função Map em pseudocódigo adaptado de \cite{MapReduce08}}, label=code:codigo1]
 map(String chave, String valor):
@@ -46,9 +46,9 @@ reduce(String chave, Iterador valores):
 \end{lstlisting}
 
 \newpage
-A função \textit{Map} gera um objeto intermediário de cada palavra associada a uma lista do seu número de ocorrências no texto e a função \textit{Reduce} soma os valores até que essas ocorrências por palavras sejam totalizadas. Além disso, o usuário cria um configuração de \textit{MapReduce} com os parâmetros de entrada e saída e eventuais parâmetros de \textit{\gls{tuning}}.
+A função \textit{Map} gera um objeto intermediário de cada palavra associada a uma lista do seu número de ocorrências no texto e a função \textit{Reduce} soma os valores até que essas ocorrências por palavras sejam totalizadas. Os parâmetros de entrada e saída são configurados pelo usuário, assim como os parâmetros de configuração que poderão ser usados no \textit{\gls{tuning}} para melhorar o desempenho da aplicação.
 
-Para exemplificar ainda mais, considere um arquivo de texto com três linhas nas quais estão as seguintes frases, respectivamente, uma em cada linha: "vamos para casa", "na minha casa", "para na casa". Nesse exemplo, a função \textit{Map} é chamada três vezes, uma para cada linha, gerando os pares (CHAVE, VALOR) intermediários, um para cada palavra encontrada no texto, como é mostrado na \autoref{fig:fig1}. Para cada palavra distinta ("vamos", "para", "casa", "na", "minha"), é executada a função \textit{Reduce}, que soma quantas vezes cada uma dessas palavras apareceu no texto e gera um arquivo de saída.
+Para exemplificar, considere um arquivo de texto com três linhas nas quais estão as seguintes frases, respectivamente, uma em cada linha: "vamos para casa", "na minha casa", "para na casa". Nesse exemplo, a função \textit{Map} é chamada três vezes, uma para cada linha, gerando os pares (CHAVE, VALOR) intermediários, um para cada palavra encontrada no texto, como é mostrado na \autoref{fig:fig1}. Para cada palavra distinta ("vamos", "para", "casa", "na", "minha"), é executada a função \textit{Reduce}, que soma quantas vezes cada uma dessas palavras apareceu no texto e gera um arquivo de saída.
 
 \figura{Execução Genérica do MapReduce}{1.00}{fig/fig1.png}{A autora (2022)}{fig1}{}{}
 
@@ -80,13 +80,13 @@ Esse subprojeto contém os utilitários e bibliotecas comuns aos outros subproje
 
 \subsection{Hadoop HDFS}\label{ssec:hadoophdfs}
 
-Segundo \textcite{HDFSDesign20} o \textit{Hadoop HDFS} é um sistema de arquivos distribuídos criado para funcionar em \textit{\gls{hardware}} facilmente obtido e relativamento barato. Suas características principais são a alta capacidade de lidar com falhas e a possibilidade de ser usado com aplicações que possuem grande quantidades de dados como entrada.
+O \textit{Hadoop HDFS} é um sistema de arquivos distribuídos criado para funcionar em \textit{\gls{hardware}} facilmente obtido e relativamento barato. Suas características principais são a alta capacidade de lidar com falhas e a possibilidade de ser usado com aplicações que possuem grande quantidades de dados como entrada \cite{HDFSDesign20}.
 
 Uma instância HDFS é composta de centenas ou milhares de máquinas, cada uma responsável por armazenar uma parte dos dados do sistema. Dessa forma, a rápida detecção e recuperação de falhas é essencial para sua estrutura. Seu \textit{design} foi pensado em aplicações de processamento de dados em blocos e o tamanho de seus arquivos pode variar entre Gigabytes e Terabytes. Além disso, é adaptado para funcionar em diferentes plataformas e prover interfaces que possibilitam mover a aplicação para perto dos dados, permitindo que qualquer operação computacional aplicada seja muito mais eficiente \cite{HDFSDesign20}.
 
-O \textit{Hadoop HDFS} também possui uma estrutura Cliente/Servidor, em que o \textit{Namenode} - responsável por gerenciar o sistema e regular o acessos aos arquivos - é o nodo \textit{Master} e os \textit{Datanodes} - responsáveis por gerenciar o armazenamento dos nodos aos quais eles estão conectados - são os nodos Worker. O sistema é implementado usando uma estrutura comum de diretórios na qual é possível criar, mover, renomear e remover arquivos, mas ainda não implementa funções como quota de usuários, permissões de acesso ou \textit{links} simbólicos \cite{HDFSDesign20}.
+O \textit{Hadoop HDFS} também possui uma estrutura Cliente/Servidor, em que o \textit{Namenode} - responsável por gerenciar o sistema e regular os acessos aos arquivos - é o nodo \textit{Master} e os \textit{Datanodes} - responsáveis por gerenciar o armazenamento dos nodos aos quais eles estão conectados - são os nodos Worker. O sistema é implementado usando uma estrutura comum de diretórios na qual é possível criar, mover, renomear e remover arquivos, mas ainda não implementa funções como quota de usuários, permissões de acesso ou \textit{links} simbólicos \cite{HDFSDesign20}.
 
-Uma das características essenciais desse sistema é sua capacidade de lidar com grandes quantidades de dados. Segundo \textcite{HDFSDesign20}, isso é realizado através do armazenamento dos arquivos como uma sequência de blocos, cujo tamanho e fator de replicação são configuráveis pelo usuário, mas possuem um valor padrão de 64MB. Periodicamente, o \textit{Namenode} recebe dos \textit{Datanodes} um sinal indicando se o funcionamento está correto. O posicionamento e a quantidade de réplicas de um bloco é crítica na análise da boa performance do HDFS, e é um dos fatores que o diferencia de outros sistemas de arquivos distribuídos. Quando executada de forma otimizada, pode aumentar confiabilidade, disponibilidade e uso de redes do sistema.
+Uma das características essenciais desse sistema é sua capacidade de lidar com grandes quantidades de dados. Isso é realizado através do armazenamento dos arquivos como uma sequência de blocos, cujo tamanho e fator de replicação são configuráveis pelo usuário, mas possuem um valor padrão de 64MB. Periodicamente, o \textit{Namenode} recebe dos \textit{Datanodes} um sinal indicando se o funcionamento está correto. O posicionamento e a quantidade de réplicas de um bloco é crítica na análise da boa performance do HDFS, e é um dos fatores que o diferencia de outros sistemas de arquivos distribuídos. A escolha correta dos valores de posicionamento e replicação pode aumentar a confiabilidade, a disponibilidade e o uso de redes do sistema \cite{HDFSDesign20}.
 
 
 \subsection{Hadoop MapReduce} \label{ssec:hadoopmapreduce}
@@ -99,11 +99,11 @@ A estrutura Cliente/Servidor tem como nodo \textit{Master} o \textit{JobTracker}
 
 \subsection{Hadoop YARN} \label{ssec:hadoopyarn}
 
-O \textit{Hadoop YARN} é um subprojeto que tem como objetivo dividir as funcionalidades de gerenciamento de recursos de escalonamento de tarefas em módulos diferentes, sendo composto então um gerenciador global de recursos e um gerenciador local por aplicação \cite{GoldmanApache12}. 
+O \textit{Hadoop YARN} é um subprojeto que tem como objetivo dividir as funcionalidades de gerenciamento de recursos de escalonamento de tarefas em módulos diferentes, sendo composto então de um gerenciador global de recursos e um gerenciador local por aplicação \cite{GoldmanApache12}. 
 
 O gerenciador global trabalha em conjunto com um gerenciador de nodos responsável pelos contêineres e pelo monitoramento de uso de recursos, como CPU, memória, uso de disco e uso de redes, assim como o repasse dessas informações para o gerenciador global \cite{HadoopYarn22}.
 
-O YARN foi adicionado ao \textit{Hadoop} versão 2.0, permitindo a separação das camadas de gerenciamento de recursos que possam ser alocados pela aplicação. Com essa camada independente, ilustrada na \autoref{fig:fig3}, as aplicações \textit{MapReduce} podem ser utilizadas em conjunto com aplicações não \textit{MapReduce}. Além disso, esse formato de implementação possibilita economizar custos com o melhor aproveitamento dos nodos \cite{KobylinskaMartins14}. 
+O YARN foi adicionado ao \textit{Hadoop} na versão 2.0, permitindo a separação das camadas de gerenciamento de recursos que possam ser alocados pela aplicação. Com essa camada independente, ilustrada na \autoref{fig:fig3}, as aplicações \textit{MapReduce} podem ser utilizadas em conjunto com aplicações não \textit{MapReduce}. Além disso, esse formato de implementação possibilita economizar custos com o melhor aproveitamento dos nodos \cite{KobylinskaMartins14}. 
 
 \figura{Nova arquitetura do Hadoop 2.0}{.700}{fig/fig3.png}{\cite{KobylinskaMartins14}}{fig3}{}{}
 
