@@ -41,6 +41,7 @@ MAPRED_CONF_yarn_app_mapreduce_am_env=HADOOP_MAPRED_HOME=/opt/hadoop-3.2.1/
 MAPRED_CONF_mapreduce_map_env=HADOOP_MAPRED_HOME=/opt/hadoop-3.2.1/
 MAPRED_CONF_mapreduce_reduce_env=HADOOP_MAPRED_HOME=/opt/hadoop-3.2.1/
 
+
 -D mapreduce.map.log.level=INFO \
 -D mapreduce.reduce.log.level=INFO \
 -D yarn.app.mapreduce.am.log.level=INFO \
@@ -51,13 +52,13 @@ MAPRED_CONF_mapreduce_reduce_env=HADOOP_MAPRED_HOME=/opt/hadoop-3.2.1/
 -D mapreduce.map.output.compress=true \
 -D mapreduce.map.output.compress.codec=org.apache.hadoop.io.compress.Lz4Codec \
 
--D dfs.blocksize=335544320 \
--D dfs.replication=1 \
+-D dfs.blocksize=335544320 \ # 320MB em aumentous 64MB
+-D dfs.replication=1 \ #Menor replicacao até obter melhor performance
 -D mapreduce.output.fileoutputformat.compress=true \
 -D mapreduce.output.fileoutputformat.compress.codec=org.apache.hadoop.io.compress.Lz4Codec \
 -D mapreduce.output.fileoutputformat.compress.type=BLOCK \
--D mapreduce.map.memory.mb=2048 \
--D io.file.buffer.size=131072 \
+-D mapreduce.map.memory.mb=2048 \ # duplica memoria da fase fase (1024 em 1024)
+-D io.file.buffer.size=131072 \ # aumenta de 4096 em 4096
 
 
 -D mapreduce.task.io.sort.mb=256 \
@@ -65,7 +66,7 @@ MAPRED_CONF_mapreduce_reduce_env=HADOOP_MAPRED_HOME=/opt/hadoop-3.2.1/
 -D mapreduce.map.sort.spill.percent=1.0 \
 
 -D mapreduce.shuffle.max.threads=1 \
--D mapreduce.reduce.shuffle.parallelcopies=20 \
+-D mapreduce.reduce.shuffle.parallelcopies=10 \
 -D mapreduce.reduce.merge.inmem.threshold=2000 \
 -D mapreduce.reduce.input.buffer.percent=0.8 \
 -D mapreduce.job.reduce.slowstart.completedmaps=0.7 \
