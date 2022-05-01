@@ -1,0 +1,80 @@
+\section{RESULTADOS} \label{sec:resultados}
+
+Para que o objetivo de melhora de performance através do \textit{\gls{tuning}} dos parâmetros fosse atingido, foram realizados testes repetidos utilizando o \textit{TeraSort}, com variação dos valores padrões de cada uma das propriedades relevantes mencionadas previamente, de acordo com sugestões de \textcite{HadoopBook15} e \textcite{ProHadoop09}, assim como a análise de cada uma das execuções da ferramenta de \textit{\gls{benchmark}ing} para que fossem decididas quais mudanças teriam mais impacto no resultado. As execuções do \textit{TeraSort} foram realizadas após a geração de dados aleatórios de entrada pelo \textit{TeraGen} de um arquivo de 10GB.
+
+Os primeiros ajustes realizados foram nas propriedades relacionadas à quantidade de memória disponível, isto é, na memória disponibilizada aos \textit{\gls{buffer}s} utilizados nas operações de leitura e escrita e na saída da função \textit{Map}, assim como à função \textit{Map}, o que se provou de grande importância porque diminuiu consideralmente o tempo de execução do programa. Isso ocorre porque, ao disponibilizar mais memória aos programas, menos dados são copiados para o disco, economizando tempo.
+
+As propriedades modificadas foram \textit{mapreduce.task.io.sort.mb}, \textit{mapreduce.map.memory. mb} e \textit{io.file.buffer.size}, que apresentaram os melhores resultados com os valores 256 (Megabytes), 2048 (Megabytes) e 131072 (equivalente a 128 KB), respectivamente. Esse valores foram determinados através do aumento de cada um desses parâmetros até o valor máximo possível antes do sistema apresentar um erro de falta de memória e o tempo de execução resultante dessas mudanças está ilustrado na \autoref{fig:fig6}.
+
+\figura{Tempo de execução após aumento de memória}{.500}{fig/fig7_membuffers.png}{A autora (2022)}{fig6}{}{}
+
+Depois foram feitas alterações nas propriedades referentes a compressão de arquivos, habilitando-se a compressão na saída da fase \textit{Map} e do \textit{Job} utilizando a classe \textit{org.apache.hadoop.io.compress.Lz4Codec} para realizar essa operação. A compressão é relevante porque permite que os recursos computacionais continuem sendo executados mesmo quando é necessário aguardar a finalização de operações de entrada e saída em disco de arquivos muito grandes. A classe compressora utilizada foi escolhida por ter apresentado os melhores resultados e o tempo de execução dessa iteração está ilustrado na \autoref{fig:fig7}.
+
+\figura{Tempo de execução após habilitação de compressão}{.500}{fig/fig8_compress.png}{A autora (2022)}{fig7}{}{}
+
+\newpage
+Os parâmetros relativos aos blocos sobre os quais os arquivos de entrada da função \textit{Map} são separados também foram modificados, tendo seu tamanho aumentado para 335544320 (equivalente a 320MB) e sua taxa de replicação diminuída de 3 para 1. Esses dois fatores permitem que os blocos sejam de maior tamanho, mas não sejam duplicados em nodos diferentes, resultando em menos operações de leitura e escrita e menos uso de rede. Foram realizadas execuções aumentando o tamanho do bloco de 64MB em 64MB até obter-se o maior valor possível antes que houvesse erro por falta de memória. Os tempos de execução dessas propriedades estão ilustrados na \autoref{fig:fig8}.
+
+\figura{Tempo de execução após mudanças nas propriedades dos blocos}{.500}{fig/fig9_mapblocos.png}{A autora (2022)}{fig8}{}{}
+
+Na tarefa \textit{Map} foram também alteradas as propriedades que determinam a quantidade de arquivos a serem reunidos simultaneamente e a que determina a taxa limite do \textit{\gls{buffer}} para que os valores deste sejam transferidos para o disco, cujas mudanças apresentaram os tempos de execução da \autoref{fig:fig9}. Para que esses valores ótimos fossem determinados, foram feitos testes os aumentando até que o tempo resultante não tivesse mais variações.
+
+\figura{Tempo de execução após mudanças nos parâmetros de tarefas do \textit{Map}}{.500}{fig/fig10_map.png}{A autora (2022)}{fig9}{}{}
+
+Em relação à fase \textit{Reduce}, as propriedades que tiveram efeito relevante no desempenho foram as que determinam o limite de arquivos para o processo de junção antes de acontecer a transferência para o disco, a quantidade de memória a ser alocada para armazenar arquivos de saída da fase \textit{Map} durante a fase \textit{Shuffle} e a porcentagem de tarefas \textit{Map} que deveriam estar finalizadas antes de ser iniciado o processo de \textit{Reduce}. O resultado dessas mudanças também foi obtido através da execução da ferramenta de \textit{\gls{benchmark}} com alteração em cada um dos valores, tanto pela sua diminuição ou seu aumento, até que que não houvesse mais mudança no tempo de execução, que está ilustrado na \autoref{fig:fig10}.
+
+\figura{Tempo de execução após mudanças na fase \textit{Reduce}}{.500}{fig/fig11_reduce.png}{A autora (2022)}{fig10}{}{}
+\newpage
+Por fim, na fase \textit{Shuffle}, o parâmetros modificado foi o que determina a quantidade de transferências paralelas executadas pela função \textit{Reduce} durante a fase de cópia dos arquivos da fase \textit{Shuffle}, cujo valor final de 30 foi o decidido após repetições de execução tanto com valores mais altos como com valores mais baixos. O resultado dessa iteração está na \autoref{fig:fig11}.
+
+\figura{Tempo de execução após mudanças na fase \textit{Shuffle}}{.500}{fig/fig12_shuffle.png}{A autora (2022)}{fig11}{}{}
+
+Os parâmetros e seus valores que foram alterados por afetarem o desempenho estão descritos no \autoref{qua:quadro5}.
+
+\qquadro{Parâmetros ajustados durante o \textit{tuning}}
+{\footnotesize
+  \centering
+  \begin{tabular}{|p{80mm}|p{25mm}|}\hline
+    \textbf{PARÂMETRO}                                        & \textbf{VALOR FINAL} \\\hline
+    \textbf{mapreduce.map.output.compress}                    & true                 \\\hline
+    \textbf{mapreduce.map.output.compress.codec}              & Lz4Codec             \\\hline
+    \textbf{dfs.blocksize}                                    & 335544320            \\\hline
+    \textbf{dfs.replication}                                  & 1                    \\\hline
+    \textbf{mapreduce.output.fileoutputformat.compress}       & true                 \\\hline
+    \textbf{mapreduce.output.fileoutputformat.compress.codec} & Lz4Codec             \\\hline
+    \textbf{mapreduce.output.fileoutputformat.compress.type}  & BLOCK                \\\hline
+    \textbf{mapreduce.map.memory.mb}                          & 2048                 \\\hline
+    \textbf{io.file.buffer.size}                              & 131072               \\\hline
+    \textbf{mapreduce.task.io.sort.mb}                        & Lz4Codec             \\\hline
+    \textbf{mapreduce.task.io.sort.factor}                    & 256                  \\\hline
+    \textbf{mapreduce.map.sort.spill.percent}                 & 400                  \\\hline
+    \textbf{mapreduce.shuffle.max.threads}                    & 1.0                  \\\hline
+    \textbf{mapreduce.reduce.shuffle.parallelcopies}          & 20                   \\\hline
+    \textbf{mapreduce.reduce.merge.inmem.threshold}           & 2000                 \\\hline
+    \textbf{mapreduce.reduce.input.buffer.percent}            & 0.8                  \\\hline
+    \textbf{mapreduce.job.reduce.slowstart.completedmaps}     & 0.7                  \\\hline
+  \end{tabular}}
+{A autora(2022)}{quadro5}{}{}
+
+% \newpage
+Os parâmetros resumidos no \autoref{qua:quadro6} não tiveram efeito na performance no programa, mesmo após terem seus valores modificados. Por causa disso, seus valores padrões foram mantidos nas execuções.
+
+\qquadro{Parâmetros não ajustados durante o \textit{tuning}}
+{\footnotesize
+  \centering
+  \begin{tabular}{|p{75mm}|p{25mm}|}\hline
+    \textbf{PARÂMETRO}                                     & \textbf{VALOR FINAL} \\\hline
+    \textbf{mapreduce.map.combine.minspills}               & 3                    \\\hline
+    \textbf{mapreduce.reduce.shuffle.maxfetchfailures}     & 10                   \\\hline
+    \textbf{mapreduce.reduce.shuffle.input.buffer.percent} & 0.7                  \\\hline
+    \textbf{mapreduce.reduce.shuffle.merge.percent}        & 0.66                 \\\hline
+  \end{tabular}}
+{A autora(2022)}{quadro6}{}{}
+
+Os resultados relevantes da aplicação do \textit{\gls{tuning}} são os tempos de execução do \textit{TeraSort}, os quais podem ser obtidos pela sua saída que mostra, em milisegundos, o tempo utilizado pelas fases \textit{Map} e \textit{Reduce} do processo. Segundo \textcite{Fleming86}, no caso de \textit{\gls{benchmark}ing} de métricas de tempo, é apropriado usar uma média aritmética padrão para avaliar os resultados asim como os valores mínimos e máximos obtidos na execuções de modo que uma visão geral da performance possa ser exemplificada.
+
+Para geração dessas métricas, o \textit{TeraSort} foi executado 10 vezes com os parâmetros com valores padrão e 10 vezes com os parâmetros com valores alterados.
+
+% \figura{Resultados do \textit{tuning}}{.500}{fig/fig6.png}{A autora (2022)}{fig6}{}{}
+% \newpage
+Dessa forma, a \autoref{fig:fig11} ilustra os resultados finais obtidos no experimento proposto antes e depois do processo de aplicação do \textit{\gls{tuning}}. Como visto, a mudança dos parâmetros teve um grande impacto no desempenho do \textit{Hadoop MapReduce}, diminuindo a execução das suas principais funções em mais de cinquenta por cento (50\%). 
